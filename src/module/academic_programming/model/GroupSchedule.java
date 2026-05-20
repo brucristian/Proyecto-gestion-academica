@@ -1,9 +1,8 @@
 package module.academic_programming.model;
 
+import shared.enums.WeekDays;
+
 public class GroupSchedule {
-
-    enum WeekDays{MONDAY, TUESDAY, WEDNESAY, THURSDAY, FRIDAY, SATURDAY}
-
     //================// Atributos //================//
     private long groupScheduleId;
     private long groupId;

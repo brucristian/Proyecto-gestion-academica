@@ -1,22 +1,17 @@
 package module.authentication.model;
 
+import shared.enums.Role;
+
 public class User {
 
-    enum Role{Admin, student}
-
     //================// Atributos //================//
-    private long userId;
-    private String firstName;
-    private String lastName;
-    private Password password;
-    private Role role;
+    private final long userId;
+    private final String firstName;
+    private final String lastName;
+    private final Password password;
+    private final Role role;
 
     //================// Constructores //================//
-
-
-    public User() {
-    }
-
     public User(long userId, String firstName, String lastName, Password password, Role role) {
         this.userId = userId;
         this.firstName = firstName;
@@ -32,43 +27,20 @@ public class User {
         return userId;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
     public String getFirstName() {
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public Password getPassword() {
         return password;
-    }
-
-    public void setPassword(Password password) {
-        this.password = password;
     }
 
     public Role getRole() {
         return role;
     }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    //================// Funciones Adicionales //================//
-
 
 }

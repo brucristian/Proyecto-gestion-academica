@@ -5,7 +5,7 @@ public class Prerequisite {
     //================// Atributos //================//
     private long prerequisite;
     private long courseId;
-    private long requiredCourseId;
+    private Course requiredCourse;
 
 
     //================// Constructores //================//
@@ -13,10 +13,10 @@ public class Prerequisite {
     public Prerequisite() {
     }
 
-    public Prerequisite(long prerequisite, long courseId, long requiredCourseId) {
+    public Prerequisite(long prerequisite, long courseId, Course requiredCourse) {
         this.prerequisite = prerequisite;
         this.courseId = courseId;
-        this.requiredCourseId = requiredCourseId;
+        this.requiredCourse = requiredCourse;
     }
 
     //================// Setters y Getters //================//
@@ -37,12 +37,12 @@ public class Prerequisite {
         this.courseId = courseId;
     }
 
-    public long getRequiredCourseId() {
-        return requiredCourseId;
+    public Course getRequiredCourse() {
+        return requiredCourse;
     }
 
-    public void setRequiredCourseId(long requiredCourseId) {
-        this.requiredCourseId = requiredCourseId;
+    public void setRequiredCourse(Course requiredCourse) {
+        this.requiredCourse = requiredCourse;
     }
 
 

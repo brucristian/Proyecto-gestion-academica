@@ -1,6 +1,6 @@
 package shared.enums;
 
-public enum WeekDay {
+public enum WeekDays {
     MONDAY,
     TUESDAY,
     WEDNESDAY,
