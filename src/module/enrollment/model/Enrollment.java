@@ -11,7 +11,7 @@ public class Enrollment {
     private Student student;
     private AcademicProgram academicProgram;
     private String enrollmentDate;
-    private ArrayList<Enrollment> details;
+    private ArrayList<EnrollmentDetail> details;
 
 
     //================// Constructores //================//
@@ -19,7 +19,7 @@ public class Enrollment {
     public Enrollment() {
     }
 
-    public Enrollment(long enrollmentId, Student student, AcademicProgram academicProgram, String enrollmentDate, ArrayList<Enrollment> details) {
+    public Enrollment(long enrollmentId, Student student, AcademicProgram academicProgram, String enrollmentDate, ArrayList<EnrollmentDetail> details) {
         this.enrollmentId = enrollmentId;
         this.student = student;
         this.academicProgram = academicProgram;
@@ -61,11 +61,11 @@ public class Enrollment {
         this.enrollmentDate = enrollmentDate;
     }
 
-    public ArrayList<Enrollment> getDetails() {
+    public ArrayList<EnrollmentDetail> getDetails() {
         return details;
     }
 
-    public void setDetails(ArrayList<Enrollment> details) {
+    public void setDetails(ArrayList<EnrollmentDetail> details) {
         this.details = details;
     }
 
