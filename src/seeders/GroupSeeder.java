@@ -8,9 +8,7 @@ import repository.CourseRepository;
 import repository.GroupRepository;
 import shared.enums.WeekDays;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class GroupSeeder {
@@ -63,8 +61,8 @@ public class GroupSeeder {
                 1L,
                 1L,
                 WeekDays.MONDAY,
-                "07:00",
-                "09:00",
+                LocalTime.of(7, 0),
+                LocalTime.of(9, 0),
                 "A-201"
         ));
 
@@ -72,8 +70,8 @@ public class GroupSeeder {
                 2L,
                 1L,
                 WeekDays.WEDNESDAY,
-                "07:00",
-                "09:00",
+                LocalTime.of(7, 0),
+                LocalTime.of(9, 0),
                 "A-201"
         ));
 
@@ -96,8 +94,8 @@ public class GroupSeeder {
                 3L,
                 2L,
                 WeekDays.TUESDAY,
-                "10:00",
-                "12:00",
+                LocalTime.of(10, 0),
+                LocalTime.of(12, 0),
                 "B-101"
         ));
 
@@ -105,8 +103,8 @@ public class GroupSeeder {
                 4L,
                 2L,
                 WeekDays.THURSDAY,
-                "10:00",
-                "12:00",
+                LocalTime.of(10, 0),
+                LocalTime.of(12, 0),
                 "B-101"
         ));
 
@@ -129,8 +127,8 @@ public class GroupSeeder {
                 5L,
                 3L,
                 WeekDays.MONDAY,
-                "14:00",
-                "16:00",
+                LocalTime.of(14, 0),
+                LocalTime.of(16, 0),
                 "LAB-02"
         ));
 
@@ -138,8 +136,8 @@ public class GroupSeeder {
                 6L,
                 3L,
                 WeekDays.FRIDAY,
-                "14:00",
-                "16:00",
+                LocalTime.of(14, 0),
+                LocalTime.of(16, 0),
                 "LAB-02"
         ));
 
@@ -162,8 +160,8 @@ public class GroupSeeder {
                 7L,
                 4L,
                 WeekDays.TUESDAY,
-                "07:00",
-                "09:00",
+                LocalTime.of(7, 0),
+                LocalTime.of(9, 0),
                 "C-301"
         ));
 
@@ -171,8 +169,8 @@ public class GroupSeeder {
                 8L,
                 4L,
                 WeekDays.THURSDAY,
-                "07:00",
-                "09:00",
+                LocalTime.of(7, 0),
+                LocalTime.of(9, 0),
                 "C-301"
         ));
 

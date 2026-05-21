@@ -2,13 +2,15 @@ package module.academic_programming.model;
 
 import shared.enums.WeekDays;
 
+import java.time.LocalTime;
+
 public class GroupSchedule {
     //================// Atributos //================//
     private long groupScheduleId;
     private long groupId;
     private WeekDays dayOfWeek;
-    private String startTime;
-    private String endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private String classroom;
 
     //================// Constructores //================//
@@ -17,7 +19,7 @@ public class GroupSchedule {
     public GroupSchedule() {
     }
 
-    public GroupSchedule(long groupScheduleId, long groupId, WeekDays dayOfWeek, String startTime, String endTime, String classroom) {
+    public GroupSchedule(long groupScheduleId, long groupId, WeekDays dayOfWeek, LocalTime startTime, LocalTime endTime, String classroom) {
         this.groupScheduleId = groupScheduleId;
         this.groupId = groupId;
         this.dayOfWeek = dayOfWeek;
@@ -53,19 +55,19 @@ public class GroupSchedule {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public String getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 

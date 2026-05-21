@@ -7,11 +7,6 @@ import module.enrollment.model.Student;
 import repository.StudentRepository;
 import shared.enums.Role;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class StudentSeeder {
 
