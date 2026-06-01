@@ -3,17 +3,14 @@ package org.unisheduler.backend.domain.model.academic_catalog.entity;
 public class Prerequisite {
 
     //================// Atributos //================//
-    private long prerequisite;
-    private long courseId;
+    private String prerequisite;
+    private String courseId;
     private Course requiredCourse;
 
 
     //================// Constructores //================//
 
-    public Prerequisite() {
-    }
-
-    public Prerequisite(long prerequisite, long courseId, Course requiredCourse) {
+    public Prerequisite(String prerequisite, String courseId, Course requiredCourse) {
         this.prerequisite = prerequisite;
         this.courseId = courseId;
         this.requiredCourse = requiredCourse;
@@ -21,19 +18,19 @@ public class Prerequisite {
 
     //================// Setters y Getters //================//
 
-    public long getPrerequisite() {
+    public String getPrerequisite() {
         return prerequisite;
     }
 
-    public void setPrerequisite(long prerequisite) {
+    public void setPrerequisite(String prerequisite) {
         this.prerequisite = prerequisite;
     }
 
-    public long getCourseId() {
+    public String getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(long courseId) {
+    public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
 

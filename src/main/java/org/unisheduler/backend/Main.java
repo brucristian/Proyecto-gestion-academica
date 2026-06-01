@@ -1,5 +1,9 @@
 package org.unisheduler.backend;
 
+import org.unisheduler.backend.application.service.academic_catalog.out.ListAllCoursesServices;
+import org.unisheduler.backend.application.service.academic_catalog.out.dtos.CourseInfo;
+import org.unisheduler.backend.application.service.academic_catalog.out.dtos.ListAllCoursesResponse;
+import org.unisheduler.backend.application.service.academic_catalog.out.dtos.PrerequisiteInfo;
 import org.unisheduler.backend.application.service.auth.login.LoginUserCommand;
 import org.unisheduler.backend.application.service.auth.login.LoginUserService;
 import org.unisheduler.backend.application.service.auth.login.dtos.LoginUserResponse;
@@ -8,10 +12,12 @@ import org.unisheduler.backend.application.service.enrollment.register.RegisterS
 import org.unisheduler.backend.application.service.enrollment.register.dtos.RegisterStudentResponse;
 import org.unisheduler.backend.domain.model.enrollment.entity.EnrollmentDetail;
 import org.unisheduler.backend.domain.model.enrollment.entity.Student;
+import org.unisheduler.backend.domain.port.in.academic_catalog.ListAllCoursesUseCase;
 import org.unisheduler.backend.domain.port.in.auth.LoginUserUseCase;
 import org.unisheduler.backend.domain.port.in.enrollment.RegisterStudentUseCase;
 import org.unisheduler.backend.domain.port.out.academic_catalog.AcademicProgramRepository;
 import org.unisheduler.backend.domain.port.out.academic_catalog.CourseRepository;
+import org.unisheduler.backend.domain.port.out.academic_catalog.PrerequisiteRepository;
 import org.unisheduler.backend.domain.port.out.academic_programming.*;
 import org.unisheduler.backend.domain.port.out.auth.UserRepository;
 import org.unisheduler.backend.domain.port.out.enrollment.repository.EnrollmentDetailRepository;
@@ -22,6 +28,7 @@ import org.unisheduler.backend.domain.port.out.security.PasswordGeneratorPort;
 import org.unisheduler.backend.domain.port.out.security.StudentCodeGeneratorPort;
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.academic_catalog.ExcelAcademicProgramRepository;
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.academic_catalog.ExcelCourseRepository;
+import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.academic_catalog.ExcelPrerequisiteRepository;
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.academic_program.*;
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.auth.ExcelUserRepository;
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.enrollment.ExcelEnrollmentDetailRepository;
@@ -29,6 +36,7 @@ import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.e
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.enrollment.ExcelStudentRepository;
 import org.unisheduler.backend.infrastructure.out.repository.academic_catalog.AcademicProgramRepositoryImpl;
 import org.unisheduler.backend.infrastructure.out.repository.academic_catalog.CourseRepositoryImpl;
+import org.unisheduler.backend.infrastructure.out.repository.academic_catalog.PrerequisiteRepositoryImpl;
 import org.unisheduler.backend.infrastructure.out.repository.academic_programming.*;
 import org.unisheduler.backend.infrastructure.out.repository.auth.UserRepositoryImpl;
 import org.unisheduler.backend.infrastructure.out.repository.enrollment.EnrollmentDetailImpl;
@@ -39,6 +47,7 @@ import org.unisheduler.backend.infrastructure.out.security.PasswordGeneratorAdap
 import org.unisheduler.backend.infrastructure.out.security.StudentCodeGeneratorAdapter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
 
@@ -61,6 +70,58 @@ public class Main {
             LocalDate.now(),
             "ACTIVE"
     );
+  }
+
+  public static void printCourses(ListAllCoursesResponse response) {
+
+    System.out.println("========================================");
+    System.out.println("Resultado: " + response.isSuccssesfully());
+    System.out.println("Mensaje: " + response.getMessge());
+    System.out.println("========================================");
+
+    for (CourseInfo course : response.getCourses()) {
+
+      System.out.println("ID: " + course.getCourseId());
+      System.out.println("Nombre: " + course.getName());
+      System.out.println("Código: " + course.getCode());
+      System.out.println("Créditos: " + course.getCredits());
+
+      System.out.println("Prerrequisitos:");
+
+      if (course.getPrerequisites() == null || course.getPrerequisites().isEmpty()) {
+        System.out.println("  Ninguno");
+      } else {
+        for (PrerequisiteInfo prerequisite : course.getPrerequisites()) {
+          System.out.println(
+                  "  - [" + prerequisite.getCode() + "] "
+                          + prerequisite.getName()
+                          + " (ID: " + prerequisite.getId() + ")"
+          );
+        }
+      }
+
+      System.out.println("----------------------------------------");
+    }
+  }
+
+  public static void printStudentResponse(RegisterStudentResponse response) {
+    System.out.println("message: " + response.getMessage());
+    System.out.println("Codigo de estudiante: " + response.getStudent().getStudentCode());
+    System.out.println("Contrasenia: " + response.getStudent().getStudentPassword());
+  }
+
+  public static void printLoginResponse(LoginUserResponse successLoginResponse) {
+    System.out.println("-----------------------------------------------");
+    System.out.println("Message: " + successLoginResponse.getMessage());
+
+    if(!successLoginResponse.isSuccessfully()) {
+      return;
+    }
+
+    System.out.println("UserId: " + successLoginResponse.getUser().getUserId());
+    System.out.println("Email: " + successLoginResponse.getUser().getEmail());
+    System.out.println("Full Name: " + successLoginResponse.getUser().getFullName());
+    System.out.println("Role: " + successLoginResponse.getUser().getRole());
   }
 
   public static void dependencyInjection() {
@@ -87,6 +148,8 @@ public class Main {
 
     SemesterTemplateRepository semesterTemplateRepository = new SemesterTemplateRepositoryImpl(new ExcelSemesterTemplateRepository(), semesterTemplateDetailRepository);
 
+    PrerequisiteRepository prerequisiteRepository = new PrerequisiteRepositoryImpl(new ExcelPrerequisiteRepository(), courseRepository);
+
     //================// Ports (Servicios auxiliares) //================//
     PasswordGeneratorPort passwordGenerator = new PasswordGeneratorAdapter();
     PasswordEncoderPort passwordEncoderPort = new PasswordEncoderAdapter();
@@ -111,30 +174,27 @@ public class Main {
             passwordEncoderPort
     );
 
+    ListAllCoursesUseCase listAllCoursesService = new ListAllCoursesServices(
+            courseRepository,
+            prerequisiteRepository
+    );
+
     //================// Ejecutar caso de uso (ejemplo) //================//
     //RegisterStudentResponse response = registerStudentService.execute(createStudentCommand());
-    //System.out.println("message: " + response.getMessage());
-    //System.out.println("Codigo de estudiante: " + response.getStudent().getStudentCode());
-    //System.out.println("Contrasenia: " + response.getStudent().getStudentPassword());
+    //printStudentResponse(response);
 
-    LoginUserCommand loginCommand = new LoginUserCommand(
-            "ana.gomez@email.com",
-                  "SuwJivk@"
-            );
+    //LoginUserCommand loginCommand = new LoginUserCommand(
+    //        "ana.gomez@email.com",
+    //              "SuwJivk@"
+    //        );
 
-    LoginUserResponse successLoginResponse = loginUserService.execute(loginCommand);
+    //LoginUserResponse successLoginResponse = loginUserService.execute(loginCommand);
+    //printLoginResponse(successLoginResponse);
 
-    System.out.println("-----------------------------------------------");
-    System.out.println("Message: " + successLoginResponse.getMessage());
+    ListAllCoursesResponse listAllCoursesResponse = listAllCoursesService.execute();
+    printCourses(listAllCoursesResponse);
 
-    if(!successLoginResponse.isSuccessfully()) {
-      return;
-    }
 
-    System.out.println("UserId: " + successLoginResponse.getUser().getUserId());
-    System.out.println("Email: " + successLoginResponse.getUser().getEmail());
-    System.out.println("Full Name: " + successLoginResponse.getUser().getFullName());
-    System.out.println("Role: " + successLoginResponse.getUser().getRole());
   }
 
   public static void main(String[] args) {

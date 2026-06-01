@@ -6,6 +6,8 @@ import org.unisheduler.backend.infrastructure.out.entity.academic_catalog.Course
 import org.unisheduler.backend.infrastructure.out.mapper.academic_catalog.CourseMapper;
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.academic_catalog.ExcelCourseRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class CourseRepositoryImpl implements CourseRepository {
@@ -24,5 +26,18 @@ public class CourseRepositoryImpl implements CourseRepository {
 
         CourseEntity entity = entityOptional.get();
         return Optional.of(CourseMapper.toDomain(entity));
+    }
+
+    @Override
+    public List<Course> findAll() {
+        List<CourseEntity> entities = courseRepository.findAll();
+
+        List<Course> courses = new ArrayList<>();
+        for(CourseEntity entity : entities) {
+            Course course = CourseMapper.toDomain(entity);
+            courses.add(course);
+        }
+
+        return courses;
     }
 }
