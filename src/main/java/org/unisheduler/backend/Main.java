@@ -80,7 +80,7 @@ public class Main {
             "GXT32",
             "MATEMATICAS DISCRETAS",
             3,
-            "Esta es una mejor descripcion",
+            "Esta es una correpcion al caso de uso de actualizar asignatura",
             prerequisites
     );
   }

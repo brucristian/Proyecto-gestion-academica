@@ -72,7 +72,7 @@ public class UpdateCourseService implements UpdateCourseUseCase {
 
         return new UpdateCourseResponse(
                 true,
-                "Se creo la asignatura con exito",
+                "Se actualizo la asignatura con exito",
                 new CourseInfo(
                         courseSaved.getCourseId(),
                         courseSaved.getName(),

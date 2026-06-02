@@ -70,7 +70,7 @@ public class CourseRepositoryImpl implements CourseRepository {
     public Course update(Course course) {
         CourseEntity entity = CourseMapper.toEntity(course);
 
-        CourseEntity entitySaved = courseRepository.save(entity);
+        CourseEntity entitySaved = courseRepository.update(entity);
         return CourseMapper.toDomain(entitySaved);
     }
 }
