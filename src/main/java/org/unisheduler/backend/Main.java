@@ -59,103 +59,6 @@ import java.util.List;
 
 public class Main {
 
-  public static RegisterCourseCommand registerCourseCommand() {
-    List<String> prerequisites = new ArrayList<>();
-    prerequisites.add("ALG302");
-    return new RegisterCourseCommand(
-            "GXT32",
-            "MATEMATICAS DISCRETAS",
-            3,
-            "Breve descripcion",
-            prerequisites
-    );
-  }
-
-  public static UpdateCourseCommand updateCourseCommand() {
-    List<String> prerequisites = new ArrayList<>();
-    prerequisites.add("ALG302");
-    return new UpdateCourseCommand(
-            "25",
-            "GXT32",
-            "MATEMATICAS DISCRETAS",
-            3,
-            "Esta es una correpcion al caso de uso de actualizar asignatura",
-            prerequisites
-    );
-  }
-
-  public static RegisterStudentCommand createStudentCommand() {
-    return new RegisterStudentCommand(
-            "Ana",
-            "Gomez",
-            "CC",
-            "123456786",
-            LocalDate.of(2002, 5, 15),
-            "MALE",
-
-            "3001234567",
-            "Calle 123 #45-67",
-            "ana.gomez@email.com",
-
-            "1",
-            1,
-            LocalDate.now(),
-            "ACTIVE"
-    );
-  }
-
-  public static void printCourses(ListAllCoursesResponse response) {
-
-    System.out.println("========================================");
-    System.out.println("Resultado: " + response.isSuccssesfully());
-    System.out.println("Mensaje: " + response.getMessge());
-    System.out.println("========================================");
-
-    for (CourseInfo course : response.getCourses()) {
-
-      System.out.println("ID: " + course.getCourseId());
-      System.out.println("Nombre: " + course.getName());
-      System.out.println("Código: " + course.getCode());
-      System.out.println("Créditos: " + course.getCredits());
-
-      System.out.println("Prerrequisitos:");
-
-      if (course.getPrerequisites() == null || course.getPrerequisites().isEmpty()) {
-        System.out.println("  Ninguno");
-      } else {
-        for (PrerequisiteInfo prerequisite : course.getPrerequisites()) {
-          System.out.println(
-                  "  - [" + prerequisite.getCode() + "] "
-                          + prerequisite.getName()
-                          + " (ID: " + prerequisite.getId() + ")"
-          );
-        }
-      }
-
-      System.out.println("----------------------------------------");
-    }
-  }
-
-  public static void printStudentResponse(RegisterStudentResponse response) {
-    System.out.println("message: " + response.getMessage());
-    System.out.println("Codigo de estudiante: " + response.getStudent().getStudentCode());
-    System.out.println("Contrasenia: " + response.getStudent().getStudentPassword());
-  }
-
-  public static void printLoginResponse(LoginUserResponse successLoginResponse) {
-    System.out.println("-----------------------------------------------");
-    System.out.println("Message: " + successLoginResponse.getMessage());
-
-    if(!successLoginResponse.isSuccessfully()) {
-      return;
-    }
-
-    System.out.println("UserId: " + successLoginResponse.getUser().getUserId());
-    System.out.println("Email: " + successLoginResponse.getUser().getEmail());
-    System.out.println("Full Name: " + successLoginResponse.getUser().getFullName());
-    System.out.println("Role: " + successLoginResponse.getUser().getRole());
-  }
-
   public static void dependencyInjection() {
     //================// Repositories (Infraestructura) //================//
     UserRepository userRepository = new UserRepositoryImpl(new ExcelUserRepository());
@@ -222,33 +125,6 @@ public class Main {
     );
 
     DeleteCourseUseCase deleteCourseService = new DeleteCourseService(courseRepository, prerequisiteRepository);
-
-    //================// Ejecutar caso de uso (ejemplo) //================//
-    //RegisterStudentResponse response = registerStudentService.execute(createStudentCommand());
-    //printStudentResponse(response);
-
-    //LoginUserCommand loginCommand = new LoginUserCommand(
-    //        "ana.gomez@email.com",
-    //              "SuwJivk@"
-    //        );
-
-    //LoginUserResponse successLoginResponse = loginUserService.execute(loginCommand);
-    //printLoginResponse(successLoginResponse);
-
-    //ListAllCoursesResponse listAllCoursesResponse = listAllCoursesService.execute();
-    //printCourses(listAllCoursesResponse);
-
-    //RegisterCourseCommand registerCourseCommand = registerCourseCommand();
-    //RegisterCourseResponse response = registerCourseService.execute(registerCourseCommand);
-
-    //UpdateCourseCommand updatedCourseCommand = updateCourseCommand();
-    //UpdateCourseResponse response = updateCourseService.execute(updatedCourseCommand);
-
-    DeleteCourseCommand deleteCourseCommand = new DeleteCourseCommand("26");
-    DeleteCourseResponse response = deleteCourseService.execute(deleteCourseCommand);
-    System.out.println("Estdo: " + response.isSuccessfully());
-    System.out.println("Message: " + response.getMessage());
-
 
   }
 

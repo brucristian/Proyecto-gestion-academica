@@ -4,6 +4,7 @@ import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
 import org.unisheduler.backend.domain.model.enrollment.entity.EnrollmentDetail;
 import org.unisheduler.backend.infrastructure.out.entity.enrollment.EnrollmentDetailEntity;
+import org.unisheduler.backend.infrastructure.out.persistence.excel.core.ExcelIdGenerator;
 
 
 import java.io.File;
@@ -20,8 +21,9 @@ public class ExcelEnrollmentDetailRepository {
             Table table = doc.getTableByName("EnrollmentDetails");
 
             int newRow = table.getRowCount();
+            String detailId = ExcelIdGenerator.generateNextId(table, 0);
 
-            table.getCellByPosition(0, newRow).setStringValue(enrollmentDetail.getEnrollmentDetailId());
+            table.getCellByPosition(0, newRow).setStringValue(detailId);
             table.getCellByPosition(1, newRow).setStringValue(enrollmentDetail.getEnrolmentId());
             table.getCellByPosition(2, newRow).setStringValue(enrollmentDetail.getGroupId());
             table.getCellByPosition(3, newRow).setStringValue(enrollmentDetail.getStatus());

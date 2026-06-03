@@ -57,4 +57,43 @@ public class ExcelGroupScheduleRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public GroupScheduleEntity findById(String id) {
+
+        try {
+            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
+            Table table = doc.getTableByName("GroupSchedule");
+
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+
+            for (int i = 0; i < table.getRowCount(); i++) {
+
+                String groupScheduleId = table.getCellByPosition(0, i).getStringValue();
+
+                if (id.equals(groupScheduleId)) {
+
+                    GroupScheduleEntity entity = new GroupScheduleEntity();
+
+                    entity.setGroupScheduleId(groupScheduleId);
+                    entity.setGroupId(table.getCellByPosition(1, i).getStringValue());
+                    entity.setDayOfWeek(table.getCellByPosition(2, i).getStringValue());
+
+                    String startStr = table.getCellByPosition(3, i).getStringValue();
+                    String endStr = table.getCellByPosition(4, i).getStringValue();
+
+                    entity.setStartTime(LocalTime.parse(startStr, timeFormatter));
+                    entity.setEndTime(LocalTime.parse(endStr, timeFormatter));
+
+                    entity.setClassroom(table.getCellByPosition(5, i).getStringValue());
+
+                    return entity;
+                }
+            }
+
+            return null;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
