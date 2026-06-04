@@ -14,6 +14,7 @@ import org.unisheduler.backend.infrastructure.out.entity.academic_programming.Gr
 import org.unisheduler.backend.infrastructure.out.mapper.academic_programming.GroupMapper;
 import org.unisheduler.backend.infrastructure.out.persistence.excel.repository.academic_program.ExcelGroupRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,15 +38,45 @@ public class GroupRepositoryImpl implements GroupRepository {
             return Optional.empty();
         }
 
-        GroupEntity entity = entityOptional.get();
+        return Optional.of(toDomain(entityOptional.get()));
+    }
 
+    @Override
+    public List<Group> findAll() {
+        List<GroupEntity> entities = groupRepository.findAll();
+
+        List<Group> groups = new ArrayList<>();
+        for(GroupEntity entity : entities) {
+            groups.add(toDomain(entity));
+        }
+
+        return groups;
+    }
+
+    @Override
+    public Group save(Group group) {
+        GroupEntity entitySaved = groupRepository.save(GroupMapper.toEntity(group));
+        return toDomain(entitySaved);
+    }
+
+    @Override
+    public Group update(Group group) {
+        GroupEntity entityUpdated = groupRepository.update(GroupMapper.toEntity(group));
+        return toDomain(entityUpdated);
+    }
+
+    @Override
+    public boolean deleteById(String id) {
+        return groupRepository.deleteById(id);
+    }
+
+    private Group toDomain(GroupEntity entity) {
         Course course = courseRepository.findById(entity.getCourseId())
                 .orElseThrow(() -> new EntityNotFoundException("No existe el courso con id: " + entity.getCourseId()));
         Teacher teacher = teacherRepository.findById(entity.getTeacherId())
                 .orElseThrow(() -> new EntityNotFoundException("No existe el profesor con id: " + entity.getTeacherId()));
         List<GroupSchedule> groupSchedules = groupScheduleRepository.findAllWhereGroupId(entity.getGroupId());
-        Group group = GroupMapper.toDomain(entity, course, teacher, groupSchedules);
 
-        return Optional.of(group);
+        return GroupMapper.toDomain(entity, course, teacher, groupSchedules);
     }
 }

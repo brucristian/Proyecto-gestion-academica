@@ -1,0 +1,27 @@
+package org.unisheduler.backend.application.service.academic_programming.in.dtos;
+
+import org.unisheduler.backend.application.service.academic_programming.out.dtos.GroupInfo;
+
+public class UpdateGroupResponse {
+    private final boolean successfully;
+    private final String message;
+    private final GroupInfo group;
+
+    public UpdateGroupResponse(boolean successfully, String message, GroupInfo group) {
+        this.successfully = successfully;
+        this.message = message;
+        this.group = group;
+    }
+
+    public boolean isSuccessfully() {
+        return successfully;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public GroupInfo getGroup() {
+        return group;
+    }
+}

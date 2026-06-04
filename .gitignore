@@ -1,5 +1,10 @@
 # Archivos compilados
 target/
+out-tests/
+
+# Pruebas locales y material de trabajo (no se suben al repo)
+tests/
+parteMiguel/
 
 # IntelliJ IDEA
 .idea/
