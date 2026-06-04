@@ -1,4 +1,5 @@
-package org.unischeduler.backend.application.service.academic_catalog.in;
+package org.unischeduler.backend.application.service.academic_catalog.in.course;
+
 
 import java.util.List;
 

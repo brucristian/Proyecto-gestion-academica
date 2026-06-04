@@ -1,10 +1,12 @@
-package org.unischeduler.backend.application.service.academic_catalog.in;
+package org.unischeduler.backend.application.service.academic_catalog.in.course;
 
-import org.unischeduler.backend.application.service.academic_catalog.in.dtos.UpdateCourseResponse;
-import org.unischeduler.backend.application.service.academic_catalog.out.dtos.CourseInfo;
-import org.unischeduler.backend.application.service.academic_catalog.out.dtos.PrerequisiteInfo;
+
+
+import org.unischeduler.backend.application.service.academic_catalog.in.course.dtos.RegisterCourseResponse;
+import org.unischeduler.backend.application.service.academic_catalog.out.course.dtos.CourseInfo;
+import org.unischeduler.backend.application.service.academic_catalog.out.course.dtos.PrerequisiteInfo;
 import org.unischeduler.backend.domain.model.academic_catalog.entity.Course;
-import org.unischeduler.backend.domain.port.in.academic_catalog.UpdateCourseUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.course.RegisterCourseUseCase;
 import org.unischeduler.backend.domain.port.out.academic_catalog.CourseRepository;
 import org.unischeduler.backend.domain.port.out.academic_catalog.PrerequisiteRepository;
 
@@ -12,19 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UpdateCourseService implements UpdateCourseUseCase {
+public class RegisterCourseService implements RegisterCourseUseCase {
     private final CourseRepository courseRepository;
     private final PrerequisiteRepository prerequisiteRepository;
 
-    public UpdateCourseService(CourseRepository courseRepository, PrerequisiteRepository prerequisiteRepository) {
+    public RegisterCourseService(CourseRepository courseRepository, PrerequisiteRepository prerequisiteRepository) {
         this.courseRepository = courseRepository;
         this.prerequisiteRepository = prerequisiteRepository;
     }
 
     @Override
-    public UpdateCourseResponse execute(UpdateCourseCommand command) {
-        if(!courseRepository.existsByCode(command.getCourseCode())) {
-            return new UpdateCourseResponse(
+    public RegisterCourseResponse execute(RegisterCourseCommand command) {
+        if(courseRepository.existsByCode(command.getCourseCode())) {
+            return new RegisterCourseResponse(
                     false,
                     "El codigo de la asignatura ya esta en uso",
                     null
@@ -37,7 +39,7 @@ public class UpdateCourseService implements UpdateCourseUseCase {
         for(String code : command.getPrerequisiteCourseCodes()) {
             Optional<Course> courseOptional = courseRepository.findByCode(code);
             if(courseOptional.isEmpty()) {
-                return new UpdateCourseResponse(
+                return new RegisterCourseResponse(
                         false,
                         "El prerrequisito con código " + code + " no existe",
                         null
@@ -56,7 +58,7 @@ public class UpdateCourseService implements UpdateCourseUseCase {
         }
 
         Course course = new Course(
-                command.getCourseId(),
+                null,
                 command.getName(),
                 command.getCourseCode(),
                 command.getCredits(),
@@ -64,14 +66,14 @@ public class UpdateCourseService implements UpdateCourseUseCase {
                 prerequisites
         );
 
-        Course courseSaved = courseRepository.update(course);
+        Course courseSaved = courseRepository.save(course);
         for(Course prerequisite : prerequisites) {
             prerequisiteRepository.save(courseSaved.getCourseId(), prerequisite.getCourseId());
         }
 
-        return new UpdateCourseResponse(
+        return new RegisterCourseResponse(
                 true,
-                "Se actualizo la asignatura con exito",
+                "Se creo la asignatura con exito",
                 new CourseInfo(
                         courseSaved.getCourseId(),
                         courseSaved.getName(),

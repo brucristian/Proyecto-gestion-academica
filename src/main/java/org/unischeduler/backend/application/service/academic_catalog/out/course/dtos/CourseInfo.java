@@ -1,4 +1,5 @@
-package org.unischeduler.backend.application.service.academic_catalog.out.dtos;
+package org.unischeduler.backend.application.service.academic_catalog.out.course.dtos;
+
 
 import java.util.List;
 

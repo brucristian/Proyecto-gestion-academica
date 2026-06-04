@@ -1,24 +1,16 @@
-package org.unischeduler.backend.domain.model.academic_catalog.entity;
-
-
-import org.unischeduler.backend.domain.model.academic_catalog.enums.AcademicPeriodStatus;
+package org.unischeduler.backend.application.service.academic_catalog.in.academic_period;
 
 import java.time.LocalDate;
 
-public class AcademicPeriod {
-
-    //================// Atributos //================//
+public class UpdateAcademicPeriodCommand {
     private final String academicPeriodId;
     private final String code;
-    private String name;
+    private final String name;
     private final LocalDate startDate;
     private final LocalDate endDate;
-    private AcademicPeriodStatus status;
+    private final String status;
 
-    //================// Constructores //================//
-
-
-    public AcademicPeriod(String academicPeriodId, String code, String name, LocalDate startDate, LocalDate endDate, AcademicPeriodStatus status) {
+    public UpdateAcademicPeriodCommand(String academicPeriodId, String code, String name, LocalDate startDate, LocalDate endDate, String status) {
         this.academicPeriodId = academicPeriodId;
         this.code = code;
         this.name = name;
@@ -47,15 +39,7 @@ public class AcademicPeriod {
         return endDate;
     }
 
-    public AcademicPeriodStatus getStatus() {
+    public String getStatus() {
         return status;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setStatus(AcademicPeriodStatus status) {
-        this.status = status;
     }
 }

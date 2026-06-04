@@ -1,21 +1,24 @@
 package org.unischeduler.backend;
 
-import org.unischeduler.backend.application.service.academic_catalog.in.*;
-import org.unischeduler.backend.application.service.academic_catalog.out.ListAllCoursesServices;
+import org.unischeduler.backend.application.service.academic_catalog.in.course.DeleteCourseService;
+import org.unischeduler.backend.application.service.academic_catalog.in.course.RegisterCourseService;
+import org.unischeduler.backend.application.service.academic_catalog.in.course.UpdateCourseService;
+import org.unischeduler.backend.application.service.academic_catalog.out.course.ListAllCoursesServices;
 import org.unischeduler.backend.application.service.academic_programming.in.RegisterGroupService;
 import org.unischeduler.backend.application.service.academic_programming.in.UpdateGroupService;
 import org.unischeduler.backend.application.service.academic_programming.in.DeleteGroupService;
 import org.unischeduler.backend.application.service.academic_programming.out.ListAllGroupsServices;
+import org.unischeduler.backend.domain.port.in.academic_catalog.course.DeleteCourseUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.course.ListAllCoursesUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.course.RegisterCourseUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.course.UpdateCourseUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.RegisterGroupUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.UpdateGroupUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.ListAllGroupsUseCase;
 import org.unischeduler.backend.application.service.auth.login.LoginUserService;
 import org.unischeduler.backend.application.service.enrollment.register.RegisterStudentService;
-import org.unischeduler.backend.domain.port.in.academic_catalog.DeleteCourseUseCase;
-import org.unischeduler.backend.domain.port.in.academic_catalog.ListAllCoursesUseCase;
-import org.unischeduler.backend.domain.port.in.academic_catalog.RegisterCourseUseCase;
-import org.unischeduler.backend.domain.port.in.academic_catalog.UpdateCourseUseCase;
+
 import org.unischeduler.backend.domain.port.in.auth.LoginUserUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.RegisterStudentUseCase;
 import org.unischeduler.backend.domain.port.out.academic_catalog.AcademicProgramRepository;

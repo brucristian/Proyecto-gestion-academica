@@ -1,4 +1,4 @@
-package org.unischeduler.backend.application.service.academic_catalog.out.dtos;
+package org.unischeduler.backend.application.service.academic_catalog.out.course.dtos;
 
 public class PrerequisiteInfo {
     private final String id;

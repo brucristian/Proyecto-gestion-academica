@@ -1,6 +1,7 @@
-package org.unischeduler.backend.application.service.academic_catalog.in.dtos;
+package org.unischeduler.backend.application.service.academic_catalog.in.course.dtos;
 
-import org.unischeduler.backend.application.service.academic_catalog.out.dtos.CourseInfo;
+
+import org.unischeduler.backend.application.service.academic_catalog.out.course.dtos.CourseInfo;
 
 public class UpdateCourseResponse {
     private final boolean successfully;

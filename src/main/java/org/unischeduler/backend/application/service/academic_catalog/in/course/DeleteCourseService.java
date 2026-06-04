@@ -1,7 +1,8 @@
-package org.unischeduler.backend.application.service.academic_catalog.in;
+package org.unischeduler.backend.application.service.academic_catalog.in.course;
 
-import org.unischeduler.backend.application.service.academic_catalog.in.dtos.DeleteCourseResponse;
-import org.unischeduler.backend.domain.port.in.academic_catalog.DeleteCourseUseCase;
+
+import org.unischeduler.backend.application.service.academic_catalog.in.course.dtos.DeleteCourseResponse;
+import org.unischeduler.backend.domain.port.in.academic_catalog.course.DeleteCourseUseCase;
 import org.unischeduler.backend.domain.port.out.academic_catalog.CourseRepository;
 import org.unischeduler.backend.domain.port.out.academic_catalog.PrerequisiteRepository;
 
