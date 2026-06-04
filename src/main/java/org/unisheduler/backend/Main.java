@@ -8,6 +8,14 @@ import org.unisheduler.backend.application.service.academic_catalog.out.ListAllC
 import org.unisheduler.backend.application.service.academic_catalog.out.dtos.CourseInfo;
 import org.unisheduler.backend.application.service.academic_catalog.out.dtos.ListAllCoursesResponse;
 import org.unisheduler.backend.application.service.academic_catalog.out.dtos.PrerequisiteInfo;
+import org.unisheduler.backend.application.service.academic_programming.in.RegisterGroupService;
+import org.unisheduler.backend.application.service.academic_programming.in.UpdateGroupService;
+import org.unisheduler.backend.application.service.academic_programming.in.DeleteGroupService;
+import org.unisheduler.backend.application.service.academic_programming.out.ListAllGroupsServices;
+import org.unisheduler.backend.domain.port.in.academic_programming.RegisterGroupUseCase;
+import org.unisheduler.backend.domain.port.in.academic_programming.UpdateGroupUseCase;
+import org.unisheduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
+import org.unisheduler.backend.domain.port.in.academic_programming.ListAllGroupsUseCase;
 import org.unisheduler.backend.application.service.auth.login.LoginUserCommand;
 import org.unisheduler.backend.application.service.auth.login.LoginUserService;
 import org.unisheduler.backend.application.service.auth.login.dtos.LoginUserResponse;
@@ -125,6 +133,24 @@ public class Main {
     );
 
     DeleteCourseUseCase deleteCourseService = new DeleteCourseService(courseRepository, prerequisiteRepository);
+
+    ListAllGroupsUseCase listAllGroupsService = new ListAllGroupsServices(
+            groupRepository
+    );
+
+    RegisterGroupUseCase registerGroupService = new RegisterGroupService(
+            groupRepository,
+            courseRepository,
+            teacherRepository
+    );
+
+    UpdateGroupUseCase updateGroupService = new UpdateGroupService(
+            groupRepository,
+            courseRepository,
+            teacherRepository
+    );
+
+    DeleteGroupUseCase deleteGroupService = new DeleteGroupService(groupRepository);
 
   }
 
