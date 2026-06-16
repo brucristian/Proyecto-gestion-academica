@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.unischeduler.ui.pages.enrollment.EnrollmentController">
+
+    <center>
+
+        <VBox spacing="20">
+
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Header del proceso -->
+
+            <HBox alignment="CENTER"
+                  spacing="80">
+
+                <Label text="1. Selección de Grupos"/>
+
+                <Label text="2. Validación"/>
+
+                <Label text="3. Confirmación"/>
+
+            </HBox>
+
+            <Separator/>
+
+            <!-- Contenido principal -->
+
+            <HBox spacing="20"
+                  VBox.vgrow="ALWAYS">
+
+                <!-- OFERTA ACADÉMICA -->
+
+                <VBox spacing="10"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="Oferta Académica (Grupos Disponibles)"/>
+
+                    <TableView fx:id="availableGroupsTable"
+                               VBox.vgrow="ALWAYS">
+
+                        <columns>
+
+                            <TableColumn fx:id="selectedColumn"
+                                         text=""
+                                         prefWidth="50"/>
+
+                            <TableColumn fx:id="codeColumn"
+                                         text="Código"
+                                         prefWidth="50"/>
+
+                            <TableColumn fx:id="courseColumn"
+                                         text="Asignatura"
+                                         prefWidth="140"/>
+
+                            <TableColumn fx:id="groupColumn"
+                                         text="Grupo"
+                                         prefWidth="80"/>
+
+                            <TableColumn fx:id="teacherColumn"
+                                         text="Docente"
+                                         prefWidth="120"/>
+
+                            <TableColumn fx:id="scheduleColumn"
+                                         text="Horario"
+                                         prefWidth="180"/>
+
+                            <TableColumn fx:id="capacityColumn"
+                                         text="Cupos"
+                                         prefWidth="80"/>
+
+                        </columns>
+
+                    </TableView>
+
+                    <!-- Filtros -->
+
+                    <HBox spacing="10">
+
+                        <ComboBox fx:id="courseFilterCombo"
+                                  promptText="Todas las asignaturas"
+                                  prefWidth="220"/>
+
+                        <TextField fx:id="searchField"
+                                   promptText="Buscar asignatura..."
+                                   HBox.hgrow="ALWAYS"/>
+
+                        <Button text="🔍"/>
+
+                    </HBox>
+
+                </VBox>
+
+                <!-- PANEL DERECHO -->
+
+                <VBox spacing="15"
+                      prefWidth="420">
+
+                    <!-- Seleccionados -->
+
+                    <Label text="Horario Provisional (Seleccionados)"/>
+
+                    <TableView fx:id="selectedGroupsTable"
+                               prefHeight="250">
+
+                        <columns>
+
+                            <TableColumn fx:id="selectedCourseColumn"
+                                         text="Asignatura"
+                                         prefWidth="130"/>
+
+                            <TableColumn fx:id="selectedGroupColumn"
+                                         text="Grupo"
+                                         prefWidth="70"/>
+
+                            <TableColumn fx:id="selectedScheduleColumn"
+                                         text="Horario"
+                                         prefWidth="130"/>
+
+                            <TableColumn fx:id="removeColumn"
+                                         text="Acción"
+                                         prefWidth="70"/>
+
+                        </columns>
+
+                    </TableView>
+
+                    <!-- Validaciones -->
+
+                    <VBox spacing="8">
+
+                        <Label text="Validaciones (Advertencias)"/>
+
+                        <ListView fx:id="validationListView"
+                                  prefHeight="120"/>
+
+                    </VBox>
+
+                    <!-- Créditos -->
+
+                    <HBox alignment="CENTER_LEFT"
+                          spacing="10">
+
+                        <Label text="Total Créditos:"/>
+
+                        <Label fx:id="totalCreditsLabel"
+                               text="0"/>
+
+                    </HBox>
+
+                    <!-- Botones -->
+
+                    <HBox spacing="10">
+
+                        <Button fx:id="clearSelectionButton"
+                                text="Limpiar Selección"
+                                HBox.hgrow="ALWAYS"
+                                maxWidth="Infinity"
+                                onAction="#onClearSelection"/>
+
+                        <Button fx:id="nextButton"
+                                text="Siguiente: Validar →"
+                                HBox.hgrow="ALWAYS"
+                                maxWidth="Infinity"/>
+
+                    </HBox>
+
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

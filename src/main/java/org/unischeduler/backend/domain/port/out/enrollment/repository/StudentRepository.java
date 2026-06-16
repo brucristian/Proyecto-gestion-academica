@@ -8,4 +8,5 @@ public interface StudentRepository {
     Student save(Student student);
     Optional<Student> findById(String id);
     boolean existsByStudentCode(String code);
+    Optional<Student> findByUserId(String userId);
 }

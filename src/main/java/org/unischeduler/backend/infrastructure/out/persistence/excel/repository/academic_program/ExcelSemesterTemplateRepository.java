@@ -4,39 +4,34 @@ import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.academic_catalog.AcademicProgramEntity;
 import org.unischeduler.backend.infrastructure.out.entity.academic_programming.SemesterTemplateEntity;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
 import java.io.File;
 
+import java.util.Optional;
+
 public class ExcelSemesterTemplateRepository {
 
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
+    private final ExcelDataStore store;
 
+    public ExcelSemesterTemplateRepository(ExcelDataStore store) {
+        this.store = store;
+    }
+
+    // =====================================================
+    // 🔍 FIND BY PROGRAM + SEMESTER
+    // =====================================================
     public SemesterTemplateEntity findByProgramAndSemester(AcademicProgramEntity program, int semester) {
 
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table table = doc.getTableByName("SemesterTemplate");
+        String programId = program.getAcademicProgramId();
 
-            for (int i = 1; i < table.getRowCount(); i++) {
+        for (SemesterTemplateEntity t : store.getTemplates().values()) {
 
-                String programId = table.getCellByPosition(1, i).getStringValue();
-                int semesterValue = Integer.parseInt(table.getCellByPosition(2, i).getStringValue());
-
-                if (programId.equals(program.getAcademicProgramId()) && semesterValue == semester) {
-
-                    SemesterTemplateEntity entity = new SemesterTemplateEntity();
-                    entity.setTemplateId(table.getCellByPosition(0, i).getStringValue());
-                    entity.setProgramId(programId);
-                    entity.setSemester(semesterValue);
-
-                    return entity;
-                }
+            if (programId.equals(t.getProgramId()) && t.getSemester() == semester) {
+                return t;
             }
-
-            return null;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
+        return null;
     }
 }

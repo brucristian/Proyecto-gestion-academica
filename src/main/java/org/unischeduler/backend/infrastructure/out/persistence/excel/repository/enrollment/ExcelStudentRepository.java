@@ -3,84 +3,93 @@ package org.unischeduler.backend.infrastructure.out.persistence.excel.repository
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.enrollment.StudentEntity;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelIdGenerator;
 
 import java.io.File;
 import java.util.Optional;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class ExcelStudentRepository {
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
 
+    private final ExcelDataStore store;
+
+    public ExcelStudentRepository(ExcelDataStore store) {
+        this.store = store;
+    }
+
+    // =====================================================
+    //  SAVE
+    // =====================================================
     public StudentEntity save(StudentEntity entity) {
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
 
-            Table studentTable = doc.getTableByName("Students");
+        String id = generateId();
+        entity.setStudentId(id);
 
-            String newStudentId = ExcelIdGenerator.generateNextId(studentTable, 0);
-            entity.setStudentId(newStudentId);
+        store.getStudents().put(id, entity);
 
-            int studentRow = studentTable.getRowCount();
-            studentTable.appendRow();
-
-            studentTable.getCellByPosition(0, studentRow).setStringValue(entity.getStudentId());
-            studentTable.getCellByPosition(1, studentRow).setStringValue(entity.getStudentCode());
-            studentTable.getCellByPosition(2, studentRow).setStringValue(entity.getUserId());
-
-            doc.save(FILE_PATH);
-
-            return entity;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return entity;
     }
 
+    // =====================================================
+    // 🔍 FIND BY ID
+    // =====================================================
     public Optional<StudentEntity> findById(String id) {
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table studentTable = doc.getTableByName("Students");
 
-            for (int i = 0; i < studentTable.getRowCount(); i++) {
-
-                String studentId = studentTable.getCellByPosition(0, i).getStringValue();
-
-                if (studentId.equals(id)) {
-
-                    StudentEntity student = new StudentEntity();
-                    student.setStudentId(studentId);
-                    student.setStudentCode(studentTable.getCellByPosition(1, i).getStringValue());
-                    student.setUserId(studentTable.getCellByPosition(2, i).getStringValue());
-
-                    return Optional.of(student);
-                }
-            }
-
-            return Optional.empty();
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return Optional.ofNullable(
+                store.getStudents().get(id)
+        );
     }
 
+    // =====================================================
+    //  FIND ALL
+    // =====================================================
+    public List<StudentEntity> findAll() {
+
+        return new ArrayList<>(
+                store.getStudents().values()
+        );
+    }
+
+    // =====================================================
+    //  EXISTS BY STUDENT CODE
+    // =====================================================
     public boolean existsByStudentCode(String code) {
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table studentTable = doc.getTableByName("Students");
 
-            for (int i = 0; i < studentTable.getRowCount(); i++) {
+        for (StudentEntity s : store.getStudents().values()) {
 
-                String currentStudentCode = studentTable.getCellByPosition(1, i).getStringValue();
-
-                if (code.equals(currentStudentCode)) {
-                    return true;
-                }
+            if (code.equals(s.getStudentCode())) {
+                return true;
             }
-
-            return false;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
+        return false;
+    }
+
+    // =====================================================
+    //  DELETE
+    // =====================================================
+    public void delete(String id) {
+        store.getStudents().remove(id);
+    }
+
+    public Optional<StudentEntity> findStudentByUserId(String userId) {
+        for (StudentEntity s : store.getStudents().values()) {
+            if (userId.equals(s.getUserId())) {
+                return Optional.of(s);
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    // =====================================================
+    //  ID GENERATOR
+    // =====================================================
+    private String generateId() {
+        return "STU" + (store.getStudents().size() + 1);
     }
 }

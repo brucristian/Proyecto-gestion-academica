@@ -36,14 +36,14 @@ public class RegisterAcademicPeriodService implements RegisterAcademicPeriodUseC
 
         Set<String> validStatuses = Set.of(
                 "ACTIVE",
-                "CLOSED",
-                "PROGRAMED"
+                "SCHEDULED",
+                "CLOSED"
         );
 
         if(!validStatuses.contains(command.getStatus().toUpperCase())) {
             return new RegisterAcademicPeriodResponse(
                     false,
-                    "El estado debe ser ACTIVE, CLOSED o PROGRAMED",
+                    "El estado debe ser ACTIVE, CLOSED o SCHEDULED",
                     null
             );
         }

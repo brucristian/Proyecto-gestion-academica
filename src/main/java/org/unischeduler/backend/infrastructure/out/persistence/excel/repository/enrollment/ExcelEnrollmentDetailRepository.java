@@ -1,71 +1,70 @@
 package org.unischeduler.backend.infrastructure.out.persistence.excel.repository.enrollment;
 
-import org.odftoolkit.simple.SpreadsheetDocument;
-import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.enrollment.EnrollmentDetailEntity;
-import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelIdGenerator;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
-
-import java.io.File;
 import java.util.ArrayList;
 
+import java.util.List;
+
 public class ExcelEnrollmentDetailRepository {
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
 
-    public EnrollmentDetailEntity save(EnrollmentDetailEntity enrollmentDetail) {
+    private final ExcelDataStore store;
 
-        try {
-            File file = new File(FILE_PATH);
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(file);
-            Table table = doc.getTableByName("EnrollmentDetails");
-
-            int newRow = table.getRowCount();
-            String detailId = ExcelIdGenerator.generateNextId(table, 0);
-
-            table.getCellByPosition(0, newRow).setStringValue(detailId);
-            table.getCellByPosition(1, newRow).setStringValue(enrollmentDetail.getEnrolmentId());
-            table.getCellByPosition(2, newRow).setStringValue(enrollmentDetail.getGroupId());
-            table.getCellByPosition(3, newRow).setStringValue(enrollmentDetail.getStatus());
-            table.getCellByPosition(4, newRow).setDoubleValue(enrollmentDetail.getFinalGrade());
-
-            doc.save(FILE_PATH);
-
-            return enrollmentDetail;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public ExcelEnrollmentDetailRepository(ExcelDataStore store) {
+        this.store = store;
     }
 
-    public ArrayList<EnrollmentDetailEntity> findByEnrollmentId(String enrollmentId) {
-        ArrayList<EnrollmentDetailEntity> results = new ArrayList<>();
+    // =====================================================
+    // 💾 SAVE (IN MEMORY)
+    // =====================================================
+    public EnrollmentDetailEntity save(EnrollmentDetailEntity detail) {
 
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table table = doc.getTableByName("EnrollmentDetails");
+        String id = generateId();
+        detail.setEnrollmentDetailId(id);
 
-            for (int i = 0; i < table.getRowCount(); i++) {
+        store.getEnrollmentDetails().put(id, detail);
 
-                String currentEnrollmentId = table.getCellByPosition(1, i).getStringValue();
+        return detail;
+    }
 
-                if (enrollmentId.equals(currentEnrollmentId)) {
+    // =====================================================
+    // 🔍 FIND BY ENROLLMENT ID (LINEAR SEARCH)
+    // =====================================================
+    public List<EnrollmentDetailEntity> findByEnrollmentId(String enrollmentId) {
 
-                    EnrollmentDetailEntity entity = new EnrollmentDetailEntity();
+        List<EnrollmentDetailEntity> results = new ArrayList<>();
 
-                    entity.setEnrollmentDetailId(table.getCellByPosition(0, i).getStringValue());
-                    entity.setEnrollmentId(currentEnrollmentId);
-                    entity.setGroupId(table.getCellByPosition(2, i).getStringValue());
-                    entity.setStatus(table.getCellByPosition(3, i).getStringValue());
-                    entity.setFinalGrade(table.getCellByPosition(4, i).getDoubleValue());
+        for (EnrollmentDetailEntity detail : store.getEnrollmentDetails().values()) {
 
-                    results.add(entity);
-                }
+            if (detail.getEnrollmentId() != null &&
+                    detail.getEnrollmentId().equals(enrollmentId)) {
+
+                results.add(detail);
             }
-
-            return results;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
+        return results;
+    }
+
+    // =====================================================
+    // ⚙️ DELETE (OPTIONAL BUT CONSISTENT)
+    // =====================================================
+    public void delete(String enrollmentDetailId) {
+        store.getEnrollmentDetails().remove(enrollmentDetailId);
+    }
+
+    // =====================================================
+    // 🧠 FIND BY ID
+    // =====================================================
+    public EnrollmentDetailEntity findById(String id) {
+        return store.getEnrollmentDetails().get(id);
+    }
+
+    // =====================================================
+    // 🔢 ID GENERATOR
+    // =====================================================
+    private String generateId() {
+        return "ED" + (store.getEnrollmentDetails().size() + 1);
     }
 }

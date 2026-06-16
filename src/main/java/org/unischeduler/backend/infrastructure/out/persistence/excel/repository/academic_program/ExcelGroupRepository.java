@@ -3,6 +3,7 @@ package org.unischeduler.backend.infrastructure.out.persistence.excel.repository
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.academic_programming.GroupEntity;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelIdGenerator;
 
 import java.io.File;
@@ -10,167 +11,79 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class ExcelGroupRepository {
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
 
-    public Optional<GroupEntity> findById(String id) {
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table groupTable = doc.getTableByName("Group");
+    private final ExcelDataStore store;
 
-            for (int i = 0; i < groupTable.getRowCount(); i++) {
-
-                String groupId = groupTable.getCellByPosition(0, i).getStringValue();
-
-                if (groupId.equals(id)) {
-
-                    GroupEntity group = new GroupEntity();
-                    group.setGroupId(groupId);
-                    group.setCourseId(groupTable.getCellByPosition(1, i).getStringValue());
-                    group.setTeacherId(groupTable.getCellByPosition(2, i).getStringValue());
-                    group.setGroupCode(groupTable.getCellByPosition(3, i).getStringValue());
-                    group.setCapacity(Integer.parseInt(groupTable.getCellByPosition(4, i).getStringValue()));
-
-                    return Optional.of(group);
-                }
-            }
-
-            return Optional.empty();
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public ExcelGroupRepository(ExcelDataStore store) {
+        this.store = store;
     }
 
-    public List<GroupEntity> findAll() {
-
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table groupTable = doc.getTableByName("Group");
-
-            List<GroupEntity> groups = new ArrayList<>();
-
-            for (int i = 1; i < groupTable.getRowCount(); i++) {
-
-                String groupId = groupTable.getCellByPosition(0, i).getStringValue();
-
-                if (groupId == null || groupId.isBlank()) {
-                    continue;
-                }
-
-                GroupEntity group = new GroupEntity();
-                group.setGroupId(groupId);
-                group.setCourseId(groupTable.getCellByPosition(1, i).getStringValue());
-                group.setTeacherId(groupTable.getCellByPosition(2, i).getStringValue());
-                group.setGroupCode(groupTable.getCellByPosition(3, i).getStringValue());
-                group.setCapacity(Integer.parseInt(
-                        groupTable.getCellByPosition(4, i).getStringValue()));
-
-                groups.add(group);
-            }
-
-            return groups;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public boolean deleteById(String id) {
-
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table groupTable = doc.getTableByName("Group");
-
-            for (int i = 1; i < groupTable.getRowCount(); i++) {
-
-                String groupId = groupTable.getCellByPosition(0, i).getStringValue();
-
-                if (groupId.equals(id)) {
-
-                    groupTable.removeRowsByIndex(i, 1);
-
-                    doc.save(new File(FILE_PATH));
-
-                    return true;
-                }
-            }
-
-            return false;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    // =====================================================
+    // 💾 SAVE
+    // =====================================================
     public GroupEntity save(GroupEntity entity) {
 
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table groupTable = doc.getTableByName("Group");
+        String id = generateId();
+        entity.setGroupId(id);
 
-            int rowIndex = groupTable.getRowCount();
-            String entityId = ExcelIdGenerator.generateNextId(groupTable, 0);
+        store.getGroups().put(id, entity);
 
-            groupTable.getCellByPosition(0, rowIndex)
-                    .setStringValue(entityId);
-
-            groupTable.getCellByPosition(1, rowIndex)
-                    .setStringValue(entity.getCourseId());
-
-            groupTable.getCellByPosition(2, rowIndex)
-                    .setStringValue(entity.getTeacherId());
-
-            groupTable.getCellByPosition(3, rowIndex)
-                    .setStringValue(entity.getGroupCode());
-
-            groupTable.getCellByPosition(4, rowIndex)
-                    .setStringValue(String.valueOf(entity.getCapacity()));
-
-            doc.save(new File(FILE_PATH));
-
-            return entity;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return entity;
     }
 
+    // =====================================================
+    // 🔍 FIND BY ID
+    // =====================================================
+    public Optional<GroupEntity> findById(String id) {
+
+        return Optional.ofNullable(
+                store.getGroups().get(id)
+        );
+    }
+
+    // =====================================================
+    // 🔍 FIND ALL
+    // =====================================================
+    public List<GroupEntity> findAll() {
+
+        return new ArrayList<>(
+                store.getGroups().values()
+        );
+    }
+
+    // =====================================================
+    // ❌ DELETE BY ID
+    // =====================================================
+    public boolean deleteById(String id) {
+
+        return store.getGroups().remove(id) != null;
+    }
+
+    // =====================================================
+    // ✏️ UPDATE
+    // =====================================================
     public GroupEntity update(GroupEntity entity) {
 
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table groupTable = doc.getTableByName("Group");
-
-            for (int i = 1; i < groupTable.getRowCount(); i++) {
-
-                String groupId = groupTable.getCellByPosition(0, i).getStringValue();
-
-                if (groupId.equals(entity.getGroupId())) {
-
-                    groupTable.getCellByPosition(1, i)
-                            .setStringValue(entity.getCourseId());
-
-                    groupTable.getCellByPosition(2, i)
-                            .setStringValue(entity.getTeacherId());
-
-                    groupTable.getCellByPosition(3, i)
-                            .setStringValue(entity.getGroupCode());
-
-                    groupTable.getCellByPosition(4, i)
-                            .setStringValue(String.valueOf(entity.getCapacity()));
-
-                    doc.save(new File(FILE_PATH));
-
-                    return entity;
-                }
-            }
-
+        if (!store.getGroups().containsKey(entity.getGroupId())) {
             throw new RuntimeException(
-                    "Group not found with id: " + entity.getGroupId());
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+                    "Group not found with id: " + entity.getGroupId()
+            );
         }
+
+        store.getGroups().put(entity.getGroupId(), entity);
+
+        return entity;
+    }
+
+    // =====================================================
+    // 🔢 ID GENERATOR
+    // =====================================================
+    private String generateId() {
+        return "GRP" + (store.getGroups().size() + 1);
     }
 }

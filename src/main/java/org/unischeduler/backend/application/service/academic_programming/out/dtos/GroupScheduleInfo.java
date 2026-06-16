@@ -4,12 +4,14 @@ import java.time.LocalTime;
 
 public class GroupScheduleInfo {
     private final String groupScheduleId;
+    private final String day;
     private final LocalTime startTime;
     private final LocalTime endTime;
     private final String classroom;
 
-    public GroupScheduleInfo(String groupScheduleId, LocalTime startTime, LocalTime endTime, String classroom) {
+    public GroupScheduleInfo(String groupScheduleId, String day, LocalTime startTime, LocalTime endTime, String classroom) {
         this.groupScheduleId = groupScheduleId;
+        this.day = day;
         this.startTime = startTime;
         this.endTime = endTime;
         this.classroom = classroom;
@@ -17,6 +19,10 @@ public class GroupScheduleInfo {
 
     public String getGroupScheduleId() {
         return groupScheduleId;
+    }
+
+    public String getDay() {
+        return day;
     }
 
     public LocalTime getStartTime() {

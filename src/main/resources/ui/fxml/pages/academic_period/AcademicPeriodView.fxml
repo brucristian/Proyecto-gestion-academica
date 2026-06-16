@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20"
+      styleClass="page-container"
+      fx:controller="org.unischeduler.ui.pages.period.PeriodController">
+
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <!-- HEADER -->
+
+    <VBox spacing="5">
+
+        <Label text="Gestión de Períodos Académicos"
+               styleClass="page-title"/>
+
+        <Label text="Administre los períodos académicos del sistema."
+               styleClass="page-subtitle"/>
+
+    </VBox>
+
+    <!-- ACCIONES SUPERIORES -->
+
+    <HBox spacing="10">
+
+        <Button fx:id="newPeriodButton"
+                text="+ Nuevo Período"
+                onAction="#onNewPeriod"/>
+
+        <Pane HBox.hgrow="ALWAYS"/>
+
+    </HBox>
+
+    <!-- TABLA -->
+
+    <TableView fx:id="periodTable"
+               VBox.vgrow="ALWAYS">
+
+        <columns>
+
+            <TableColumn fx:id="codeColumn"
+                         text="Código"
+                         prefWidth="120"/>
+
+            <TableColumn fx:id="nameColumn"
+                         text="Nombre"
+                         prefWidth="250"/>
+
+            <TableColumn fx:id="startDateColumn"
+                         text="Fecha Inicio"
+                         prefWidth="150"/>
+
+            <TableColumn fx:id="endDateColumn"
+                         text="Fecha Fin"
+                         prefWidth="150"/>
+
+            <TableColumn fx:id="statusColumn"
+                         text="Estado"
+                         prefWidth="150"/>
+
+        </columns>
+
+    </TableView>
+
+    <!-- BOTONES INFERIORES -->
+
+    <HBox spacing="10">
+
+        <Button fx:id="editButton"
+                text="Editar"
+                onAction="#onEditPeriod"/>
+
+        <Button fx:id="deleteButton"
+                text="Eliminar"
+                onAction="#onDeletePeriod"/>
+
+        <Pane HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="activateButton"
+                text="Activar Período Seleccionado"
+                onAction="#onActivatePeriod"/>
+
+    </HBox>
+
+    <!-- INFORMACIÓN -->
+
+    <HBox spacing="10"
+          styleClass="info-box">
+
+        <Label text="ℹ"/>
+
+        <Label text="Sólo puede haber un período académico ACTIVO a la vez."/>
+
+    </HBox>
+
+</VBox>

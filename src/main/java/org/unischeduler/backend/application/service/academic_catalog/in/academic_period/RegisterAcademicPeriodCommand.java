@@ -4,24 +4,18 @@ package org.unischeduler.backend.application.service.academic_catalog.in.academi
 import java.time.LocalDate;
 
 public class RegisterAcademicPeriodCommand {
-    private final String academicPeriodId;
     private final String code;
     private final String name;
     private final LocalDate startDate;
     private final LocalDate endDate;
     private final String status;
 
-    public RegisterAcademicPeriodCommand(String academicPeriodId, String code, String name, LocalDate startDate, LocalDate endDate, String status) {
-        this.academicPeriodId = academicPeriodId;
+    public RegisterAcademicPeriodCommand(String code, String name, LocalDate startDate, LocalDate endDate, String status) {
         this.code = code;
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
-    }
-
-    public String getAcademicPeriodId() {
-        return academicPeriodId;
     }
 
     public String getCode() {

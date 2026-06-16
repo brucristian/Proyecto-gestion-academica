@@ -3,37 +3,34 @@ package org.unischeduler.backend.infrastructure.out.persistence.excel.repository
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.academic_catalog.AcademicProgramEntity;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import java.util.Optional;
 
 public class ExcelAcademicProgramRepository {
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
 
+    private final ExcelDataStore store;
+
+    public ExcelAcademicProgramRepository(ExcelDataStore store) {
+        this.store = store;
+    }
+
+    // =====================================================
+    // 🔍 FIND BY ID
+    // =====================================================
     public Optional<AcademicProgramEntity> findById(String id) {
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table academicProgramTable = doc.getTableByName("AcademicProgram");
 
-            for (int i = 0; i < academicProgramTable.getRowCount(); i++) {
+        return Optional.ofNullable(
+                store.getPrograms().get(id)
+        );
+    }
 
-                String academicProgramId = academicProgramTable.getCellByPosition(0, i).getStringValue();
-
-                if (academicProgramId.equals(id)) {
-
-                    AcademicProgramEntity academicProgram = new AcademicProgramEntity();
-                    academicProgram.setAcademicProgramId(academicProgramId);
-                    academicProgram.setName(academicProgramTable.getCellByPosition(1, i).getStringValue());
-                    academicProgram.setTotalSemesters(Integer.parseInt(academicProgramTable.getCellByPosition(2, i).getStringValue()));
-
-                    return Optional.of(academicProgram);
-                }
-            }
-
-            return Optional.empty();
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public List<AcademicProgramEntity> findAll() {
+        return new ArrayList<>(store.getPrograms().values());
     }
 }

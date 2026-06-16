@@ -3,6 +3,7 @@ package org.unischeduler.backend.infrastructure.out.persistence.excel.repository
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.academic_programming.GroupScheduleEntity;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -11,87 +12,50 @@ import java.util.List;
 import java.io.File;
 import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ExcelGroupScheduleRepository {
 
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
+    private final ExcelDataStore store;
 
+    public ExcelGroupScheduleRepository(ExcelDataStore store) {
+        this.store = store;
+    }
+
+    // =====================================================
+    // 🔍 FIND BY GROUP ID
+    // =====================================================
     public List<GroupScheduleEntity> findAllWhereGroupId(String groupId) {
 
         List<GroupScheduleEntity> results = new ArrayList<>();
 
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table table = doc.getTableByName("GroupSchedule");
+        for (GroupScheduleEntity s : store.getGroupSchedules().values()) {
 
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
-
-            for (int i = 0; i < table.getRowCount(); i++) {
-
-                String currentGroupId = table.getCellByPosition(1, i).getStringValue();
-
-                if (groupId.equals(currentGroupId)) {
-
-                    GroupScheduleEntity entity = new GroupScheduleEntity();
-
-                    entity.setGroupScheduleId(table.getCellByPosition(0, i).getStringValue());
-                    entity.setGroupId(currentGroupId);
-                    entity.setDayOfWeek(table.getCellByPosition(2, i).getStringValue());
-
-                    String startStr = table.getCellByPosition(3, i).getStringValue();
-                    String endStr = table.getCellByPosition(4, i).getStringValue();
-
-                    entity.setStartTime(LocalTime.parse(startStr, timeFormatter));
-                    entity.setEndTime(LocalTime.parse(endStr, timeFormatter));
-
-                    entity.setClassroom(table.getCellByPosition(5, i).getStringValue());
-
-                    results.add(entity);
-                }
+            if (groupId.equals(s.getGroupId())) {
+                results.add(s);
             }
-
-            return results;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
+        return results;
     }
 
+    // =====================================================
+    // 🔍 FIND BY ID
+    // =====================================================
     public GroupScheduleEntity findById(String id) {
 
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table table = doc.getTableByName("GroupSchedule");
+        return store.getGroupSchedules().get(id);
+    }
 
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+    // =====================================================
+    // 🔍 FIND ALL (OPTIONAL)
+    // =====================================================
+    public List<GroupScheduleEntity> findAll() {
 
-            for (int i = 0; i < table.getRowCount(); i++) {
-
-                String groupScheduleId = table.getCellByPosition(0, i).getStringValue();
-
-                if (id.equals(groupScheduleId)) {
-
-                    GroupScheduleEntity entity = new GroupScheduleEntity();
-
-                    entity.setGroupScheduleId(groupScheduleId);
-                    entity.setGroupId(table.getCellByPosition(1, i).getStringValue());
-                    entity.setDayOfWeek(table.getCellByPosition(2, i).getStringValue());
-
-                    String startStr = table.getCellByPosition(3, i).getStringValue();
-                    String endStr = table.getCellByPosition(4, i).getStringValue();
-
-                    entity.setStartTime(LocalTime.parse(startStr, timeFormatter));
-                    entity.setEndTime(LocalTime.parse(endStr, timeFormatter));
-
-                    entity.setClassroom(table.getCellByPosition(5, i).getStringValue());
-
-                    return entity;
-                }
-            }
-
-            return null;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return new ArrayList<>(
+                store.getGroupSchedules().values()
+        );
     }
 }

@@ -88,6 +88,7 @@ public class RegisterGroupService implements RegisterGroupUseCase {
             for(GroupSchedule schedule : schedules) {
                 scheduleInfos.add(new GroupScheduleInfo(
                         schedule.getGroupScheduleId(),
+                        schedule.getDayOfWeek().name(),
                         schedule.getStartTime(),
                         schedule.getEndTime(),
                         schedule.getClassroom()

@@ -2,10 +2,14 @@ package org.unischeduler.backend.application.service.enrollment.register;
 
 import org.unischeduler.backend.application.service.enrollment.register.dtos.RegisterStudentResponse;
 import org.unischeduler.backend.application.service.enrollment.register.dtos.StudentInfo;
+import org.unischeduler.backend.domain.exceptions.academic_catalog.PeriodActiveNotFoundException;
 import org.unischeduler.backend.domain.exceptions.auth.DocumentAlreadyExistsException;
 import org.unischeduler.backend.domain.exceptions.auth.EmailAlreadyExistsException;
 import org.unischeduler.backend.domain.exceptions.shared.EntityNotFoundException;
+import org.unischeduler.backend.domain.model.academic_catalog.entity.AcademicPeriod;
 import org.unischeduler.backend.domain.model.academic_catalog.entity.AcademicProgram;
+import org.unischeduler.backend.domain.model.academic_history.entity.AcademicHistory;
+import org.unischeduler.backend.domain.model.academic_history.enums.AcademicHistoryCourseStatus;
 import org.unischeduler.backend.domain.model.academic_programming.entity.SemesterTemplate;
 import org.unischeduler.backend.domain.model.academic_programming.entity.SemesterTemplateDetail;
 import org.unischeduler.backend.domain.model.auth.entity.User;
@@ -19,6 +23,8 @@ import org.unischeduler.backend.domain.model.enrollment.entity.EnrollmentDetail;
 import org.unischeduler.backend.domain.model.enrollment.entity.Student;
 import org.unischeduler.backend.domain.model.enrollment.enums.EnrollmentStatus;
 import org.unischeduler.backend.domain.port.in.enrollment.RegisterStudentUseCase;
+import org.unischeduler.backend.domain.port.out.academic_catalog.AcademicPeriodRepository;
+import org.unischeduler.backend.domain.port.out.academic_history.AcademicHistoryRepository;
 import org.unischeduler.backend.domain.port.out.enrollment.repository.EnrollmentDetailRepository;
 import org.unischeduler.backend.domain.port.out.security.PasswordEncoderPort;
 import org.unischeduler.backend.domain.port.out.security.PasswordGeneratorPort;
@@ -30,6 +36,7 @@ import org.unischeduler.backend.domain.port.out.enrollment.repository.Enrollment
 import org.unischeduler.backend.domain.port.out.enrollment.repository.StudentRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class RegisterStudentService implements RegisterStudentUseCase {
@@ -42,12 +49,15 @@ public class RegisterStudentService implements RegisterStudentUseCase {
     private final StudentCodeGeneratorPort studentCodeGenerator;
     private final SemesterTemplateRepository semesterTemplateRepository;
     private final EnrollmentDetailRepository enrollmentDetailRepository;
+    private final AcademicHistoryRepository academicHistoryRepository;
+    private final AcademicPeriodRepository academicPeriodRepository;
 
     public RegisterStudentService(UserRepository userRepository, StudentRepository studentRepository,
                                   EnrollmentRepository enrollmentRepository, AcademicProgramRepository academicProgramRepository,
                                   PasswordGeneratorPort passwordGenerator, PasswordEncoderPort passwordEncoderPort,
                                   StudentCodeGeneratorPort studentCodeGenerator, SemesterTemplateRepository semesterTemplateRepository,
-                                  EnrollmentDetailRepository enrollmentDetailRepository) {
+                                  EnrollmentDetailRepository enrollmentDetailRepository, AcademicHistoryRepository academicHistoryRepository,
+                                  AcademicPeriodRepository academicPeriodRepository) {
         this.userRepository = userRepository;
         this.studentRepository = studentRepository;
         this.enrollmentRepository = enrollmentRepository;
@@ -57,6 +67,8 @@ public class RegisterStudentService implements RegisterStudentUseCase {
         this.studentCodeGenerator = studentCodeGenerator;
         this.semesterTemplateRepository = semesterTemplateRepository;
         this.enrollmentDetailRepository = enrollmentDetailRepository;
+        this.academicHistoryRepository = academicHistoryRepository;
+        this.academicPeriodRepository = academicPeriodRepository;
     }
 
     @Override
@@ -130,14 +142,26 @@ public class RegisterStudentService implements RegisterStudentUseCase {
 
         SemesterTemplate template = semesterTemplateRepository.findByProgramAndSemester(academicProgram, command.getInitialSemester());
 
+        AcademicPeriod academicPeriod = academicPeriodRepository.findActive()
+                .orElseThrow(() -> new PeriodActiveNotFoundException("No se encontro ningun periodo academico activo"));
+
         Enrollment enrollment = new Enrollment(
                 null,
                 studentSaved,
                 academicProgram,
                 LocalDate.now(),
-                null
+                null,
+                academicPeriod
         );
         Enrollment enrollmentSaved = enrollmentRepository.save(enrollment);
+
+        AcademicHistory academicHistory = new AcademicHistory(
+                null,
+                studentSaved,
+                new ArrayList<>(),
+                0.0,
+                AcademicHistoryCourseStatus.IN_PROGRESS
+        );
 
         for(SemesterTemplateDetail detail : template.getDetails()) {
             EnrollmentDetail enrollmentDetail = new EnrollmentDetail(
@@ -147,7 +171,13 @@ public class RegisterStudentService implements RegisterStudentUseCase {
                     0.0
             );
             enrollmentDetailRepository.save(enrollmentDetail, enrollmentSaved.getEnrollmentId());
+            academicHistory.getCompletedCourses().add(
+                    detail.getGroup()
+                            .getCourse()
+            );
         }
+
+        academicHistoryRepository.save(academicHistory);
 
         return new RegisterStudentResponse(
                 true,

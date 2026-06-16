@@ -48,4 +48,18 @@ public class StudentRepositoryImpl implements StudentRepository {
     public boolean existsByStudentCode(String code) {
         return studentRepository.existsByStudentCode(code);
     }
+
+    @Override
+    public Optional<Student> findByUserId(String userId) {
+        Optional<StudentEntity> entityOptional = studentRepository.findStudentByUserId(userId);
+        if(entityOptional.isEmpty()) {
+            return Optional.empty();
+        }
+
+        StudentEntity entity = entityOptional.get();
+        User user = userRepository.findById(entity.getUserId())
+                .orElseThrow(() -> new EntityNotFoundException("No existe el usuario con id: " + entity.getUserId()));
+
+        return Optional.of(StudentMapper.toDomain(entity, user));
+    }
 }

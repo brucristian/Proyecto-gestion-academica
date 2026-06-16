@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.unischeduler.ui.layouts.MainLayoutController">
+
+    <top>
+        <StackPane fx:id="navbarContainer"
+                   prefHeight="60"/>
+    </top>
+
+    <left>
+        <StackPane fx:id="sidebarContainer"
+                   prefWidth="220"/>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentContainer"/>
+    </center>
+
+</BorderPane>

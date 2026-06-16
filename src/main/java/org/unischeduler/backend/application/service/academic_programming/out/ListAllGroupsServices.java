@@ -59,6 +59,7 @@ public class ListAllGroupsServices implements ListAllGroupsUseCase {
             for(GroupSchedule schedule : schedules) {
                 scheduleInfos.add(new GroupScheduleInfo(
                         schedule.getGroupScheduleId(),
+                        schedule.getDayOfWeek().name(),
                         schedule.getStartTime(),
                         schedule.getEndTime(),
                         schedule.getClassroom()

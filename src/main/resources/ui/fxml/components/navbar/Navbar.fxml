@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.unischeduler.ui.components.navbar.NavbarController"
+      spacing="10"
+      prefHeight="60">
+
+    <children>
+        <Label text="UniScheduler"/>
+    </children>
+
+</HBox>

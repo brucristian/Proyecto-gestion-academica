@@ -33,11 +33,8 @@ public class GroupRepositoryImpl implements GroupRepository {
     @Override
     public Optional<Group> findById(String id) {
         Optional<GroupEntity> entityOptional = groupRepository.findById(id);
-        if(entityOptional.isEmpty()) {
-            return Optional.empty();
-        }
+        return entityOptional.map(this::toDomain);
 
-        return Optional.of(toDomain(entityOptional.get()));
     }
 
     @Override

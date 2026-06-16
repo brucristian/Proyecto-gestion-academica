@@ -15,7 +15,7 @@ public class EnrollmentDetailEntity {
         this.enrollmentDetailId = enrollmentDetailId;
     }
 
-    public String getEnrolmentId() {
+    public String getEnrollmentId() {
         return enrollmentId;
     }
 

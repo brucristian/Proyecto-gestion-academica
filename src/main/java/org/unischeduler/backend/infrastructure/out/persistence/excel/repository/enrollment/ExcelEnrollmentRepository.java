@@ -1,38 +1,68 @@
 package org.unischeduler.backend.infrastructure.out.persistence.excel.repository.enrollment;
 
-import org.odftoolkit.simple.SpreadsheetDocument;
-import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.enrollment.EnrollmentEntity;
-import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelIdGenerator;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class ExcelEnrollmentRepository {
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
 
+    private final ExcelDataStore store;
+
+    public ExcelEnrollmentRepository(ExcelDataStore store) {
+        this.store = store;
+    }
+
+    // =====================================================
+    // 💾 SAVE (IN MEMORY)
+    // =====================================================
     public EnrollmentEntity save(EnrollmentEntity entity) {
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
 
-            Table enrollmentTable = doc.getTableByName("Enrollments");
+        String id = generateId();
+        entity.setEnrollmentId(id);
 
-            String newEnrollmentId = ExcelIdGenerator.generateNextId(enrollmentTable, 0);
-            entity.setEnrollmentId(newEnrollmentId);
+        store.getEnrollments().put(id, entity);
 
-            int enrollmentRow = enrollmentTable.getRowCount();
-            enrollmentTable.appendRow();
+        return entity;
+    }
 
-            enrollmentTable.getCellByPosition(0, enrollmentRow).setStringValue(entity.getEnrollmentId());
-            enrollmentTable.getCellByPosition(1, enrollmentRow).setStringValue(entity.getStudentId());
-            enrollmentTable.getCellByPosition(2, enrollmentRow).setStringValue(entity.getAcademicProgramId());
-            enrollmentTable.getCellByPosition(3, enrollmentRow).setStringValue(entity.getEnrollmentDate().toString());
+    // =====================================================
+    // 🔍 FIND BY ID
+    // =====================================================
+    public EnrollmentEntity findById(String id) {
+        return store.getEnrollments().get(id);
+    }
 
-            doc.save(FILE_PATH);
+    // =====================================================
+    // 🔍 FIND ALL
+    // =====================================================
+    public List<EnrollmentEntity> findAll() {
+        return new ArrayList<>(store.getEnrollments().values());
+    }
 
-            return entity;
+    // =====================================================
+    // ❌ DELETE
+    // =====================================================
+    public void delete(String id) {
+        store.getEnrollments().remove(id);
+    }
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public Optional<EnrollmentEntity> findByStudentAndActivePeriod(String studentId, String periodId) {
+        for(EnrollmentEntity e : store.getEnrollments().values()) {
+            if(studentId.equals(e.getStudentId()) && periodId.equals(e.getAcademicPeriodId())) {
+                return Optional.of(e);
+            }
         }
+
+        return Optional.empty();
+    }
+
+    // =====================================================
+    // 🔢 ID GENERATOR
+    // =====================================================
+    private String generateId() {
+        return "ENR" + (store.getEnrollments().size() + 1);
     }
 }

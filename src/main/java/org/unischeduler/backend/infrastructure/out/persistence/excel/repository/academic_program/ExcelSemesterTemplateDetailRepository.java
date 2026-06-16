@@ -3,43 +3,37 @@ package org.unischeduler.backend.infrastructure.out.persistence.excel.repository
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
 import org.unischeduler.backend.infrastructure.out.entity.academic_programming.SemesterTemplateDetailEntity;
+import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
 import java.util.ArrayList;
 
 import java.io.File;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExcelSemesterTemplateDetailRepository {
 
-    private static final String FILE_PATH = "database/unishedulerdatabase.ods";
+    private final ExcelDataStore store;
 
-    public ArrayList<SemesterTemplateDetailEntity> findAllWhereTemplateId(String templateId) {
+    public ExcelSemesterTemplateDetailRepository(ExcelDataStore store) {
+        this.store = store;
+    }
 
-        ArrayList<SemesterTemplateDetailEntity> results = new ArrayList<>();
+    // =====================================================
+    // 🔍 FIND ALL BY TEMPLATE ID
+    // =====================================================
+    public List<SemesterTemplateDetailEntity> findAllWhereTemplateId(String templateId) {
 
-        try {
-            SpreadsheetDocument doc = SpreadsheetDocument.loadDocument(new File(FILE_PATH));
-            Table table = doc.getTableByName("SemesterTemplateDetails");
+        List<SemesterTemplateDetailEntity> results = new ArrayList<>();
 
-            for (int i = 0; i < table.getRowCount(); i++) {
+        for (SemesterTemplateDetailEntity e : store.getTemplateDetails().values()) {
 
-                String currentTemplateId = table.getCellByPosition(1, i).getStringValue();
-
-                if (templateId.equals(currentTemplateId)) {
-
-                    SemesterTemplateDetailEntity entity = new SemesterTemplateDetailEntity();
-
-                    entity.setTemplateDetailId(table.getCellByPosition(0, i).getStringValue());
-                    entity.setTemplateId(currentTemplateId);
-                    entity.setGroupId(table.getCellByPosition(2, i).getStringValue());
-
-                    results.add(entity);
-                }
+            if (templateId.equals(e.getTemplateId())) {
+                results.add(e);
             }
-
-            return results;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
+        return results;
     }
 }

@@ -2,6 +2,7 @@ package org.unischeduler.backend.infrastructure.out.repository.academic_catalog;
 
 
 
+import org.unischeduler.backend.domain.exceptions.academic_catalog.PeriodActiveNotFoundException;
 import org.unischeduler.backend.domain.model.academic_catalog.entity.AcademicPeriod;
 import org.unischeduler.backend.infrastructure.out.entity.academic_catalog.AcademicPeriodEntity;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.repository.academic_catalog.ExcelAcademicPeriodRepository;
@@ -73,5 +74,13 @@ public class AcademicPeriodRepositoryImpl implements AcademicPeriodRepository {
     @Override
     public boolean deleteById(String id) {
         return academicPeriodRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<AcademicPeriod> findActive() {
+        AcademicPeriodEntity entity = academicPeriodRepository.findActive()
+                .orElseThrow(() -> new PeriodActiveNotFoundException("No se encontro ningun periodo academico activo"));
+
+        return Optional.of(AcademicPeriodMapper.toDomain(entity));
     }
 }

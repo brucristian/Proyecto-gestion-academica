@@ -1,5 +1,6 @@
 package org.unischeduler.backend.infrastructure.out.entity.enrollment;
 
+
 import java.time.LocalDate;
 
 public class EnrollmentEntity {
@@ -7,6 +8,7 @@ public class EnrollmentEntity {
     private String studentId;
     private String academicProgramId;
     private LocalDate enrollmentDate;
+    private String academicPeriodId;
 
     public String getEnrollmentId() {
         return enrollmentId;
@@ -38,5 +40,13 @@ public class EnrollmentEntity {
 
     public void setEnrollmentDate(LocalDate enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
+    }
+
+    public String getAcademicPeriodId() {
+        return academicPeriodId;
+    }
+
+    public void setAcademicPeriodId(String academicPeriodId) {
+        this.academicPeriodId = academicPeriodId;
     }
 }

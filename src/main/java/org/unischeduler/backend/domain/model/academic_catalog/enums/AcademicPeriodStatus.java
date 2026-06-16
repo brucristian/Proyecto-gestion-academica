@@ -1,6 +1,7 @@
 package org.unischeduler.backend.domain.model.academic_catalog.enums;
 
 public enum AcademicPeriodStatus {
-    ACTIV,
-    INACTIVE;
+    ACTIVE,
+    SCHEDULED,
+    CLOSED;
 }

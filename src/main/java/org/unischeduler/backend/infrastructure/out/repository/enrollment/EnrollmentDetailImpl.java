@@ -10,6 +10,7 @@ import org.unischeduler.backend.infrastructure.out.mapper.enrollment.EnrollmentD
 import org.unischeduler.backend.infrastructure.out.persistence.excel.repository.enrollment.ExcelEnrollmentDetailRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EnrollmentDetailImpl implements EnrollmentDetailRepository {
     private final ExcelEnrollmentDetailRepository detailRepository;
@@ -34,7 +35,7 @@ public class EnrollmentDetailImpl implements EnrollmentDetailRepository {
     @Override
     public ArrayList<EnrollmentDetail> findByEnrollmentId(String enrollmentId) {
 
-        ArrayList<EnrollmentDetailEntity> entities =
+        List<EnrollmentDetailEntity> entities =
                 detailRepository.findByEnrollmentId(enrollmentId);
 
         ArrayList<EnrollmentDetail> result = new ArrayList<>();

@@ -10,6 +10,7 @@ import org.unischeduler.backend.infrastructure.out.mapper.academic_programming.S
 import org.unischeduler.backend.infrastructure.out.persistence.excel.repository.academic_program.ExcelSemesterTemplateDetailRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SemesterTemplateDetailRepositoryImpl implements SemesterTemplateDetailRepository {
     private final ExcelSemesterTemplateDetailRepository templateDetailRepository;
@@ -22,7 +23,7 @@ public class SemesterTemplateDetailRepositoryImpl implements SemesterTemplateDet
 
     @Override
     public ArrayList<SemesterTemplateDetail> findAllWhereTemplateId(String templateId) {
-        ArrayList<SemesterTemplateDetailEntity> entities = templateDetailRepository.findAllWhereTemplateId(templateId);
+        List<SemesterTemplateDetailEntity> entities = templateDetailRepository.findAllWhereTemplateId(templateId);
 
         ArrayList<SemesterTemplateDetail> details = new ArrayList<>();
         for(SemesterTemplateDetailEntity e : entities) {

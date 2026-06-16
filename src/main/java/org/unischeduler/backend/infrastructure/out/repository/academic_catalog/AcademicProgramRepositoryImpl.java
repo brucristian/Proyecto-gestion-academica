@@ -6,6 +6,7 @@ import org.unischeduler.backend.infrastructure.out.entity.academic_catalog.Acade
 import org.unischeduler.backend.infrastructure.out.mapper.academic_catalog.AcademicProgramMapper;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.repository.academic_catalog.ExcelAcademicProgramRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class AcademicProgramRepositoryImpl implements AcademicProgramRepository {
@@ -24,5 +25,14 @@ public class AcademicProgramRepositoryImpl implements AcademicProgramRepository 
 
         AcademicProgramEntity entity = entityOptional.get();
         return Optional.of(AcademicProgramMapper.toDomain(entity));
+    }
+
+    @Override
+    public List<AcademicProgram> findAll() {
+        List<AcademicProgramEntity> entities = programRepository.findAll();
+
+        return entities.stream()
+                .map(AcademicProgramMapper::toDomain)
+                .toList();
     }
 }

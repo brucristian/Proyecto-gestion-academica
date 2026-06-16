@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.unischeduler.ui.components.sidebar.SidebarController"
+      spacing="10"
+      prefWidth="220">
+
+    <children>
+
+        <Button
+                text="Dashboard"
+                onAction="#goToDashboard"/>
+
+        <Button
+                text="Academic Periods"
+                onAction="#goToAcademicPeriods"/>
+
+        <Button
+                text="Courses"
+                onAction="#goToCourses"/>
+
+        <Button
+                text="Groups"
+                onAction="#goToGroups"/>
+
+        <Button
+                text="Students"
+                onAction="#goToStudents"/>
+
+        <Button
+                text="Enrollment"
+                onAction="#goToEnrollment"/>
+
+    </children>
+
+</VBox>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fitToWidth="true"
+            styleClass="page-scroll"
+            fx:controller="org.unischeduler.ui.pages.student.StudentController">
+
+    <content>
+
+        <VBox spacing="20"
+              styleClass="page-container">
+
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
+
+            <!-- HEADER -->
+
+            <VBox spacing="5">
+
+                <Label text="Registro de Estudiante"
+                       styleClass="page-title"/>
+
+                <Label text="Complete la información para registrar un nuevo estudiante en el sistema."
+                       styleClass="page-subtitle"/>
+
+            </VBox>
+
+            <!-- CONTENIDO -->
+
+            <HBox spacing="20">
+
+                <!-- FORMULARIO -->
+
+                <VBox spacing="15"
+                      HBox.hgrow="ALWAYS">
+
+                    <!-- DATOS PERSONALES -->
+
+                    <TitledPane text="Datos Personales"
+                                expanded="true">
+
+                        <content>
+
+                            <GridPane hgap="15" vgap="12">
+
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="50"/>
+                                    <ColumnConstraints percentWidth="50"/>
+                                </columnConstraints>
+
+                                <Label text="Nombres *"
+                                       GridPane.columnIndex="0"
+                                       GridPane.rowIndex="0"/>
+
+                                <Label text="Apellidos *"
+                                       GridPane.columnIndex="1"
+                                       GridPane.rowIndex="0"/>
+
+                                <TextField fx:id="firstNameField"
+                                           GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+
+                                <TextField fx:id="lastNameField"
+                                           GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+
+                                <Label text="Tipo Documento *"
+                                       GridPane.columnIndex="0"
+                                       GridPane.rowIndex="2"/>
+
+                                <Label text="Número Documento *"
+                                       GridPane.columnIndex="1"
+                                       GridPane.rowIndex="2"/>
+
+                                <ComboBox fx:id="documentTypeCombo"
+                                          GridPane.columnIndex="0"
+                                          GridPane.rowIndex="3"/>
+
+                                <TextField fx:id="documentNumberField"
+                                           GridPane.columnIndex="1"
+                                           GridPane.rowIndex="3"/>
+
+                                <Label text="Fecha de Nacimiento *"
+                                       GridPane.columnIndex="0"
+                                       GridPane.rowIndex="4"/>
+
+                                <Label text="Género *"
+                                       GridPane.columnIndex="1"
+                                       GridPane.rowIndex="4"/>
+
+                                <DatePicker fx:id="birthDatePicker"
+                                            GridPane.columnIndex="0"
+                                            GridPane.rowIndex="5"/>
+
+                                <ComboBox fx:id="genderCombo"
+                                          GridPane.columnIndex="1"
+                                          GridPane.rowIndex="5"/>
+
+                            </GridPane>
+
+                        </content>
+
+                    </TitledPane>
+
+                    <!-- CONTACTO -->
+
+                    <TitledPane text="Información de Contacto"
+                                expanded="true">
+
+                        <content>
+
+                            <GridPane hgap="15" vgap="12">
+
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="50"/>
+                                    <ColumnConstraints percentWidth="50"/>
+                                </columnConstraints>
+
+                                <Label text="Correo Electrónico *"
+                                       GridPane.columnIndex="0"
+                                       GridPane.rowIndex="0"/>
+
+                                <Label text="Teléfono *"
+                                       GridPane.columnIndex="1"
+                                       GridPane.rowIndex="0"/>
+
+                                <TextField fx:id="emailField"
+                                           GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+
+                                <TextField fx:id="phoneField"
+                                           GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+
+                                <Label text="Dirección"
+                                       GridPane.columnIndex="0"
+                                       GridPane.rowIndex="2"/>
+
+                                <TextField fx:id="addressField"
+                                           GridPane.columnIndex="0"
+                                           GridPane.rowIndex="3"
+                                           GridPane.columnSpan="2"/>
+
+                            </GridPane>
+
+                        </content>
+
+                    </TitledPane>
+
+                    <!-- ACADÉMICA -->
+
+                    <TitledPane text="Información Académica"
+                                expanded="true">
+
+                        <content>
+
+                            <GridPane hgap="15" vgap="12">
+
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="40"/>
+                                    <ColumnConstraints percentWidth="20"/>
+                                    <ColumnConstraints percentWidth="40"/>
+                                </columnConstraints>
+
+                                <Label text="Programa Académico *"
+                                       GridPane.columnIndex="0"
+                                       GridPane.rowIndex="0"/>
+
+                                <Label text="Semestre Inicial *"
+                                       GridPane.columnIndex="1"
+                                       GridPane.rowIndex="0"/>
+
+                                <Label text="Fecha Ingreso *"
+                                       GridPane.columnIndex="2"
+                                       GridPane.rowIndex="0"/>
+
+                                <ComboBox fx:id="programCombo"
+                                          GridPane.columnIndex="0"
+                                          GridPane.rowIndex="1"/>
+
+                                <ComboBox fx:id="semesterCombo"
+                                          GridPane.columnIndex="1"
+                                          GridPane.rowIndex="1"/>
+
+                                <DatePicker fx:id="entryDatePicker"
+                                            GridPane.columnIndex="2"
+                                            GridPane.rowIndex="1"/>
+
+                                <Label text="Estado"
+                                       GridPane.columnIndex="0"
+                                       GridPane.rowIndex="2"/>
+
+                                <ComboBox fx:id="statusCombo"
+                                          GridPane.columnIndex="0"
+                                          GridPane.rowIndex="3"/>
+
+                            </GridPane>
+
+                        </content>
+
+                    </TitledPane>
+
+                    <!-- BOTONES -->
+
+                    <HBox spacing="12">
+
+                        <Button text="Cancelar"
+                                fx:id="cancelButton"
+                                onAction="#onCancel"
+                        />
+
+                        <Button text="Limpiar"
+                                fx:id="clearButton"
+                                onAction="#onClearFields"
+                        />
+
+                        <Pane HBox.hgrow="ALWAYS"/>
+
+                        <Button text="Guardar Estudiante"
+                                fx:id="saveButton"
+                                defaultButton="true"
+                                onAction="#onSaveStudent"
+                        />
+
+                    </HBox>
+
+                </VBox>
+
+                <!-- PANEL DERECHO -->
+
+                <VBox spacing="15"
+                      prefWidth="320">
+
+                    <TitledPane text="Datos Generados Automáticamente"
+                                expanded="true">
+
+                        <content>
+
+                            <VBox spacing="15">
+
+                                <HBox>
+                                    <Label text="Código"/>
+                                    <Pane HBox.hgrow="ALWAYS"/>
+                                    <Label text="Automático"/>
+                                </HBox>
+
+                                <HBox>
+                                    <Label text="Contraseña"/>
+                                    <Pane HBox.hgrow="ALWAYS"/>
+                                    <Label text="Automático"/>
+                                </HBox>
+
+                                <HBox>
+                                    <Label text="Fecha Creación"/>
+                                    <Pane HBox.hgrow="ALWAYS"/>
+                                    <Label text="Automático"/>
+                                </HBox>
+
+                                <HBox>
+                                    <Label text="Rol"/>
+                                    <Pane HBox.hgrow="ALWAYS"/>
+                                    <Label text="STUDENT"/>
+                                </HBox>
+
+                            </VBox>
+
+                        </content>
+
+                    </TitledPane>
+
+                    <TitledPane text="Información"
+                                expanded="true">
+
+                        <content>
+
+                            <Label wrapText="true"
+                                   text="Al registrar un estudiante, el sistema generará automáticamente el código institucional, contraseña temporal y usuario de acceso."/>
+
+                        </content>
+
+                    </TitledPane>
+
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+
+    </content>
+
+</ScrollPane>

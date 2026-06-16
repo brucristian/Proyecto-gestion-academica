@@ -14,4 +14,5 @@ public interface AcademicPeriodRepository {
     AcademicPeriod save(AcademicPeriod academicPeriod);
     AcademicPeriod update(AcademicPeriod academicPeriod);
     boolean deleteById(String id);
+    Optional<AcademicPeriod> findActive();
 }
