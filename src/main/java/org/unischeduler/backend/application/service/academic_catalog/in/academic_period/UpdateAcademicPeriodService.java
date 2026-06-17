@@ -19,8 +19,10 @@ public class UpdateAcademicPeriodService implements UpdateAcademicPeriodUseCase 
 
     @Override
     public UpdateAcademicPeriodResponse execute(UpdateAcademicPeriodCommand command) {
-        Optional<AcademicPeriod> optionalAcademicPeriod = academicPeriodRepository.findById(command.getAcademicPeriodId());
-        if(optionalAcademicPeriod.isEmpty()) {
+        Optional<AcademicPeriod> optionalAcademicPeriod =
+                academicPeriodRepository.findById(command.getAcademicPeriodId());
+
+        if (optionalAcademicPeriod.isEmpty()) {
             return new UpdateAcademicPeriodResponse(
                     false,
                     "El periodo academico seleccionado no existe",
@@ -28,13 +30,7 @@ public class UpdateAcademicPeriodService implements UpdateAcademicPeriodUseCase 
             );
         }
 
-        if(!command.getStartDate().isBefore(command.getEndDate())) {
-            return new UpdateAcademicPeriodResponse(
-                    false,
-                    "La fecha de inicio debe ser anterior a la fecha de fin",
-                    null
-            );
-        }
+        String status = command.getStatus().toUpperCase();
 
         Set<String> validStatuses = Set.of(
                 "ACTIVE",
@@ -42,7 +38,7 @@ public class UpdateAcademicPeriodService implements UpdateAcademicPeriodUseCase 
                 "PROGRAMED"
         );
 
-        if(!validStatuses.contains(command.getStatus().toUpperCase())) {
+        if (!validStatuses.contains(status)) {
             return new UpdateAcademicPeriodResponse(
                     false,
                     "El estado debe ser ACTIVE, CLOSED o PROGRAMED",
@@ -51,17 +47,29 @@ public class UpdateAcademicPeriodService implements UpdateAcademicPeriodUseCase 
         }
 
         AcademicPeriod academicPeriod = optionalAcademicPeriod.get();
-        academicPeriod.setStatus(AcademicPeriodStatus.valueOf(command.getStatus()));
+
+        // Si este periodo se va a activar, desactivar el que esté activo actualmente
+        if ("ACTIVE".equals(status)) {
+            academicPeriodRepository.findActive().ifPresent(activePeriod -> {
+                if (!activePeriod.getAcademicPeriodId()
+                        .equals(academicPeriod.getAcademicPeriodId())) {
+
+                    activePeriod.setStatus(AcademicPeriodStatus.CLOSED);
+                    academicPeriodRepository.update(activePeriod);
+                }
+            });
+        }
+
         academicPeriod.setName(command.getName());
+        academicPeriod.setStatus(AcademicPeriodStatus.valueOf(status));
 
-        AcademicPeriod academicPeriodUpdated = academicPeriodRepository.update(academicPeriod);
-
-        AcademicPeriodInfo academicPeriodInfo = AcademicPeriodInfo.fromDomain(academicPeriodUpdated);
+        AcademicPeriod academicPeriodUpdated =
+                academicPeriodRepository.update(academicPeriod);
 
         return new UpdateAcademicPeriodResponse(
                 true,
-                "Se actualizo el periodo academico con exito",
-                academicPeriodInfo
+                "Se actualizó el período académico con éxito",
+                AcademicPeriodInfo.fromDomain(academicPeriodUpdated)
         );
     }
 }

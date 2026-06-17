@@ -51,27 +51,43 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
         return EnrollmentMapper.toDomain(entitySaved, student, program, details, academicPeriod);
     }
 
-    @Override
     public Optional<Enrollment> findByStudentAndActivePeriod(String studentId) {
         AcademicPeriod academicPeriod = academicPeriodRepository.findActive()
-                .orElseThrow(() -> new PeriodActiveNotFoundException("No se encontro un periodo academico activo"));
+                .orElseThrow(() -> new PeriodActiveNotFoundException(
+                        "No se encontro un periodo academico activo"));
 
-        EnrollmentEntity entity = enrollmentRepository.findByStudentAndActivePeriod(
+        Optional<EnrollmentEntity> entityOpt = enrollmentRepository.findByStudentAndActivePeriod(
                 studentId,
                 academicPeriod.getAcademicPeriodId()
-        ).orElseThrow(() -> new EntityNotFoundException("No se encontro la matricula del estudiante " + studentId
-        + " en el periodo academico " + academicPeriod.getAcademicPeriodId()));
+        );
+
+        if (entityOpt.isEmpty()) {
+            return Optional.empty();
+        }
+
+        EnrollmentEntity entity = entityOpt.get();
 
         AcademicProgram program = programRepository.findById(entity.getAcademicProgramId())
-                .orElseThrow(() -> new EntityNotFoundException("No existe un programa academico con el id: " + entity.getAcademicProgramId()));
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "No existe un programa academico con el id: "
+                                + entity.getAcademicProgramId()));
+
         Student student = studentRepository.findById(entity.getStudentId())
-                .orElseThrow(() -> new EntityNotFoundException("No existe un estudiante con el id: " + entity.getStudentId()));
-        ArrayList<EnrollmentDetail> details = enrollmentDetailRepository.findByEnrollmentId(entity.getEnrollmentId());
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "No existe un estudiante con el id: "
+                                + entity.getStudentId()));
 
-        /*
-        * Deno arreglar la linea numero 69
-        * (En este momento est intentando obtener los detalles de una matricula que no existe todavia)*/
+        ArrayList<EnrollmentDetail> details = enrollmentDetailRepository
+                .findByEnrollmentId(entity.getEnrollmentId());
 
-        return Optional.of(EnrollmentMapper.toDomain(entity, student, program, details, academicPeriod));
+        return Optional.of(
+                EnrollmentMapper.toDomain(
+                        entity,
+                        student,
+                        program,
+                        details,
+                        academicPeriod
+                )
+        );
     }
 }
