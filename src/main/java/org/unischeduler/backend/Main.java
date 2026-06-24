@@ -1,23 +1,29 @@
 package org.unischeduler.backend;
 
 import javafx.application.Application;
+import org.unischeduler.backend.application.service.academc_history.GetAcademicHistoryService;
 import org.unischeduler.backend.application.service.academic_catalog.in.academic_period.DeleteAcademicPeriodService;
 import org.unischeduler.backend.application.service.academic_catalog.in.academic_period.RegisterAcademicPeriodService;
 import org.unischeduler.backend.application.service.academic_catalog.in.academic_period.UpdateAcademicPeriodService;
 import org.unischeduler.backend.application.service.academic_catalog.in.course.DeleteCourseService;
 import org.unischeduler.backend.application.service.academic_catalog.in.course.RegisterCourseService;
 import org.unischeduler.backend.application.service.academic_catalog.in.course.UpdateCourseService;
+import org.unischeduler.backend.application.service.academic_catalog.in.prerequisite.DeletePrerequisiteService;
+import org.unischeduler.backend.application.service.academic_catalog.in.prerequisite.FindAllPrerequisitesService;
+import org.unischeduler.backend.application.service.academic_catalog.in.prerequisite.RegisterPrerequisiteService;
 import org.unischeduler.backend.application.service.academic_catalog.out.academic_period.ListAllAcademicPeriodService;
 import org.unischeduler.backend.application.service.academic_catalog.out.academic_programs.ListAllProgramsService;
 import org.unischeduler.backend.application.service.academic_catalog.out.course.ListAllCoursesServices;
 import org.unischeduler.backend.application.service.academic_programming.in.RegisterGroupService;
 import org.unischeduler.backend.application.service.academic_programming.in.UpdateGroupService;
 import org.unischeduler.backend.application.service.academic_programming.in.DeleteGroupService;
+import org.unischeduler.backend.application.service.academic_programming.out.GetScheduleService;
 import org.unischeduler.backend.application.service.academic_programming.out.ListAllGroupsServices;
 import org.unischeduler.backend.application.service.auth.login.RegisterUserCommand;
 import org.unischeduler.backend.application.service.auth.login.RegisterUserService;
 import org.unischeduler.backend.application.service.auth.login.dtos.RegisterUserResponse;
 import org.unischeduler.backend.application.service.enrollment.ValidateCreditLimitService;
+import org.unischeduler.backend.application.service.enrollment.register.RegisterEnrollmentService;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidatePrerequisiteService;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidateScheduleConflictsService;
 import org.unischeduler.backend.domain.port.in.academic_catalog.academic_period.DeleteAcademicPeriodUseCase;
@@ -29,6 +35,10 @@ import org.unischeduler.backend.domain.port.in.academic_catalog.course.DeleteCou
 import org.unischeduler.backend.domain.port.in.academic_catalog.course.ListAllCoursesUseCase;
 import org.unischeduler.backend.domain.port.in.academic_catalog.course.RegisterCourseUseCase;
 import org.unischeduler.backend.domain.port.in.academic_catalog.course.UpdateCourseUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.DeletePrerequisiteUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.FindAllPrerequisitesUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.RegisterPrerequisiteUseCase;
+import org.unischeduler.backend.domain.port.in.academic_history.GetAcademicHistoryUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.RegisterGroupUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.UpdateGroupUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
@@ -36,12 +46,10 @@ import org.unischeduler.backend.domain.port.in.academic_programming.ListAllGroup
 import org.unischeduler.backend.application.service.auth.login.LoginUserService;
 import org.unischeduler.backend.application.service.enrollment.register.RegisterStudentService;
 
+import org.unischeduler.backend.domain.port.in.academic_programming.schedule.GetScheduleUseCase;
 import org.unischeduler.backend.domain.port.in.auth.LoginUserUseCase;
 import org.unischeduler.backend.domain.port.in.auth.RegisterUserUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.RegisterStudentUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.ValidateCreditLimitUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.ValidatePrerequisiteUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.ValidateScheduleConflictsUseCase;
+import org.unischeduler.backend.domain.port.in.enrollment.*;
 import org.unischeduler.backend.domain.port.out.academic_catalog.AcademicPeriodRepository;
 import org.unischeduler.backend.domain.port.out.academic_catalog.AcademicProgramRepository;
 import org.unischeduler.backend.domain.port.out.academic_catalog.CourseRepository;
@@ -94,9 +102,9 @@ public class Main {
 
     UserRepository userRepository = new UserRepositoryImpl(new ExcelUserRepository(store));
 
-    StudentRepository studentRepository = new StudentRepositoryImpl(new ExcelStudentRepository(store), userRepository);
-
     AcademicProgramRepository academicProgramRepository = new AcademicProgramRepositoryImpl(new ExcelAcademicProgramRepository(store));
+
+    StudentRepository studentRepository = new StudentRepositoryImpl(new ExcelStudentRepository(store), userRepository, academicProgramRepository);
 
     CourseRepository courseRepository = new CourseRepositoryImpl(new ExcelCourseRepository(store));
 
@@ -133,23 +141,6 @@ public class Main {
 
     RegisterUserUseCase registerUserService = new RegisterUserService(userRepository, passwordEncoderPort);
 
-    RegisterStudentUseCase registerStudentService =
-            new RegisterStudentService(
-                    registerUserService,
-                    userRepository,
-                    studentRepository,
-                    enrollmentRepository,
-                    academicProgramRepository,
-                    passwordGenerator,
-                    passwordEncoderPort,
-                    studentCodeGenerator,
-                    semesterTemplateRepository,
-                    enrollmentDetailRepository,
-                    academicHistoryRepository,
-                    academicPeriodRepository
-            );
-    AppContext.setRegisterStudentService(registerStudentService);
-
     LoginUserUseCase loginUserService = new LoginUserService(
             userRepository,
             studentRepository,
@@ -157,9 +148,16 @@ public class Main {
     );
     AppContext.setLoginUserService(loginUserService);
 
+    FindAllPrerequisitesUseCase findAllPrerequisitesService = new FindAllPrerequisitesService(prerequisiteRepository, courseRepository);
+
+    DeletePrerequisiteUseCase deletePrerequisiteService = new DeletePrerequisiteService(prerequisiteRepository, courseRepository);
+
+    RegisterPrerequisiteUseCase registerPrerequisiteService = new RegisterPrerequisiteService(prerequisiteRepository,courseRepository, deletePrerequisiteService);
+    AppContext.setRegisterPrerequisiteService(registerPrerequisiteService);
+
     ListAllCoursesUseCase listAllCoursesService = new ListAllCoursesServices(
             courseRepository,
-            prerequisiteRepository
+            findAllPrerequisitesService
     );
     AppContext.setListAllCoursesService(listAllCoursesService);
 
@@ -171,7 +169,7 @@ public class Main {
 
     UpdateCourseUseCase updateCourseService = new UpdateCourseService(
             courseRepository,
-            prerequisiteRepository
+            registerPrerequisiteService
     );
     AppContext.setUpdateCourseService(updateCourseService);
 
@@ -215,16 +213,41 @@ public class Main {
     DeleteAcademicPeriodUseCase deleteAcademicPeriodService = new DeleteAcademicPeriodService(academicPeriodRepository);
     AppContext.setDeleteAcademicPeriodService(deleteAcademicPeriodService);
 
-    ValidateScheduleConflictsUseCase validateScheduleConflictsService = new ValidateScheduleConflictsService();
+    ValidateScheduleConflictsUseCase validateScheduleConflictsService = new ValidateScheduleConflictsService(enrollmentRepository);
     AppContext.setValidateScheduleConflictsService(validateScheduleConflictsService);
 
-    ValidatePrerequisiteUseCase validatePrerequisiteService = new ValidatePrerequisiteService(prerequisiteRepository, academicHistoryRepository);
+    ValidatePrerequisiteUseCase validatePrerequisiteService = new ValidatePrerequisiteService(
+            prerequisiteRepository,
+            enrollmentRepository,
+            enrollmentDetailRepository,
+            courseRepository
+    );
     AppContext.setValidatePrerequisiteService(validatePrerequisiteService);
 
     ValidateCreditLimitUseCase validateCreditLimitService = new ValidateCreditLimitService(enrollmentRepository, courseRepository);
     AppContext.setValidateCreditLimitService(validateCreditLimitService);
 
+    RegisterEnrollmentUseCase registerEnrollmentService = new RegisterEnrollmentService(
+              enrollmentRepository, enrollmentDetailRepository, studentRepository,
+              groupRepository, academicProgramRepository, academicPeriodRepository,
+              validateCreditLimitService, validatePrerequisiteService
+            );
+    AppContext.setRegisterEnrollmentService(registerEnrollmentService);
 
+    RegisterStudentUseCase registerStudentService =
+            new RegisterStudentService(
+                    registerUserService, registerEnrollmentService, userRepository,
+                    studentRepository, academicProgramRepository, passwordGenerator,
+                    studentCodeGenerator, semesterTemplateRepository
+            );
+    AppContext.setRegisterStudentService(registerStudentService);
+
+
+    GetAcademicHistoryUseCase getAcademicHistoryService = new GetAcademicHistoryService(enrollmentRepository);
+    AppContext.setGetAcademicHistoryService(getAcademicHistoryService);
+
+    GetScheduleUseCase getScheduleService = new GetScheduleService(enrollmentRepository, groupScheduleRepository);
+    AppContext.setGetScheduleService(getScheduleService);
 
   }
 

@@ -4,20 +4,28 @@ package org.unischeduler.backend.application.service.academic_catalog.in.course;
 import java.util.List;
 
 public class UpdateCourseCommand {
+
     private final String courseId;
     private final String courseCode;
     private final String name;
     private final int credits;
     private final String description;
-    private final List<String> prerequisiteCourseCodes;
+    private final List<String> prerequisiteIds;
 
-    public UpdateCourseCommand(String courseId, String courseCode, String name, int credits, String description, List<String> prerequisiteCourseCodes) {
+    public UpdateCourseCommand(
+            String courseId,
+            String courseCode,
+            String name,
+            int credits,
+            String description,
+            List<String> prerequisiteIds
+    ) {
         this.courseId = courseId;
         this.courseCode = courseCode;
         this.name = name;
         this.credits = credits;
         this.description = description;
-        this.prerequisiteCourseCodes = prerequisiteCourseCodes;
+        this.prerequisiteIds = prerequisiteIds;
     }
 
     public String getCourseId() {
@@ -40,7 +48,7 @@ public class UpdateCourseCommand {
         return description;
     }
 
-    public List<String> getPrerequisiteCourseCodes() {
-        return prerequisiteCourseCodes;
+    public List<String> getPrerequisiteIds() {
+        return prerequisiteIds;
     }
 }

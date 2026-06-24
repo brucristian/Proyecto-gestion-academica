@@ -1,5 +1,6 @@
 package org.unischeduler.backend.infrastructure.out.mapper.enrollment;
 
+import org.unischeduler.backend.domain.model.academic_catalog.entity.AcademicProgram;
 import org.unischeduler.backend.domain.model.auth.entity.User;
 import org.unischeduler.backend.domain.model.enrollment.entity.Student;
 import org.unischeduler.backend.infrastructure.out.entity.enrollment.StudentEntity;
@@ -21,17 +22,23 @@ public class StudentMapper {
                 student.getUser().getUserId()
         );
 
+        entity.setAcademicProgramId(
+                student.getAcademicProgram().getAcademicProgramId()
+        );
+
         return entity;
     }
 
     public static Student toDomain(
             StudentEntity entity,
-            User user
+            User user,
+            AcademicProgram academicProgram
     ) {
         return new Student(
                 entity.getStudentId(),
                 entity.getStudentCode(),
-                user
+                user,
+                academicProgram
         );
     }
 }

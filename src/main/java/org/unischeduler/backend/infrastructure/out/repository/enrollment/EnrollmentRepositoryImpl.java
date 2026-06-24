@@ -17,6 +17,7 @@ import org.unischeduler.backend.infrastructure.out.mapper.enrollment.EnrollmentM
 import org.unischeduler.backend.infrastructure.out.persistence.excel.repository.enrollment.ExcelEnrollmentRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class EnrollmentRepositoryImpl implements EnrollmentRepository {
@@ -43,12 +44,11 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
                 .orElseThrow(() -> new EntityNotFoundException("No existe un programa academico con el id: " + entitySaved.getAcademicProgramId()));
         Student student = studentRepository.findById(entitySaved.getStudentId())
                 .orElseThrow(() -> new EntityNotFoundException("No existe un estudiante con el id: " + entitySaved.getStudentId()));
-        ArrayList<EnrollmentDetail> details = enrollmentDetailRepository.findByEnrollmentId(entitySaved.getEnrollmentId());
 
         AcademicPeriod academicPeriod = academicPeriodRepository.findById(entitySaved.getAcademicPeriodId())
                 .orElseThrow(() -> new EntityNotFoundException("No se encontro un periodo academico con id " + entitySaved.getAcademicPeriodId()));
 
-        return EnrollmentMapper.toDomain(entitySaved, student, program, details, academicPeriod);
+        return EnrollmentMapper.toDomain(entitySaved, student, program, null, academicPeriod);
     }
 
     public Optional<Enrollment> findByStudentAndActivePeriod(String studentId) {
@@ -89,5 +89,43 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
                         academicPeriod
                 )
         );
+    }
+
+    @Override
+    public List<Enrollment> findAllWhereStudentId(String studentId) {
+
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "No existe un estudiante con el id: " + studentId));
+
+        List<EnrollmentEntity> entities =
+                enrollmentRepository.findAllWhereStudentId(studentId);
+
+        return entities.stream()
+                .map(entity -> {
+
+                    AcademicProgram program = programRepository.findById(entity.getAcademicProgramId())
+                            .orElseThrow(() -> new EntityNotFoundException(
+                                    "No existe un programa académico con el id: "
+                                            + entity.getAcademicProgramId()));
+
+                    AcademicPeriod period = academicPeriodRepository.findById(entity.getAcademicPeriodId())
+                            .orElseThrow(() -> new EntityNotFoundException(
+                                    "No existe un período académico con el id: "
+                                            + entity.getAcademicPeriodId()));
+
+                    ArrayList<EnrollmentDetail> details =
+                            enrollmentDetailRepository.findByEnrollmentId(
+                                    entity.getEnrollmentId());
+
+                    return EnrollmentMapper.toDomain(
+                            entity,
+                            student,
+                            program,
+                            details,
+                            period
+                    );
+                })
+                .toList();
     }
 }

@@ -15,7 +15,7 @@ public class Course {
     private List<Course> prerequisites;
 
 
-    public Course(String courseId, String name, String code, int credits, String description, ArrayList<Course> prerequisites) {
+    public Course(String courseId, String name, String code, int credits, String description, List<Course> prerequisites) {
         this.courseId = courseId;
         this.name = name;
         this.code = code;
@@ -70,7 +70,7 @@ public class Course {
         return prerequisites;
     }
 
-    public void setPrerequisites(ArrayList<Course> prerequisites) {
+    public void setPrerequisites(List<Course> prerequisites) {
         this.prerequisites = prerequisites;
     }
 

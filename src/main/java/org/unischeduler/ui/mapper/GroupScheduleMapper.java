@@ -7,8 +7,10 @@ import java.time.LocalTime;
 
 public final class GroupScheduleMapper {
 
-    public static GroupScheduleInfo toInfo(GroupScheduleViewModel viewModel) {
+    public static GroupScheduleInfo toInfo(GroupScheduleViewModel viewModel, String groupId, String courseName) {
         return new GroupScheduleInfo(
+                groupId,
+                courseName,
                 viewModel.getId(),
                 viewModel.getDay(),
                 LocalTime.parse(viewModel.getStartTime()),

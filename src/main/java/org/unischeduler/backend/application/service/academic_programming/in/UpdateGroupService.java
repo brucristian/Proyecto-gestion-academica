@@ -95,6 +95,8 @@ public class UpdateGroupService implements UpdateGroupUseCase {
         if(schedules != null) {
             for(GroupSchedule schedule : schedules) {
                 scheduleInfos.add(new GroupScheduleInfo(
+                        group.getGroupId(),
+                        courseInfo.getCourseName(),
                         schedule.getGroupScheduleId(),
                         schedule.getDayOfWeek().name(),
                         schedule.getStartTime(),

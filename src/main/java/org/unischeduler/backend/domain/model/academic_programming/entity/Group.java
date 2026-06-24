@@ -68,8 +68,10 @@ public class Group {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public Group setCapacity(int capacity) {
         this.capacity = capacity;
+
+        return this;
     }
 
     public List<GroupSchedule> getSchedules() {

@@ -80,4 +80,10 @@ public class CourseViewModel {
     public void setPrerequisites(ObservableList<PrerequisiteViewModel> prerequisites) {
         this.prerequisites = prerequisites;
     }
+
+    @Override
+    public String toString() {
+
+        return code + " - " + name;
+    }
 }

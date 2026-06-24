@@ -9,6 +9,8 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import org.unischeduler.backend.application.service.enrollment.register.RegisterEnrollmentCommand;
+import org.unischeduler.backend.application.service.enrollment.register.dtos.RegisterEnrollmentResponse;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidateCreditLimitCommand;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidatePrerequisiteCommand;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidateScheduleConflictsCommand;
@@ -303,6 +305,44 @@ public class EnrollmentController {
         );
     }
 
+    @FXML
+    private void onSaveEnrollment() {
+        List<String> selectedGroupIds =
+                availableGroupsTable.getItems()
+                        .stream()
+                        .filter(GroupViewModel::isSelected)
+                        .map(GroupViewModel::getId)
+                        .toList();
+
+        if (selectedGroupIds.isEmpty()) {
+            showWarning(
+                    "Debe seleccionar al menos un grupo."
+            );
+            return;
+        }
+
+        RegisterEnrollmentCommand command = new RegisterEnrollmentCommand(
+                AppContext.getCurrentUser().getUserId(),
+                selectedGroupIds
+        );
+
+        RegisterEnrollmentResponse response = enrollmentUiService.saveEnrollment(command);
+
+        Alert alert =
+                new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Registro de matricula");
+        alert.setHeaderText("Estado: ");
+        alert.setContentText(response.getMessage());
+
+        alert.showAndWait();
+
+        if(response.isSuccessfully()) {
+            initialize();
+            updateSelectedGroups();
+        }
+    }
+
     private void updateSelectedGroups() {
 
         List<GroupViewModel> selectedGroups =
@@ -315,20 +355,29 @@ public class EnrollmentController {
                 .map(GroupViewModel::getSchedules)
                 .toList();
 
-        ValidateScheduleConflictsCommand command = new ValidateScheduleConflictsCommand(
-                selectedGroups.stream()
-                        .flatMap(group -> group.getSchedules().stream())
-                        .map(GroupScheduleMapper::toInfo)
-                        .toList()
-        );
+        ValidateScheduleConflictsCommand command =
+                new ValidateScheduleConflictsCommand(
+                        AppContext.getCurrentUser().getUserId(),
+                        selectedGroups.stream()
+                                .flatMap(group ->
+                                        group.getSchedules().stream()
+                                                .map(schedule ->
+                                                        GroupScheduleMapper.toInfo(
+                                                                schedule,
+                                                                group.getId(),
+                                                                group.getCourseName()
+                                                        )
+                                                )
+                                )
+                                .toList()
+                );
 
         ValidateScheduleConflictsResponse validateScheduleConflictsResponse
                 = enrollmentUiService.validateSchedule(command);
 
         ValidatePrerequisiteCommand validatePrerequisiteCommand = new ValidatePrerequisiteCommand(
                 AppContext.getCurrentUser()
-                        .getUserRoleInfo()
-                        .getUserRoleId(),
+                        .getUserId(),
                 selectedGroups.stream()
                         .map(GroupViewModel::getCourseId)
                         .toList()
@@ -338,8 +387,7 @@ public class EnrollmentController {
 
         ValidateCreditLimitCommand validateCreditLimitCommand = new ValidateCreditLimitCommand(
                 AppContext.getCurrentUser()
-                        .getUserRoleInfo()
-                        .getUserRoleId(),
+                        .getUserId(),
                 selectedGroups.stream()
                         .map(GroupViewModel::getCourseId)
                         .toList()

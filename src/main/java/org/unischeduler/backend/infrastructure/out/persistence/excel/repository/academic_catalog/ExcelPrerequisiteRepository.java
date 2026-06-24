@@ -2,6 +2,7 @@ package org.unischeduler.backend.infrastructure.out.persistence.excel.repository
 
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
+import org.unischeduler.backend.domain.model.academic_catalog.entity.Prerequisite;
 import org.unischeduler.backend.infrastructure.out.entity.academic_catalog.PrerequisiteEntity;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelIdGenerator;
@@ -85,6 +86,6 @@ public class ExcelPrerequisiteRepository {
     // 🔢 ID GENERATOR
     // =====================================================
     private String generateId() {
-        return "PRE" + (store.getPrerequisites().size() + 1);
+        return String.valueOf(store.getPrerequisites().size() + 1);
     }
 }

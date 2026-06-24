@@ -15,46 +15,51 @@ import java.util.List;
 import java.util.Optional;
 
 public class RegisterCourseService implements RegisterCourseUseCase {
+
     private final CourseRepository courseRepository;
     private final PrerequisiteRepository prerequisiteRepository;
 
-    public RegisterCourseService(CourseRepository courseRepository, PrerequisiteRepository prerequisiteRepository) {
+    public RegisterCourseService(
+            CourseRepository courseRepository,
+            PrerequisiteRepository prerequisiteRepository
+    ) {
         this.courseRepository = courseRepository;
         this.prerequisiteRepository = prerequisiteRepository;
     }
 
     @Override
     public RegisterCourseResponse execute(RegisterCourseCommand command) {
-        if(courseRepository.existsByCode(command.getCourseCode())) {
+
+        if (courseRepository.existsByCode(command.getCourseCode())) {
             return new RegisterCourseResponse(
                     false,
-                    "El codigo de la asignatura ya esta en uso",
+                    "El código de la asignatura ya está en uso",
                     null
             );
         }
 
-
-        ArrayList<Course> prerequisites = new ArrayList<>();
+        List<Course> prerequisites = new ArrayList<>();
         List<PrerequisiteInfo> prerequisiteInfos = new ArrayList<>();
-        for(String code : command.getPrerequisiteCourseCodes()) {
-            Optional<Course> courseOptional = courseRepository.findByCode(code);
-            if(courseOptional.isEmpty()) {
-                return new RegisterCourseResponse(
-                        false,
-                        "El prerrequisito con código " + code + " no existe",
-                        null
-                );
-            }
 
-            Course prerequisite = courseOptional.get();
+        for (String prerequisiteId : command.getPrerequisiteIds()) {
+
+            Course prerequisite = courseRepository
+                    .findById(prerequisiteId)
+                    .orElseThrow(() ->
+                            new IllegalArgumentException(
+                                    "El prerrequisito no existe: " + prerequisiteId
+                            )
+                    );
+
             prerequisites.add(prerequisite);
 
-            PrerequisiteInfo info = new PrerequisiteInfo(
-                    prerequisite.getCourseId(),
-                    prerequisite.getCode(),
-                    prerequisite.getName()
+            prerequisiteInfos.add(
+                    new PrerequisiteInfo(
+                            prerequisite.getCourseId(),
+                            prerequisite.getCode(),
+                            prerequisite.getName()
+                    )
             );
-            prerequisiteInfos.add(info);
         }
 
         Course course = new Course(
@@ -63,22 +68,26 @@ public class RegisterCourseService implements RegisterCourseUseCase {
                 command.getCourseCode(),
                 command.getCredits(),
                 command.getDescription(),
-                prerequisites
+                List.of()
         );
 
         Course courseSaved = courseRepository.save(course);
-        for(Course prerequisite : prerequisites) {
-            prerequisiteRepository.save(courseSaved.getCourseId(), prerequisite.getCourseId());
+
+        for (Course prerequisite : prerequisites) {
+            prerequisiteRepository.save(
+                    courseSaved.getCourseId(),
+                    prerequisite.getCourseId()
+            );
         }
 
         return new RegisterCourseResponse(
                 true,
-                "Se creo la asignatura con exito",
+                "Se creó la asignatura con éxito",
                 new CourseInfo(
                         courseSaved.getCourseId(),
                         courseSaved.getName(),
                         courseSaved.getCode(),
-                        course.getCredits(),
+                        courseSaved.getCredits(),
                         courseSaved.getDescription(),
                         prerequisiteInfos
                 )

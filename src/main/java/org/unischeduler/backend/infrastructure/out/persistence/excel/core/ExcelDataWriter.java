@@ -307,6 +307,7 @@ public class ExcelDataWriter {
             table.getCellByPosition(0, row).setStringValue(e.getStudentId());
             table.getCellByPosition(1, row).setStringValue(e.getStudentCode());
             table.getCellByPosition(2, row).setStringValue(e.getUserId());
+            table.getCellByPosition(3, row).setStringValue(e.getAcademicProgramId());
 
             row++;
         }

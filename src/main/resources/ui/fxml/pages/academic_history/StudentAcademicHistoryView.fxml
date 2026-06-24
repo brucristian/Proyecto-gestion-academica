@@ -1,18 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.unischeduler.ui.pages.dashboard.AdminDashboardController"
-      spacing="20">
+      fx:controller="org.unischeduler.ui.pages.academic_history.AcademicHistoryController"
+      spacing="15">
 
-    <children>
+    <GridPane hgap="20">
 
-        <Label text="Historial Academico del estudiante"/>
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+        </columnConstraints>
 
-        <Label text="Bienvenido a UniScheduler"/>
+        <VBox GridPane.columnIndex="0">
+            <Label text="Estudiante"/>
+            <Label fx:id="studentNameLabel"/>
+        </VBox>
 
-    </children>
+        <VBox GridPane.columnIndex="1">
+            <Label text="Programa"/>
+            <Label fx:id="programLabel"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="2">
+            <Label text="Créditos Aprobados"/>
+            <Label fx:id="approvedCreditsLabel"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="3">
+            <Label text="Promedio Acumulado"/>
+            <Label fx:id="gpaLabel"/>
+        </VBox>
+
+    </GridPane>
+
+    <Label text="Asignaturas Cursadas"/>
+
+    <TableView fx:id="coursesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="codeColumn"
+                         text="Código"
+                         prefWidth="100"/>
+
+            <TableColumn fx:id="subjectColumn"
+                         text="Asignatura"
+                         prefWidth="300"/>
+
+            <TableColumn fx:id="creditsColumn"
+                         text="Créditos"
+                         prefWidth="100"/>
+
+            <TableColumn fx:id="periodColumn"
+                         text="Periodo"
+                         prefWidth="120"/>
+
+            <TableColumn fx:id="gradeColumn"
+                         text="Nota"
+                         prefWidth="100"/>
+
+            <TableColumn fx:id="statusColumn"
+                         text="Estado"
+                         prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <Label text="Nota: Historia académica de solo lectura."/>
 
 </VBox>

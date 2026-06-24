@@ -50,7 +50,7 @@ public class LoginUserService implements LoginUserUseCase {
 
 
         UserRoleInfo userRoleInfo = new UserRoleInfo();
-        if("SUDENT".equals(user.getRole())) {
+        if("STUDENT".equals(user.getRole())) {
             Student student = studentRepository.findByUserId(user.getUserId())
                     .orElseThrow(()
                             -> new EntityNotFoundException("No existe un estudiante relacionado a el usuario " + user.getUserId()));

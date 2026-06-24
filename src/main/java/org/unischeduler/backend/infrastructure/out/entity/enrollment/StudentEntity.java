@@ -4,6 +4,7 @@ public class StudentEntity {
     private String studentId;
     private String studentCode;
     private String userId;
+    private String academicProgramId;
 
     public String getStudentId() {
         return studentId;
@@ -27,5 +28,13 @@ public class StudentEntity {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getAcademicProgramId() {
+        return academicProgramId;
+    }
+
+    public void setAcademicProgramId(String academicProgramId) {
+        this.academicProgramId = academicProgramId;
     }
 }

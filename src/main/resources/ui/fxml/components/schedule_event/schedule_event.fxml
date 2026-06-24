@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.unischeduler.ui.components.schedule_event.ScheduleEventController"
+      spacing="4"
+      style="
+          -fx-background-color: #4F46E5;
+          -fx-background-radius: 10;
+          -fx-padding: 8;
+      ">
+
+    <Label fx:id="courseLabel"
+           style="
+               -fx-text-fill: white;
+               -fx-font-weight: bold;
+           "/>
+
+    <Label fx:id="roomLabel"
+           style="-fx-text-fill: white;"/>
+
+    <Label fx:id="timeLabel"
+           style="-fx-text-fill: white;"/>
+
+</VBox>

@@ -215,11 +215,13 @@
 
                             <Button fx:id="addPrerequisiteButton"
                                     text="+ Agregar"
-                                    styleClass="primary-button"/>
+                                    styleClass="primary-button"
+                                    onAction="#onAddPrerequisite"/>
 
                             <Button fx:id="removePrerequisiteButton"
                                     text="Eliminar"
-                                    styleClass="danger-button"/>
+                                    styleClass="danger-button"
+                                    onAction="#onRemovePrerequisite"/>
 
                         </HBox>
 

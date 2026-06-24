@@ -26,6 +26,7 @@ import org.unischeduler.backend.domain.model.enrollment.entity.EnrollmentDetail;
 import org.unischeduler.backend.domain.model.enrollment.entity.Student;
 import org.unischeduler.backend.domain.model.enrollment.enums.EnrollmentStatus;
 import org.unischeduler.backend.domain.port.in.auth.RegisterUserUseCase;
+import org.unischeduler.backend.domain.port.in.enrollment.RegisterEnrollmentUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.RegisterStudentUseCase;
 import org.unischeduler.backend.domain.port.out.academic_catalog.AcademicPeriodRepository;
 import org.unischeduler.backend.domain.port.out.academic_history.AcademicHistoryRepository;
@@ -41,40 +42,28 @@ import org.unischeduler.backend.domain.port.out.enrollment.repository.StudentRep
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class RegisterStudentService implements RegisterStudentUseCase {
     private final RegisterUserUseCase registerUserUseCase;
+    private final RegisterEnrollmentUseCase registerEnrollmentUseCase;
     private final UserRepository userRepository;
     private final StudentRepository studentRepository;
-    private final EnrollmentRepository enrollmentRepository;
     private final AcademicProgramRepository academicProgramRepository;
     private final PasswordGeneratorPort passwordGenerator;
-    private final PasswordEncoderPort passwordEncoderPort;
     private final StudentCodeGeneratorPort studentCodeGenerator;
     private final SemesterTemplateRepository semesterTemplateRepository;
-    private final EnrollmentDetailRepository enrollmentDetailRepository;
-    private final AcademicHistoryRepository academicHistoryRepository;
-    private final AcademicPeriodRepository academicPeriodRepository;
 
-    public RegisterStudentService(RegisterUserUseCase registerUserUseCase, UserRepository userRepository, StudentRepository studentRepository,
-                                  EnrollmentRepository enrollmentRepository, AcademicProgramRepository academicProgramRepository,
-                                  PasswordGeneratorPort passwordGenerator, PasswordEncoderPort passwordEncoderPort,
-                                  StudentCodeGeneratorPort studentCodeGenerator, SemesterTemplateRepository semesterTemplateRepository,
-                                  EnrollmentDetailRepository enrollmentDetailRepository, AcademicHistoryRepository academicHistoryRepository,
-                                  AcademicPeriodRepository academicPeriodRepository) {
+    public RegisterStudentService(RegisterUserUseCase registerUserUseCase, RegisterEnrollmentUseCase registerEnrollmentUseCase, UserRepository userRepository, StudentRepository studentRepository, AcademicProgramRepository academicProgramRepository, PasswordGeneratorPort passwordGenerator, StudentCodeGeneratorPort studentCodeGenerator, SemesterTemplateRepository semesterTemplateRepository) {
         this.registerUserUseCase = registerUserUseCase;
+        this.registerEnrollmentUseCase = registerEnrollmentUseCase;
         this.userRepository = userRepository;
         this.studentRepository = studentRepository;
-        this.enrollmentRepository = enrollmentRepository;
         this.academicProgramRepository = academicProgramRepository;
         this.passwordGenerator = passwordGenerator;
-        this.passwordEncoderPort = passwordEncoderPort;
         this.studentCodeGenerator = studentCodeGenerator;
         this.semesterTemplateRepository = semesterTemplateRepository;
-        this.enrollmentDetailRepository = enrollmentDetailRepository;
-        this.academicHistoryRepository = academicHistoryRepository;
-        this.academicPeriodRepository = academicPeriodRepository;
     }
 
     @Override
@@ -124,6 +113,7 @@ public class RegisterStudentService implements RegisterStudentUseCase {
 
         AcademicProgram academicProgram = academicProgramRepository.findById(command.getAcademicProgramId())
                 .orElseThrow(() -> new EntityNotFoundException("No se encontro un periodo acadmico con id: " + command.getAcademicProgramId()));
+
         String studentCode;
         int attempts = 0;
         int maxAttempts = 5;
@@ -142,49 +132,25 @@ public class RegisterStudentService implements RegisterStudentUseCase {
         Student student = new Student(
                 null,
                 studentCode,
-                userSaved
+                userSaved,
+                academicProgram
         );
 
         Student studentSaved = studentRepository.save(student);
 
         SemesterTemplate template = semesterTemplateRepository.findByProgramAndSemester(academicProgram, command.getInitialSemester());
 
-        AcademicPeriod academicPeriod = academicPeriodRepository.findActive()
-                .orElseThrow(() -> new PeriodActiveNotFoundException("No se encontro ningun periodo academico activo"));
+        List<String> groupIds = template.getDetails()
+                .stream()
+                .map(detail -> detail.getGroup().getGroupId())
+                .toList();
 
-        Enrollment enrollment = new Enrollment(
-                null,
-                studentSaved,
-                academicProgram,
-                LocalDate.now(),
-                null,
-                academicPeriod
-        );
-        Enrollment enrollmentSaved = enrollmentRepository.save(enrollment);
-
-        AcademicHistory academicHistory = new AcademicHistory(
-                null,
-                studentSaved,
-                new ArrayList<>(),
-                0.0,
-                AcademicHistoryCourseStatus.IN_PROGRESS
+        RegisterEnrollmentCommand enrollmentCommand = new RegisterEnrollmentCommand(
+                studentSaved.getStudentId(),
+                groupIds
         );
 
-        for(SemesterTemplateDetail detail : template.getDetails()) {
-            EnrollmentDetail enrollmentDetail = new EnrollmentDetail(
-                    null,
-                    detail.getGroup(),
-                    EnrollmentStatus.ENROLLED,
-                    0.0
-            );
-            enrollmentDetailRepository.save(enrollmentDetail, enrollmentSaved.getEnrollmentId());
-            academicHistory.getCompletedCourses().add(
-                    detail.getGroup()
-                            .getCourse()
-            );
-        }
-
-        academicHistoryRepository.save(academicHistory);
+        registerEnrollmentUseCase.execute(enrollmentCommand);
 
         return new RegisterStudentResponse(
                 true,

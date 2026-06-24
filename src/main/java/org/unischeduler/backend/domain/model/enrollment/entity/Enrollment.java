@@ -4,7 +4,7 @@ import org.unischeduler.backend.domain.model.academic_catalog.entity.AcademicPer
 import org.unischeduler.backend.domain.model.academic_catalog.entity.AcademicProgram;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Enrollment {
 
@@ -13,12 +13,12 @@ public class Enrollment {
     private final Student student;
     private  AcademicProgram academicProgram;
     private final LocalDate enrollmentDate;
-    private ArrayList<EnrollmentDetail> details;
+    private List<EnrollmentDetail> details;
     private AcademicPeriod academicPeriod;
 
 
     public Enrollment(String enrollmentId, Student student, AcademicProgram academicProgram,
-                      LocalDate enrollmentDate, ArrayList<EnrollmentDetail> details,
+                      LocalDate enrollmentDate, List<EnrollmentDetail> details,
                       AcademicPeriod academicPeriod) {
         this.enrollmentId = enrollmentId;
         this.student = student;
@@ -51,11 +51,11 @@ public class Enrollment {
         return enrollmentDate;
     }
 
-    public ArrayList<EnrollmentDetail> getDetails() {
+    public List<EnrollmentDetail> getDetails() {
         return details;
     }
 
-    public void setDetails(ArrayList<EnrollmentDetail> details) {
+    public void setDetails(List<EnrollmentDetail> details) {
         this.details = details;
     }
 

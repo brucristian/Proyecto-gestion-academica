@@ -90,6 +90,6 @@ public class ExcelStudentRepository {
     //  ID GENERATOR
     // =====================================================
     private String generateId() {
-        return "STU" + (store.getStudents().size() + 1);
+        return String.valueOf(store.getStudents().size() + 1);
     }
 }

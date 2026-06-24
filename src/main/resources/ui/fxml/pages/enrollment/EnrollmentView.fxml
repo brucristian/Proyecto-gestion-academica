@@ -84,10 +84,6 @@
 
                     <HBox spacing="10">
 
-                        <ComboBox fx:id="courseFilterCombo"
-                                  promptText="Todas las asignaturas"
-                                  prefWidth="220"/>
-
                         <TextField fx:id="searchField"
                                    promptText="Buscar asignatura..."
                                    HBox.hgrow="ALWAYS"/>
@@ -166,9 +162,10 @@
                                 onAction="#onClearSelection"/>
 
                         <Button fx:id="nextButton"
-                                text="Siguiente: Validar →"
+                                text="Confirmar Matricula"
                                 HBox.hgrow="ALWAYS"
-                                maxWidth="Infinity"/>
+                                maxWidth="Infinity"
+                                onAction="#onSaveEnrollment"/>
 
                     </HBox>
 

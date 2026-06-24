@@ -1,6 +1,9 @@
 package org.unischeduler.ui.app;
 
 
+import org.unischeduler.backend.application.service.academic_catalog.in.prerequisite.DeletePrerequisiteService;
+import org.unischeduler.backend.application.service.academic_catalog.in.prerequisite.FindAllPrerequisitesService;
+import org.unischeduler.backend.application.service.academic_catalog.in.prerequisite.RegisterPrerequisiteService;
 import org.unischeduler.backend.application.service.auth.login.dtos.UserInfo;
 import org.unischeduler.backend.domain.port.in.academic_catalog.academic_period.DeleteAcademicPeriodUseCase;
 import org.unischeduler.backend.domain.port.in.academic_catalog.academic_period.ListAllAcademicPeriodsUseCase;
@@ -11,15 +14,17 @@ import org.unischeduler.backend.domain.port.in.academic_catalog.course.DeleteCou
 import org.unischeduler.backend.domain.port.in.academic_catalog.course.ListAllCoursesUseCase;
 import org.unischeduler.backend.domain.port.in.academic_catalog.course.RegisterCourseUseCase;
 import org.unischeduler.backend.domain.port.in.academic_catalog.course.UpdateCourseUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.DeletePrerequisiteUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.FindAllPrerequisitesUseCase;
+import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.RegisterPrerequisiteUseCase;
+import org.unischeduler.backend.domain.port.in.academic_history.GetAcademicHistoryUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.ListAllGroupsUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.RegisterGroupUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.UpdateGroupUseCase;
+import org.unischeduler.backend.domain.port.in.academic_programming.schedule.GetScheduleUseCase;
 import org.unischeduler.backend.domain.port.in.auth.LoginUserUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.RegisterStudentUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.ValidateCreditLimitUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.ValidatePrerequisiteUseCase;
-import org.unischeduler.backend.domain.port.in.enrollment.ValidateScheduleConflictsUseCase;
+import org.unischeduler.backend.domain.port.in.enrollment.*;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
 public class AppContext {
@@ -47,6 +52,10 @@ public class AppContext {
     private static ValidateScheduleConflictsUseCase validateScheduleConflictsService;
     private static ValidatePrerequisiteUseCase validatePrerequisiteService;
     private static ValidateCreditLimitUseCase validateCreditLimitService;
+    private static GetAcademicHistoryUseCase getAcademicHistoryService;
+    private static GetScheduleUseCase getScheduleService;
+    private static RegisterEnrollmentUseCase registerEnrollmentService;
+    private static RegisterPrerequisiteUseCase registerPrerequisiteService;
 
     private AppContext() {}
 
@@ -216,5 +225,37 @@ public class AppContext {
 
     public static void setValidateCreditLimitService(ValidateCreditLimitUseCase validateCreditLimitService) {
         AppContext.validateCreditLimitService = validateCreditLimitService;
+    }
+
+    public static GetAcademicHistoryUseCase getGetAcademicHistoryService() {
+        return getAcademicHistoryService;
+    }
+
+    public static void setGetAcademicHistoryService(GetAcademicHistoryUseCase getAcademicHistoryService) {
+        AppContext.getAcademicHistoryService = getAcademicHistoryService;
+    }
+
+    public static GetScheduleUseCase getGetScheduleService() {
+        return getScheduleService;
+    }
+
+    public static void setGetScheduleService(GetScheduleUseCase getScheduleService) {
+        AppContext.getScheduleService = getScheduleService;
+    }
+
+    public static RegisterEnrollmentUseCase getRegisterEnrollmentService() {
+        return registerEnrollmentService;
+    }
+
+    public static void setRegisterEnrollmentService(RegisterEnrollmentUseCase registerEnrollmentService) {
+        AppContext.registerEnrollmentService = registerEnrollmentService;
+    }
+
+    public static RegisterPrerequisiteUseCase getRegisterPrerequisiteService() {
+        return registerPrerequisiteService;
+    }
+
+    public static void setRegisterPrerequisiteService(RegisterPrerequisiteUseCase registerPrerequisiteService) {
+        AppContext.registerPrerequisiteService = registerPrerequisiteService;
     }
 }

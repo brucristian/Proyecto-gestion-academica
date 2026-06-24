@@ -1,5 +1,7 @@
 package org.unischeduler.ui.service;
 
+import org.unischeduler.backend.application.service.enrollment.register.RegisterEnrollmentCommand;
+import org.unischeduler.backend.application.service.enrollment.register.dtos.RegisterEnrollmentResponse;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidateCreditLimitCommand;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidatePrerequisiteCommand;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidateScheduleConflictsCommand;
@@ -7,6 +9,7 @@ import org.unischeduler.backend.application.service.enrollment.validate.dtos.Val
 import org.unischeduler.backend.application.service.enrollment.validate.dtos.ValidatePrerequisiteResponse;
 import org.unischeduler.backend.application.service.enrollment.validate.dtos.ValidateScheduleConflictsResponse;
 import org.unischeduler.backend.domain.port.in.academic_programming.ListAllGroupsUseCase;
+import org.unischeduler.backend.domain.port.in.enrollment.RegisterEnrollmentUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.ValidateCreditLimitUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.ValidatePrerequisiteUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.ValidateScheduleConflictsUseCase;
@@ -21,6 +24,7 @@ public class EnrollmentUiService {
     private final ValidateScheduleConflictsUseCase validateScheduleConflictsUseCase;
     private final ValidatePrerequisiteUseCase validatePrerequisiteUseCase;
     private final ValidateCreditLimitUseCase validateCreditLimitUseCase;
+    private final RegisterEnrollmentUseCase registerEnrollmentUseCase;
 
 
     public EnrollmentUiService() {
@@ -28,6 +32,7 @@ public class EnrollmentUiService {
         this.validateScheduleConflictsUseCase = AppContext.getValidateScheduleConflictsService();
         this.validatePrerequisiteUseCase = AppContext.getValidatePrerequisiteService();
         this.validateCreditLimitUseCase = AppContext.getValidateCreditLimitService();
+        this.registerEnrollmentUseCase = AppContext.getRegisterEnrollmentService();
 
     }
 
@@ -49,5 +54,9 @@ public class EnrollmentUiService {
 
     public ValidateCreditLimitResponse validateCreditLimit(ValidateCreditLimitCommand command) {
         return validateCreditLimitUseCase.execute(command);
+    }
+
+    public RegisterEnrollmentResponse saveEnrollment(RegisterEnrollmentCommand command) {
+        return registerEnrollmentUseCase.execute(command);
     }
 }

@@ -1,18 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.unischeduler.ui.pages.dashboard.AdminDashboardController"
-      spacing="20">
+<ScrollPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fitToWidth="true"
+            hbarPolicy="NEVER">
 
-    <children>
+    <content>
 
-        <Label text="Perfil de Administrador"/>
+        <VBox spacing="24">
 
-        <Label text="Bienvenido a UniScheduler"/>
+            <padding>
+                <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+            </padding>
 
-    </children>
+            <!-- ================= TÍTULO ================= -->
 
-</VBox>
+            <VBox spacing="6">
+                <Label text="Mi Perfil"/>
+                <Label text="Gestiona tu información personal y la seguridad de tu cuenta."/>
+            </VBox>
+
+            <!-- ================= DOS COLUMNAS ================= -->
+
+            <HBox spacing="30">
+
+                <!-- ================= INFORMACIÓN PERSONAL ================= -->
+
+                <VBox spacing="18" prefWidth="520">
+
+                    <padding>
+                        <Insets top="24.0" right="24.0" bottom="24.0" left="24.0"/>
+                    </padding>
+
+                    <Label text="Información Personal"/>
+
+                    <StackPane>
+
+                        <Circle radius="60"/>
+
+                        <ImageView fx:id="profileImage"
+                                   fitWidth="120"
+                                   fitHeight="120"
+                                   preserveRatio="true"/>
+
+                        <Button text="📷"/>
+
+                    </StackPane>
+
+                    <VBox spacing="6">
+                        <Label text="Nombre completo"/>
+                        <TextField fx:id="txtNombre"
+                                   text="María González"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Correo electrónico"/>
+                        <TextField fx:id="txtCorreo"
+                                   text="maria.gonzalez@universidad.edu"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Número de teléfono"/>
+                        <TextField fx:id="txtTelefono"
+                                   text="+51 987 654 321"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Programa académico"/>
+                        <TextField fx:id="txtPrograma"
+                                   text="Ingeniería de Sistemas"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Año de estudio"/>
+                        <TextField fx:id="txtAnio"
+                                   text="3er año"/>
+                    </VBox>
+
+                    <Button fx:id="btnGuardar"
+                            text="Guardar cambios"
+                            maxWidth="1.7976931348623157E308"/>
+
+                </VBox>
+
+                <!-- ================= CONTRASEÑA ================= -->
+
+                <VBox spacing="18" prefWidth="560">
+
+                    <padding>
+                        <Insets top="24.0" right="24.0" bottom="24.0" left="24.0"/>
+                    </padding>
+
+                    <HBox spacing="12">
+
+                        <Label text="🛡"/>
+
+                        <VBox spacing="4">
+                            <Label text="Cambiar Contraseña"/>
+                            <Label text="Usa una contraseña segura para proteger tu cuenta."/>
+                        </VBox>
+
+                    </HBox>
+
+                    <VBox spacing="6">
+                        <Label text="Contraseña actual"/>
+                        <PasswordField fx:id="txtActual"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+
+                        <Label text="Nueva contraseña"/>
+
+                        <PasswordField fx:id="txtNueva"/>
+
+                        <ProgressBar progress="1.0"
+                                     maxWidth="1.7976931348623157E308"/>
+
+                        <Label text="Fortaleza: Fuerte"/>
+
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Confirmar nueva contraseña"/>
+                        <PasswordField fx:id="txtConfirmar"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+
+                        <Label text="Recomendaciones:"/>
+
+                        <Label text="• Usa al menos 8 caracteres"/>
+                        <Label text="• Incluye mayúsculas, minúsculas, números y símbolos"/>
+                        <Label text="• Evita usar información personal"/>
+
+                    </VBox>
+
+                    <Button fx:id="btnActualizarPassword"
+                            text="Actualizar contraseña"
+                            maxWidth="1.7976931348623157E308"/>
+
+                </VBox>
+
+            </HBox>
+
+            <!-- ================= INFORMACIÓN DE LA CUENTA ================= -->
+
+            <VBox spacing="18">
+
+                <padding>
+                    <Insets top="24.0" right="24.0" bottom="24.0" left="24.0"/>
+                </padding>
+
+                <Label text="Información de la cuenta"/>
+
+                <GridPane hgap="20" vgap="16">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+
+                    <Label text="Rol"
+                           GridPane.columnIndex="0"
+                           GridPane.rowIndex="0"/>
+
+                    <Label text="Estudiante"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="0"/>
+
+                    <Separator GridPane.columnSpan="2"
+                               GridPane.rowIndex="1"/>
+
+                    <Label text="Fecha de registro"
+                           GridPane.columnIndex="0"
+                           GridPane.rowIndex="2"/>
+
+                    <Label text="15 de febrero de 2022"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"/>
+
+                </GridPane>
+
+            </VBox>
+
+        </VBox>
+
+    </content>
+
+</ScrollPane>

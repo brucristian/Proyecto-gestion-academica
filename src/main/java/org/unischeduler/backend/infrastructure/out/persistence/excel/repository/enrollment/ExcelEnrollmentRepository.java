@@ -59,10 +59,18 @@ public class ExcelEnrollmentRepository {
         return Optional.empty();
     }
 
+    public List<EnrollmentEntity> findAllWhereStudentId(String studentId) {
+        return store.getEnrollments()
+                .values()
+                .stream()
+                .filter(e -> studentId.equals(e.getStudentId()))
+                .toList();
+    }
+
     // =====================================================
     // 🔢 ID GENERATOR
     // =====================================================
     private String generateId() {
-        return "ENR" + (store.getEnrollments().size() + 1);
+        return String.valueOf(store.getEnrollments().size() + 1);
     }
 }

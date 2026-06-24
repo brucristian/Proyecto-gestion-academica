@@ -116,6 +116,7 @@ public class ExcelDataLoader {
                     table.getCellByPosition(2, i).getStringValue()
             ));
 
+
             map.put(e.getAcademicProgramId(), e);
         }
 
@@ -316,6 +317,7 @@ public class ExcelDataLoader {
             s.setStudentId(table.getCellByPosition(0, i).getStringValue());
             s.setStudentCode(table.getCellByPosition(1, i).getStringValue());
             s.setUserId(table.getCellByPosition(2, i).getStringValue());
+            s.setAcademicProgramId(table.getCellByPosition(3, i).getStringValue());
 
             map.put(s.getStudentId(), s);
         }
