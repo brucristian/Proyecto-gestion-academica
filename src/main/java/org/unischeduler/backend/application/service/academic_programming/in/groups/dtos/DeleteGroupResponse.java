@@ -1,4 +1,4 @@
-package org.unischeduler.backend.application.service.academic_programming.in.dtos;
+package org.unischeduler.backend.application.service.academic_programming.in.groups.dtos;
 
 public class DeleteGroupResponse {
     private final boolean successfully;

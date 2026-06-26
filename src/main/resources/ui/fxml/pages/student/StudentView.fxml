@@ -7,12 +7,13 @@
 <ScrollPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
             fitToWidth="true"
-            styleClass="page-scroll"
-            fx:controller="org.unischeduler.ui.pages.student.StudentController">
+            fx:controller="org.unischeduler.ui.pages.student.StudentController"
+            style="-fx-background: #0d1b2a;">
 
     <content>
 
         <VBox spacing="20"
+              style="-fx-background-color: #0d1b2a;"
               styleClass="page-container">
 
             <padding>
@@ -20,34 +21,32 @@
             </padding>
 
             <!-- HEADER -->
-
             <VBox spacing="5">
 
                 <Label text="Registro de Estudiante"
-                       styleClass="page-title"/>
+                       style="-fx-text-fill: #ffffff; -fx-font-size: 22px; -fx-font-weight: bold;"/>
 
                 <Label text="Complete la información para registrar un nuevo estudiante en el sistema."
-                       styleClass="page-subtitle"/>
+                       style="-fx-text-fill: #94a1b2; -fx-font-size: 12px;"/>
 
             </VBox>
 
             <!-- CONTENIDO -->
-
             <HBox spacing="20">
 
                 <!-- FORMULARIO -->
-
                 <VBox spacing="15"
                       HBox.hgrow="ALWAYS">
 
                     <!-- DATOS PERSONALES -->
-
                     <TitledPane text="Datos Personales"
-                                expanded="true">
+                                expanded="true"
+                                style="-fx-text-fill: #ffffff; -fx-background-color: #152238;">
 
                         <content>
 
-                            <GridPane hgap="15" vgap="12">
+                            <GridPane hgap="15" vgap="12"
+                                      style="-fx-background-color: #152238;">
 
                                 <columnConstraints>
                                     <ColumnConstraints percentWidth="50"/>
@@ -55,50 +54,62 @@
                                 </columnConstraints>
 
                                 <Label text="Nombres *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="0"
                                        GridPane.rowIndex="0"/>
 
                                 <Label text="Apellidos *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="1"
                                        GridPane.rowIndex="0"/>
 
                                 <TextField fx:id="firstNameField"
+                                           style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                            GridPane.columnIndex="0"
                                            GridPane.rowIndex="1"/>
 
                                 <TextField fx:id="lastNameField"
+                                           style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                            GridPane.columnIndex="1"
                                            GridPane.rowIndex="1"/>
 
                                 <Label text="Tipo Documento *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="0"
                                        GridPane.rowIndex="2"/>
 
                                 <Label text="Número Documento *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="1"
                                        GridPane.rowIndex="2"/>
 
                                 <ComboBox fx:id="documentTypeCombo"
+                                          style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                           GridPane.columnIndex="0"
                                           GridPane.rowIndex="3"/>
 
                                 <TextField fx:id="documentNumberField"
+                                           style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                            GridPane.columnIndex="1"
                                            GridPane.rowIndex="3"/>
 
                                 <Label text="Fecha de Nacimiento *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="0"
                                        GridPane.rowIndex="4"/>
 
                                 <Label text="Género *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="1"
                                        GridPane.rowIndex="4"/>
 
                                 <DatePicker fx:id="birthDatePicker"
+                                            style="-fx-background-color: #0d1b2a; -fx-border-color: #415a77;"
                                             GridPane.columnIndex="0"
                                             GridPane.rowIndex="5"/>
 
                                 <ComboBox fx:id="genderCombo"
+                                          style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                           GridPane.columnIndex="1"
                                           GridPane.rowIndex="5"/>
 
@@ -109,13 +120,14 @@
                     </TitledPane>
 
                     <!-- CONTACTO -->
-
                     <TitledPane text="Información de Contacto"
-                                expanded="true">
+                                expanded="true"
+                                style="-fx-background-color: #152238;">
 
                         <content>
 
-                            <GridPane hgap="15" vgap="12">
+                            <GridPane hgap="15" vgap="12"
+                                      style="-fx-background-color: #152238;">
 
                                 <columnConstraints>
                                     <ColumnConstraints percentWidth="50"/>
@@ -123,26 +135,32 @@
                                 </columnConstraints>
 
                                 <Label text="Correo Electrónico *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="0"
                                        GridPane.rowIndex="0"/>
 
                                 <Label text="Teléfono *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="1"
                                        GridPane.rowIndex="0"/>
 
                                 <TextField fx:id="emailField"
+                                           style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                            GridPane.columnIndex="0"
                                            GridPane.rowIndex="1"/>
 
                                 <TextField fx:id="phoneField"
+                                           style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                            GridPane.columnIndex="1"
                                            GridPane.rowIndex="1"/>
 
                                 <Label text="Dirección"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="0"
                                        GridPane.rowIndex="2"/>
 
                                 <TextField fx:id="addressField"
+                                           style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                            GridPane.columnIndex="0"
                                            GridPane.rowIndex="3"
                                            GridPane.columnSpan="2"/>
@@ -154,13 +172,14 @@
                     </TitledPane>
 
                     <!-- ACADÉMICA -->
-
                     <TitledPane text="Información Académica"
-                                expanded="true">
+                                expanded="true"
+                                style="-fx-background-color: #152238;">
 
                         <content>
 
-                            <GridPane hgap="15" vgap="12">
+                            <GridPane hgap="15" vgap="12"
+                                      style="-fx-background-color: #152238;">
 
                                 <columnConstraints>
                                     <ColumnConstraints percentWidth="40"/>
@@ -169,34 +188,42 @@
                                 </columnConstraints>
 
                                 <Label text="Programa Académico *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="0"
                                        GridPane.rowIndex="0"/>
 
                                 <Label text="Semestre Inicial *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="1"
                                        GridPane.rowIndex="0"/>
 
                                 <Label text="Fecha Ingreso *"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="2"
                                        GridPane.rowIndex="0"/>
 
                                 <ComboBox fx:id="programCombo"
+                                          style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                           GridPane.columnIndex="0"
                                           GridPane.rowIndex="1"/>
 
                                 <ComboBox fx:id="semesterCombo"
+                                          style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                           GridPane.columnIndex="1"
                                           GridPane.rowIndex="1"/>
 
                                 <DatePicker fx:id="entryDatePicker"
+                                            style="-fx-background-color: #0d1b2a; -fx-border-color: #415a77;"
                                             GridPane.columnIndex="2"
                                             GridPane.rowIndex="1"/>
 
                                 <Label text="Estado"
+                                       style="-fx-text-fill: #94a1b2;"
                                        GridPane.columnIndex="0"
                                        GridPane.rowIndex="2"/>
 
                                 <ComboBox fx:id="statusCombo"
+                                          style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
                                           GridPane.columnIndex="0"
                                           GridPane.rowIndex="3"/>
 
@@ -207,18 +234,17 @@
                     </TitledPane>
 
                     <!-- BOTONES -->
-
                     <HBox spacing="12">
 
                         <Button text="Cancelar"
                                 fx:id="cancelButton"
                                 onAction="#onCancel"
-                        />
+                                style="-fx-background-color: #415a77; -fx-text-fill: #ffffff;"/>
 
                         <Button text="Limpiar"
                                 fx:id="clearButton"
                                 onAction="#onClearFields"
-                        />
+                                style="-fx-background-color: #415a77; -fx-text-fill: #ffffff;"/>
 
                         <Pane HBox.hgrow="ALWAYS"/>
 
@@ -226,46 +252,46 @@
                                 fx:id="saveButton"
                                 defaultButton="true"
                                 onAction="#onSaveStudent"
-                        />
+                                style="-fx-background-color: #2a9d8f; -fx-text-fill: #ffffff;"/>
 
                     </HBox>
 
                 </VBox>
 
                 <!-- PANEL DERECHO -->
-
                 <VBox spacing="15"
                       prefWidth="320">
 
                     <TitledPane text="Datos Generados Automáticamente"
-                                expanded="true">
+                                expanded="true"
+                                style="-fx-background-color: #152238;">
 
                         <content>
 
                             <VBox spacing="15">
 
                                 <HBox>
-                                    <Label text="Código"/>
+                                    <Label text="Código" style="-fx-text-fill: #94a1b2;"/>
                                     <Pane HBox.hgrow="ALWAYS"/>
-                                    <Label text="Automático"/>
+                                    <Label text="Automático" style="-fx-text-fill: #ffffff;"/>
                                 </HBox>
 
                                 <HBox>
-                                    <Label text="Contraseña"/>
+                                    <Label text="Contraseña" style="-fx-text-fill: #94a1b2;"/>
                                     <Pane HBox.hgrow="ALWAYS"/>
-                                    <Label text="Automático"/>
+                                    <Label text="Automático" style="-fx-text-fill: #ffffff;"/>
                                 </HBox>
 
                                 <HBox>
-                                    <Label text="Fecha Creación"/>
+                                    <Label text="Fecha Creación" style="-fx-text-fill: #94a1b2;"/>
                                     <Pane HBox.hgrow="ALWAYS"/>
-                                    <Label text="Automático"/>
+                                    <Label text="Automático" style="-fx-text-fill: #ffffff;"/>
                                 </HBox>
 
                                 <HBox>
-                                    <Label text="Rol"/>
+                                    <Label text="Rol" style="-fx-text-fill: #94a1b2;"/>
                                     <Pane HBox.hgrow="ALWAYS"/>
-                                    <Label text="STUDENT"/>
+                                    <Label text="STUDENT" style="-fx-text-fill: #ffffff;"/>
                                 </HBox>
 
                             </VBox>
@@ -275,11 +301,13 @@
                     </TitledPane>
 
                     <TitledPane text="Información"
-                                expanded="true">
+                                expanded="true"
+                                style="-fx-background-color: #152238;">
 
                         <content>
 
                             <Label wrapText="true"
+                                   style="-fx-text-fill: #94a1b2;"
                                    text="Al registrar un estudiante, el sistema generará automáticamente el código institucional, contraseña temporal y usuario de acceso."/>
 
                         </content>

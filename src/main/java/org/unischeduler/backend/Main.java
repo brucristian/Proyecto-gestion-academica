@@ -14,14 +14,18 @@ import org.unischeduler.backend.application.service.academic_catalog.in.prerequi
 import org.unischeduler.backend.application.service.academic_catalog.out.academic_period.ListAllAcademicPeriodService;
 import org.unischeduler.backend.application.service.academic_catalog.out.academic_programs.ListAllProgramsService;
 import org.unischeduler.backend.application.service.academic_catalog.out.course.ListAllCoursesServices;
-import org.unischeduler.backend.application.service.academic_programming.in.RegisterGroupService;
-import org.unischeduler.backend.application.service.academic_programming.in.UpdateGroupService;
-import org.unischeduler.backend.application.service.academic_programming.in.DeleteGroupService;
+import org.unischeduler.backend.application.service.academic_programming.in.group_schedules.DeleteGroupSchedulesService;
+import org.unischeduler.backend.application.service.academic_programming.in.group_schedules.UpdateGroupScheduleService;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.RegisterGroupService;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.UpdateGroupService;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.DeleteGroupService;
 import org.unischeduler.backend.application.service.academic_programming.out.GetScheduleService;
 import org.unischeduler.backend.application.service.academic_programming.out.ListAllGroupsServices;
-import org.unischeduler.backend.application.service.auth.login.RegisterUserCommand;
+import org.unischeduler.backend.application.service.academic_programming.out.ListAllTeachersService;
+import org.unischeduler.backend.application.service.auth.ChangePasswordCommand;
+import org.unischeduler.backend.application.service.auth.ChangePasswordResponse;
+import org.unischeduler.backend.application.service.auth.ChangePasswordService;
 import org.unischeduler.backend.application.service.auth.login.RegisterUserService;
-import org.unischeduler.backend.application.service.auth.login.dtos.RegisterUserResponse;
 import org.unischeduler.backend.application.service.enrollment.ValidateCreditLimitService;
 import org.unischeduler.backend.application.service.enrollment.register.RegisterEnrollmentService;
 import org.unischeduler.backend.application.service.enrollment.validate.ValidatePrerequisiteService;
@@ -39,14 +43,14 @@ import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.Del
 import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.FindAllPrerequisitesUseCase;
 import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.RegisterPrerequisiteUseCase;
 import org.unischeduler.backend.domain.port.in.academic_history.GetAcademicHistoryUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.RegisterGroupUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.UpdateGroupUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.ListAllGroupsUseCase;
+import org.unischeduler.backend.domain.port.in.academic_programming.*;
 import org.unischeduler.backend.application.service.auth.login.LoginUserService;
 import org.unischeduler.backend.application.service.enrollment.register.RegisterStudentService;
 
+import org.unischeduler.backend.domain.port.in.academic_programming.group_schedule.DeleteGroupSchedulesUseCase;
+import org.unischeduler.backend.domain.port.in.academic_programming.group_schedule.UpdateGroupScheduleUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.schedule.GetScheduleUseCase;
+import org.unischeduler.backend.domain.port.in.auth.ChangePasswordUseCase;
 import org.unischeduler.backend.domain.port.in.auth.LoginUserUseCase;
 import org.unischeduler.backend.domain.port.in.auth.RegisterUserUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.*;
@@ -90,8 +94,6 @@ import org.unischeduler.backend.infrastructure.out.security.PasswordGeneratorAda
 import org.unischeduler.backend.infrastructure.out.security.StudentCodeGeneratorAdapter;
 import org.unischeduler.ui.app.AppContext;
 import org.unischeduler.ui.app.MainApplication;
-
-import java.time.LocalDate;
 
 public class Main {
 
@@ -181,19 +183,25 @@ public class Main {
     );
     AppContext.setListAllGroupsService(listAllGroupsService);
 
-    RegisterGroupUseCase registerGroupService = new RegisterGroupService(
-            groupRepository,
-            courseRepository,
-            teacherRepository
-    );
-    AppContext.setRegisterGroupService(registerGroupService);
+    DeleteGroupSchedulesUseCase deleteGroupSchedulesService = new DeleteGroupSchedulesService(groupScheduleRepository);
+
+    UpdateGroupScheduleUseCase updateGroupScheduleService = new UpdateGroupScheduleService(groupScheduleRepository);
 
     UpdateGroupUseCase updateGroupService = new UpdateGroupService(
             groupRepository,
             courseRepository,
-            teacherRepository
+            teacherRepository,
+            updateGroupScheduleService
     );
     AppContext.setUpdateGroupService(updateGroupService);
+
+    RegisterGroupUseCase registerGroupService = new RegisterGroupService(
+            groupRepository,
+            courseRepository,
+            teacherRepository,
+            updateGroupService
+    );
+    AppContext.setRegisterGroupService(registerGroupService);
 
     DeleteGroupUseCase deleteGroupService = new DeleteGroupService(groupRepository);
     AppContext.setDeleteGroupService(deleteGroupService);
@@ -248,6 +256,12 @@ public class Main {
 
     GetScheduleUseCase getScheduleService = new GetScheduleService(enrollmentRepository, groupScheduleRepository);
     AppContext.setGetScheduleService(getScheduleService);
+
+    ListAllTeachersUseCase listAllTeachersService = new ListAllTeachersService(teacherRepository);
+    AppContext.setListAllTeachersService(listAllTeachersService);
+
+    ChangePasswordUseCase changePasswordService = new ChangePasswordService(userRepository, passwordEncoderPort);
+    AppContext.setChangePasswordService(changePasswordService);
 
   }
 

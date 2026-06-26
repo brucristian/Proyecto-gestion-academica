@@ -4,16 +4,24 @@
 <?import javafx.scene.layout.HBox?>
 
 <HBox prefHeight="50.0" spacing="20.0"
-      style="-fx-background-color: -fx-bg-dark-secondary; -fx-padding: 0 20; -fx-border-color: transparent transparent -fx-bg-dark-tertiary transparent; -fx-alignment: CENTER_LEFT;"
+      style="-fx-background-color: #152238; -fx-padding: 0 20; -fx-border-color: transparent transparent #415a77 transparent; -fx-border-width: 0 0 1 0; -fx-alignment: CENTER_LEFT;"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.unischeduler.ui.components.navbar.NavbarController">
+
     <children>
-        <Label fx:id="lblNavTitle" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: white;" text="UniSchedule" />
+        <Label fx:id="lblNavTitle"
+               style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: white;"
+               text="UniSchedule" />
 
         <HBox alignment="CENTER_RIGHT" spacing="15.0" HBox.hgrow="ALWAYS">
             <children>
-                <Label fx:id="lblUserCode" style="-fx-text-fill: -fx-text-muted; -fx-font-size: 13px;" text="👤 20211234" />
-                <Label fx:id="lblUserRole" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 13px;" text="Estudiante" />
+                <Label fx:id="lblUserCode"
+                       style="-fx-text-fill: #94a1b2; -fx-font-size: 13px;"
+                       text="👤 20211234" />
+
+                <Label fx:id="lblUserRole"
+                       style="-fx-font-weight: bold; -fx-text-fill: #2a9d8f; -fx-font-size: 13px; -fx-background-color: #0d1b2a; -fx-padding: 3 8 3 8; -fx-background-radius: 4;"
+                       text="Estudiante" />
             </children>
         </HBox>
     </children>

@@ -1,35 +1,25 @@
 /* ==========================================
-   VARIABLES Y COLORES GLOBALES
+   RAÍZ Y VARIABLES GLOBALES
    ========================================== */
 .root {
+    /* Define tus colores aquí para que sean accesibles en todo el proyecto */
     -fx-bg-dark-primary: #0d1b2a;
-    -fx-bg-dark-secondary: #1b263b;
+    -fx-bg-dark-secondary: #152238;
     -fx-bg-dark-tertiary: #415a77;
-    -fx-accent-blue: #0077b6;
+
+    -fx-accent-blue: #415a77;
     -fx-accent-green: #2a9d8f;
-    -fx-accent-red: #e63946;
-    -fx-text-main: #f8f9fa;
-    -fx-text-muted: #e0e1dd;
+    -fx-accent-red: #e76f51;
 
-    -fx-background-color: -fx-bg-dark-primary;
-    -fx-font-family: "Segoe UI", "Arial", sans-serif;
-}
+    -fx-text-main: #ffffff;
+    -fx-text-muted: #94a1b2;
 
-.label {
-    -fx-text-fill: -fx-text-main;
-}
-.label-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: -fx-text-main;
-}
-.label-subtitle {
-    -fx-font-size: 14px;
-    -fx-text-fill: -fx-text-muted;
+    /* Configuración de fuente global */
+    -fx-font-family: "Segoe UI", sans-serif;
 }
 
 /* ==========================================
-   CAMPOS DE TEXTO (INPUTS)
+   INPUTS (TextField, PasswordField, ComboBox)
    ========================================== */
 .text-field, .password-field, .combo-box {
     -fx-background-color: -fx-bg-dark-secondary;
@@ -40,8 +30,10 @@
     -fx-background-radius: 5px;
     -fx-padding: 8px;
 }
+
 .text-field:focused, .password-field:focused, .combo-box:focused {
     -fx-border-color: -fx-accent-blue;
+    -fx-focus-color: transparent; /* Elimina el borde de foco por defecto de JavaFX */
 }
 
 /* ==========================================
@@ -55,24 +47,15 @@
     -fx-border-radius: 5px;
     -fx-cursor: hand;
 }
-.btn-primary {
-    -fx-background-color: -fx-accent-blue;
-}
-.btn-primary:hover {
-    -fx-background-color: #0096c7;
-}
-.btn-success {
-    -fx-background-color: -fx-accent-green;
-}
-.btn-success:hover {
-    -fx-background-color: #35b0a2;
-}
-.btn-danger {
-    -fx-background-color: -fx-accent-red;
-}
-.btn-danger:hover {
-    -fx-background-color: #f05461;
-}
+
+.btn-primary { -fx-background-color: -fx-accent-blue; }
+.btn-primary:hover { -fx-background-color: #0096c7; }
+
+.btn-success { -fx-background-color: -fx-accent-green; }
+.btn-success:hover { -fx-background-color: #35b0a2; }
+
+.btn-danger { -fx-background-color: -fx-accent-red; }
+.btn-danger:hover { -fx-background-color: #f05461; }
 
 /* ==========================================
    TABLAS (TableView)
@@ -83,58 +66,57 @@
     -fx-border-radius: 8px;
     -fx-border-color: -fx-bg-dark-tertiary;
 }
+
 .table-view .column-header-background {
     -fx-background-color: -fx-bg-dark-tertiary;
+    -fx-background-radius: 8px 8px 0 0;
 }
+
 .table-view .column-header {
     -fx-background-color: transparent;
     -fx-size: 35px;
 }
+
 .table-view .column-header .label {
     -fx-text-fill: -fx-text-main;
     -fx-font-weight: bold;
 }
+
 .table-row-cell {
     -fx-background-color: -fx-bg-dark-secondary;
     -fx-border-color: #2b3a4a;
     -fx-border-width: 0 0 1 0;
 }
+
 .table-row-cell:selected {
-    -fx-background-color: -fx-accent-blue;
-}
-.table-cell:selected {
     -fx-background-color: -fx-accent-blue;
 }
 
 /* ==========================================
-   SIDEBAR (Menú Lateral Común)
+   SIDEBAR
    ========================================== */
 .sidebar {
     -fx-background-color: -fx-bg-dark-secondary;
     -fx-padding: 15px;
-    -fx-spacing: 10px;
 }
+
 .sidebar-button {
     -fx-background-color: transparent;
     -fx-text-fill: -fx-text-muted;
     -fx-alignment: BASELINE_LEFT;
     -fx-font-size: 13px;
     -fx-padding: 10px 15px;
-    -fx-max-width: Infinity;
 }
+
 .sidebar-button:hover {
     -fx-background-color: #2c3e50;
     -fx-text-fill: white;
 }
 
+/* ==========================================
+   ICONOS Y LOGOS
+   ========================================== */
 .icon-login {
     -fx-shape: "M12 2L1 7l11 5 9-4.09V14a1 1 0 002 0v-5.22L23 7z M4.34 10.46L12 14l7.66-3.54V16a8 8 0 01-15.32 0z";
-}
-
-.login-logo-large {
-    -fx-min-width: 65px;
-    -fx-max-width: 65px;
-    -fx-min-height: 65px;
-    -fx-max-height: 65px;
     -fx-background-color: white;
 }

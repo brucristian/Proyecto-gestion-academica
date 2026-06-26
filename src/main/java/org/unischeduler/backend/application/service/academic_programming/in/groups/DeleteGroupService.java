@@ -1,6 +1,6 @@
-package org.unischeduler.backend.application.service.academic_programming.in;
+package org.unischeduler.backend.application.service.academic_programming.in.groups;
 
-import org.unischeduler.backend.application.service.academic_programming.in.dtos.DeleteGroupResponse;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.dtos.DeleteGroupResponse;
 import org.unischeduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
 import org.unischeduler.backend.domain.port.out.academic_programming.GroupRepository;
 

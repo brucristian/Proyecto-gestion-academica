@@ -35,7 +35,7 @@ public class StudentSidebarController {
     private void goToProfile(ActionEvent event) {
 
         SceneManager.loadPage(
-                "/ui/fxml/pages/profile/StudentProfileView.fxml"
+                "/ui/fxml/pages/profile/AdminProfileView.fxml"
         );
     }
 

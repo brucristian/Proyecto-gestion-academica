@@ -2,6 +2,7 @@ package org.unischeduler.backend.infrastructure.out.persistence.excel.repository
 
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
+import org.unischeduler.backend.domain.model.academic_programming.entity.GroupSchedule;
 import org.unischeduler.backend.infrastructure.out.entity.academic_programming.GroupScheduleEntity;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 
@@ -22,6 +23,20 @@ public class ExcelGroupScheduleRepository {
 
     public ExcelGroupScheduleRepository(ExcelDataStore store) {
         this.store = store;
+    }
+
+    public GroupScheduleEntity save(GroupScheduleEntity entity) {
+        String id = generateId();
+        entity.setGroupScheduleId(id);
+
+        store.getGroupSchedules().put(id, entity);
+        return entity;
+    }
+
+    public void deleteAllWhereGroupId(String groupId) {
+        store.getGroupSchedules()
+                .entrySet()
+                .removeIf(entry -> groupId.equals(entry.getValue().getGroupId()));
     }
 
     // =====================================================
@@ -57,5 +72,12 @@ public class ExcelGroupScheduleRepository {
         return new ArrayList<>(
                 store.getGroupSchedules().values()
         );
+    }
+
+    // =====================================================
+    // ID GENERATOR
+    // =====================================================
+    private String generateId() {
+        return String.valueOf(store.getGroupSchedules().size() + 1);
     }
 }

@@ -1,37 +1,37 @@
-/* Contenedor de la barra de progreso (Stepper) */
-.stepper-container {
-    -fx-background-color: -fx-bg-dark-secondary;
-    -fx-padding: 15px;
-    -fx-background-radius: 8px;
-    -fx-border-color: -fx-bg-dark-tertiary;
-    -fx-border-radius: 8px;
-}
+/* ==========================================
+   ENROLLMENT: ESTILO SIN TOCAR FXML
+   ========================================= */
 
-/* Bolitas y texto de los pasos */
-.step-active {
-    -fx-background-color: -fx-accent-green;
-    -fx-text-fill: white;
-    -fx-background-radius: 15px;
-    -fx-padding: 5px 12px;
-    -fx-font-weight: bold;
-}
-
-.step-inactive {
-    -fx-background-color: -fx-bg-dark-tertiary;
+/* Estilo para las etiquetas del Stepper (buscamos los Labels dentro del HBox) */
+.border-pane > .center > .v-box > .h-box:first-child > .label {
     -fx-text-fill: -fx-text-muted;
-    -fx-background-radius: 15px;
-    -fx-padding: 5px 12px;
+    -fx-font-size: 14px;
+    -fx-padding: 5 15;
 }
 
-/* Caja de advertencias (Validaciones de cruce de horario) */
-.warning-box {
-    -fx-background-color: rgba(230, 57, 70, 0.1);
+/* El paso activo (asumiendo que le das una clase en código o es el primero) */
+.step-active {
+    -fx-text-fill: -fx-accent-green;
+    -fx-font-weight: bold;
+    -fx-border-color: -fx-accent-green;
+    -fx-border-width: 0 0 2 0;
+}
+
+/* Panel de advertencias (ListView con borde) */
+.list-view {
+    -fx-background-color: -fx-bg-dark-secondary;
     -fx-border-color: -fx-accent-red;
     -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-padding: 10px;
 }
-.warning-text {
-    -fx-text-fill: #ff6b6b;
-    -fx-font-size: 12px;
+
+/* Ajuste del botón de búsqueda para que se vea integrado */
+.button:contains("🔍") {
+    -fx-background-color: -fx-bg-dark-tertiary;
+    -fx-text-fill: white;
+}
+
+/* Contenedor de Créditos */
+.h-box .label:contains("Total Créditos:") {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
 }

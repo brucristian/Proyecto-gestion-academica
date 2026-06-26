@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.layout.RowConstraints?>
 <VBox spacing="15.0"
-      style="-fx-background-color: -fx-bg-dark-primary;"
-      stylesheets="@/css/admin.css"
+      style="-fx-background-color: #0d1b2a;"
       VBox.vgrow="ALWAYS"
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
@@ -29,106 +15,209 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
+    <!-- HEADER -->
     <VBox spacing="5.0">
-        <children>
-            <Label style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: white;" text="📖 Gestión de Catálogo Académico" />
-            <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 13px;" text="Administración de cursos, asignaturas y prerrequisitos del plan de estudios" />
-        </children>
+
+        <Label text="📖 Gestión de Catálogo Académico"
+               style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #ffffff;" />
+
+        <Label text="Administración de cursos, asignaturas y prerrequisitos del plan de estudios"
+               style="-fx-text-fill: #94a1b2; -fx-font-size: 13px;" />
+
     </VBox>
 
-    <Separator style="-fx-opacity: 0.15;" />
+    <Separator style="-fx-opacity: 0.2; -fx-background-color: #415a77;" />
 
-    <SplitPane dividerPositions="0.48" style="-fx-background-color: transparent; -fx-box-border: transparent;" VBox.vgrow="ALWAYS">
+    <!-- SPLIT -->
+    <SplitPane dividerPositions="0.48"
+               style="-fx-background-color: #0d1b2a; -fx-box-border: transparent;"
+               VBox.vgrow="ALWAYS">
+
         <items>
 
-            <AnchorPane style="-fx-background-color: -fx-bg-dark-primary; -fx-padding: 0 10 0 0;">
+            <!-- LEFT PANEL -->
+            <AnchorPane style="-fx-background-color: #152238; -fx-padding: 10;">
                 <children>
-                    <VBox spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <children>
-                            <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px;" text="Lista de Asignaturas" />
 
-                            <TextField fx:id="searchField" promptText="🔍 Buscar por código o nombre..." style="-fx-background-color: -fx-bg-dark-secondary; -fx-text-fill: white;" />
+                    <VBox spacing="12.0"
+                          AnchorPane.topAnchor="0"
+                          AnchorPane.bottomAnchor="0"
+                          AnchorPane.leftAnchor="0"
+                          AnchorPane.rightAnchor="0">
 
-                            <TableView fx:id="coursesTable" VBox.vgrow="ALWAYS">
-                                <columns>
-                                    <TableColumn fx:id="codeColumn" prefWidth="110.0" text="Código" />
-                                    <TableColumn fx:id="nameColumn" prefWidth="230.0" text="Asignatura" />
-                                    <TableColumn fx:id="creditsColumn" prefWidth="80.0" style="-fx-alignment: CENTER;" text="Créditos" />
-                                </columns>
-                                <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                </columnResizePolicy>
-                            </TableView>
+                        <Label text="Lista de Asignaturas"
+                               style="-fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-font-size: 14px;" />
 
-                            <HBox spacing="10.0">
-                                <children>
-                                    <Button fx:id="newCourseButton" mnemonicParsing="false" onAction="#onNewCourse" style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="+ Nuevo" />
-                                    <Button fx:id="saveCourseButton" mnemonicParsing="false" onAction="#onSaveCourse" style="-fx-background-color: #4F46E5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text=" Guardar" />
-                                    <Button fx:id="deleteCourseButton" mnemonicParsing="false" onAction="#onDeleteCourse" style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-cursor: hand;" text=" Eliminar" />
-                                </children>
-                            </HBox>
-                        </children>
+                        <TextField fx:id="searchField"
+                                   promptText="🔍 Buscar por código o nombre..."
+                                   style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;" />
+
+                        <TableView fx:id="coursesTable"
+                                   VBox.vgrow="ALWAYS"
+                                   style="-fx-background-color: #0d1b2a; -fx-table-cell-border-color: #415a77;">
+
+                            <columns>
+
+                                <TableColumn fx:id="codeColumn"
+                                             prefWidth="110.0"
+                                             text="Código" />
+
+                                <TableColumn fx:id="nameColumn"
+                                             prefWidth="230.0"
+                                             text="Asignatura" />
+
+                                <TableColumn fx:id="creditsColumn"
+                                             prefWidth="80.0"
+                                             text="Créditos"
+                                             style="-fx-alignment: CENTER;" />
+
+                            </columns>
+
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+
+                        </TableView>
+
+                        <HBox spacing="10.0">
+
+                            <Button fx:id="newCourseButton"
+                                    text="+ Nuevo"
+                                    onAction="#onNewCourse"
+                                    style="-fx-background-color: #2a9d8f; -fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+
+                            <Button fx:id="saveCourseButton"
+                                    text="Guardar"
+                                    onAction="#onSaveCourse"
+                                    style="-fx-background-color: #415a77; -fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+
+                            <Button fx:id="deleteCourseButton"
+                                    text="Eliminar"
+                                    onAction="#onDeleteCourse"
+                                    style="-fx-background-color: #e76f51; -fx-text-fill: #ffffff;" />
+
+                        </HBox>
+
                     </VBox>
+
                 </children>
             </AnchorPane>
 
-            <AnchorPane style="-fx-background-color: -fx-bg-dark-primary; -fx-padding: 0 0 0 10;">
+            <!-- RIGHT PANEL -->
+            <AnchorPane style="-fx-background-color: #152238; -fx-padding: 10;">
                 <children>
-                    <VBox spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <children>
-                            <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px;" text="Detalle de Asignatura" />
 
-                            <GridPane hgap="12.0" vgap="12.0">
-                                <columnConstraints>
-                                    <ColumnConstraints minWidth="100.0" prefWidth="110.0" />
-                                    <ColumnConstraints hgrow="ALWAYS" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                    <RowConstraints />
-                                    <RowConstraints />
-                                    <RowConstraints />
-                                    <RowConstraints />
-                                </rowConstraints>
-                                <children>
-                                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                    <TextField fx:id="codeField" style="-fx-background-color: -fx-bg-dark-secondary; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <VBox spacing="15.0"
+                          AnchorPane.topAnchor="0"
+                          AnchorPane.bottomAnchor="0"
+                          AnchorPane.leftAnchor="0"
+                          AnchorPane.rightAnchor="0">
 
-                                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                    <TextField fx:id="nameField" style="-fx-background-color: -fx-bg-dark-secondary; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Detalle de Asignatura"
+                               style="-fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-font-size: 14px;" />
 
-                                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Créditos:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                                    <ComboBox fx:id="creditsComboBox" maxWidth="Infinity" style="-fx-background-color: -fx-bg-dark-secondary;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <!-- FORM -->
+                        <GridPane hgap="12.0" vgap="12.0">
 
-                                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Descripción:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                                    <TextArea fx:id="descriptionArea" prefRowCount="4" style="-fx-control-inner-background: -fx-bg-dark-secondary; -fx-text-fill: white;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                </children>
-                            </GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="100.0" prefWidth="110.0" />
+                                <ColumnConstraints hgrow="ALWAYS" />
+                            </columnConstraints>
 
-                            <Separator style="-fx-opacity: 0.15;" />
+                            <Label text="Código:"
+                                   style="-fx-text-fill: #94a1b2; -fx-font-weight: bold;"
+                                   GridPane.columnIndex="0"
+                                   GridPane.rowIndex="0" />
 
-                            <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px;" text="Prerrequisitos Requeridos" />
+                            <TextField fx:id="codeField"
+                                       style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
+                                       GridPane.columnIndex="1"
+                                       GridPane.rowIndex="0" />
 
-                            <TableView fx:id="prerequisitesTable" prefHeight="200.0" VBox.vgrow="ALWAYS">
-                                <columns>
-                                    <TableColumn fx:id="prerequisiteCodeColumn" prefWidth="120.0" text="Código" />
-                                    <TableColumn fx:id="prerequisiteNameColumn" prefWidth="280.0" text="Asignatura" />
-                                </columns>
-                                <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                </columnResizePolicy>
-                            </TableView>
+                            <Label text="Nombre:"
+                                   style="-fx-text-fill: #94a1b2; -fx-font-weight: bold;"
+                                   GridPane.columnIndex="0"
+                                   GridPane.rowIndex="1" />
 
-                            <HBox spacing="10.0">
-                                <children>
-                                    <Button fx:id="addPrerequisiteButton" mnemonicParsing="false" onAction="#onAddPrerequisite" styleClass="sidebar-btn" style="-fx-cursor: hand;" text="➕ Agregar Prerrequisito" />
-                                    <Button fx:id="removePrerequisiteButton" mnemonicParsing="false" onAction="#onRemovePrerequisite" style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-cursor: hand;" text="🗑 Quitar" />
-                                </children>
-                            </HBox>
-                        </children>
+                            <TextField fx:id="nameField"
+                                       style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
+                                       GridPane.columnIndex="1"
+                                       GridPane.rowIndex="1" />
+
+                            <Label text="Créditos:"
+                                   style="-fx-text-fill: #94a1b2; -fx-font-weight: bold;"
+                                   GridPane.columnIndex="0"
+                                   GridPane.rowIndex="2" />
+
+                            <ComboBox fx:id="creditsComboBox"
+                                      style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
+                                      GridPane.columnIndex="1"
+                                      GridPane.rowIndex="2" />
+
+                            <Label text="Descripción:"
+                                   style="-fx-text-fill: #94a1b2; -fx-font-weight: bold;"
+                                   GridPane.columnIndex="0"
+                                   GridPane.rowIndex="3" />
+
+                            <TextArea fx:id="descriptionArea"
+                                      prefRowCount="4"
+                                      wrapText="true"
+                                      style="-fx-control-inner-background: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;"
+                                      GridPane.columnIndex="1"
+                                      GridPane.rowIndex="3" />
+
+                        </GridPane>
+
+                        <Separator style="-fx-opacity: 0.2; -fx-background-color: #415a77;" />
+
+                        <!-- PREREQUISITES -->
+                        <Label text="Prerrequisitos Requeridos"
+                               style="-fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-font-size: 14px;" />
+
+                        <TableView fx:id="prerequisitesTable"
+                                   prefHeight="200.0"
+                                   VBox.vgrow="ALWAYS"
+                                   style="-fx-background-color: #0d1b2a;">
+
+                            <columns>
+
+                                <TableColumn fx:id="prerequisiteCodeColumn"
+                                             prefWidth="120.0"
+                                             text="Código" />
+
+                                <TableColumn fx:id="prerequisiteNameColumn"
+                                             prefWidth="280.0"
+                                             text="Asignatura" />
+
+                            </columns>
+
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+
+                        </TableView>
+
+                        <HBox spacing="10.0">
+
+                            <Button fx:id="addPrerequisiteButton"
+                                    text="➕ Agregar Prerrequisito"
+                                    onAction="#onAddPrerequisite"
+                                    style="-fx-background-color: #2a9d8f; -fx-text-fill: #ffffff; -fx-cursor: hand;" />
+
+                            <Button fx:id="removePrerequisiteButton"
+                                    text="🗑 Quitar"
+                                    onAction="#onRemovePrerequisite"
+                                    style="-fx-background-color: #e76f51; -fx-text-fill: #ffffff; -fx-cursor: hand;" />
+
+                        </HBox>
+
                     </VBox>
+
                 </children>
             </AnchorPane>
 
         </items>
+
     </SplitPane>
+
 </VBox>

@@ -1,4 +1,4 @@
-package org.unischeduler.backend.application.service.academic_programming.in.dtos;
+package org.unischeduler.backend.application.service.academic_programming.in.groups.dtos;
 
 import org.unischeduler.backend.application.service.academic_programming.out.dtos.GroupInfo;
 

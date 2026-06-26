@@ -6,13 +6,18 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.unischeduler.backend.application.service.academic_programming.in.RegisterGroupCommand;
-import org.unischeduler.backend.application.service.academic_programming.in.UpdateGroupCommand;
+import org.unischeduler.backend.application.service.academic_programming.in.group_schedules.RegisterGroupScheduleCommand;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.RegisterGroupCommand;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.UpdateGroupCommand;
 import org.unischeduler.ui.service.GroupUiService;
 import org.unischeduler.ui.viewmodel.group.CourseSelectionViewModel;
 import org.unischeduler.ui.viewmodel.group.GroupScheduleViewModel;
 import org.unischeduler.ui.viewmodel.group.GroupViewModel;
 import org.unischeduler.ui.viewmodel.group.TeacherViewModel;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupController {
 
@@ -346,12 +351,12 @@ public class GroupController {
                                         .getId(),
 
                                 capacitySpinner
-                                        .getValue()
+                                        .getValue(),
+
+                                getScheduleCommands(null)
                         );
 
-                groupUiService.registerGroup(
-                        command
-                );
+                groupUiService.registerGroup(command);
 
             } else {
 
@@ -373,21 +378,19 @@ public class GroupController {
                                         .getId(),
 
                                 capacitySpinner
-                                        .getValue()
+                                        .getValue(),
+
+                                getScheduleCommands(selectedGroup.getId())
                         );
 
-                groupUiService.updateGroup(
-                        command
-                );
+                groupUiService.updateGroup(command);
             }
 
             refreshGroups();
 
         } catch (Exception e) {
 
-            showError(
-                    e.getMessage()
-            );
+            showError(e.getMessage());
         }
     }
 
@@ -435,8 +438,10 @@ public class GroupController {
     @FXML
     private void onAddSchedule() {
 
-        showWarning(
-                "Pendiente implementar."
+        ScheduleDialog dialog = new ScheduleDialog();
+
+        dialog.showAndWait().ifPresent(schedule ->
+                scheduleTable.getItems().add(schedule)
         );
     }
 
@@ -454,6 +459,8 @@ public class GroupController {
                     .getItems()
                     .remove(selected);
         }
+
+        onSaveGroup();
     }
 
     // ==========================
@@ -547,5 +554,25 @@ public class GroupController {
         alert.setContentText(message);
 
         alert.showAndWait();
+    }
+
+    private List<RegisterGroupScheduleCommand> getScheduleCommands(String groupId) {
+
+        List<RegisterGroupScheduleCommand> commands = new ArrayList<>();
+
+        for (GroupScheduleViewModel schedule : scheduleTable.getItems()) {
+
+            commands.add(
+                    new RegisterGroupScheduleCommand(
+                            groupId,
+                            schedule.getDay(),
+                            LocalTime.parse(schedule.getStartTime()),
+                            LocalTime.parse(schedule.getEndTime()),
+                            schedule.getRoom()
+                    )
+            );
+        }
+
+        return commands;
     }
 }

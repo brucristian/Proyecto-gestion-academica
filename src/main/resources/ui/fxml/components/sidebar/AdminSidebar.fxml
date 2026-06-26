@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefWidth="220.0" styleClass="sidebar" stylesheets="@/css/admin.css"
-      spacing="5.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+<VBox prefWidth="220.0"
+      spacing="5.0"
+      style="-fx-background-color: #152238; -fx-padding: 15;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.unischeduler.ui.components.sidebar.AdminSidebarController">
+
     <children>
-        <Button fx:id="btnHome" maxWidth="Infinity" mnemonicParsing="false" onAction="#goToDashboard" styleClass="sidebar-btn-active" text="🏠 Inicio Admin" />
-        <Button fx:id="btnPeriods" maxWidth="Infinity" mnemonicParsing="false" onAction="#goToAcademicPeriods" styleClass="sidebar-btn" text="⏳ Periodos Académicos" />
-        <Button fx:id="btnCourses" maxWidth="Infinity" mnemonicParsing="false" onAction="#goToCourses" styleClass="sidebar-btn" text="📖 Catálogo Académico" />
-        <Button fx:id="btnGroups" maxWidth="Infinity" mnemonicParsing="false" onAction="#goToGroups" styleClass="sidebar-btn" text="👥 Grupos y Horarios" />
-        <Button fx:id="btnStudents" maxWidth="Infinity" mnemonicParsing="false" onAction="#goToStudents" styleClass="sidebar-btn" text="🗂 Historial Académico" />
-        <Button fx:id="btnProfile" maxWidth="Infinity" mnemonicParsing="false" onAction="#goToProfile" styleClass="sidebar-btn" text="👤 Perfil" />
+        <Button fx:id="btnHome" maxWidth="Infinity" onAction="#goToDashboard" text="🏠 Inicio Admin"
+                style="-fx-background-color: #2a9d8f; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15; -fx-cursor: hand;"/>
+
+        <Button fx:id="btnPeriods" maxWidth="Infinity" onAction="#goToAcademicPeriods" text="⏳ Periodos Académicos"
+                style="-fx-background-color: transparent; -fx-text-fill: #e0e1dd; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15; -fx-cursor: hand;"/>
+
+        <Button fx:id="btnCourses" maxWidth="Infinity" onAction="#goToCourses" text="📖 Catálogo Académico"
+                style="-fx-background-color: transparent; -fx-text-fill: #e0e1dd; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15; -fx-cursor: hand;"/>
+
+        <Button fx:id="btnGroups" maxWidth="Infinity" onAction="#goToGroups" text="👥 Grupos y Horarios"
+                style="-fx-background-color: transparent; -fx-text-fill: #e0e1dd; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15; -fx-cursor: hand;"/>
+
+        <Button fx:id="btnStudents" maxWidth="Infinity" onAction="#goToStudents" text="🗂 Historial Académico"
+                style="-fx-background-color: transparent; -fx-text-fill: #e0e1dd; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15; -fx-cursor: hand;"/>
+
+        <Button fx:id="btnProfile" maxWidth="Infinity" onAction="#goToProfile" text="👤 Perfil"
+                style="-fx-background-color: transparent; -fx-text-fill: #e0e1dd; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15; -fx-cursor: hand;"/>
 
         <VBox alignment="BOTTOM_LEFT" VBox.vgrow="ALWAYS">
             <children>
-                <Button fx:id="btnLogout" maxWidth="Infinity" mnemonicParsing="false" onAction="#goToLogin">
-                    <styleClass>
-                        <String fx:value="sidebar-btn" />
-                    </styleClass>
-                    <text>🚪 Cerrar Sesión</text>
-                </Button>
+                <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#goToLogin" text="🚪 Cerrar Sesión"
+                        style="-fx-background-color: transparent; -fx-text-fill: #e76f51; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15; -fx-cursor: hand;"/>
             </children>
         </VBox>
     </children>

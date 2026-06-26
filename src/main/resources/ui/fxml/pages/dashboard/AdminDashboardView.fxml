@@ -1,108 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 
-<BorderPane prefHeight="700.0" prefWidth="1100.0" stylesheets="@/css/global.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+
+    <stylesheets>
+        <URL value="@/css/dasboard.css" />
+    </stylesheets>
 
     <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #0b132b; -fx-padding: 0 20; -fx-border-color: transparent transparent -fx-bg-dark-tertiary transparent;">
+        <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #0b132b; -fx-padding: 0 20; -fx-border-color: transparent transparent #415a77 transparent;">
             <children>
-                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white;" text="☰" />
-                <Label style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: -fx-accent-blue;" text="Admin Workspace" HBox.hgrow="ALWAYS" />
+                <Button text="☰" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-cursor: hand;" />
+                <Label text="Admin Workspace" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #415a77;" />
                 <HBox alignment="CENTER_RIGHT" spacing="10.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label style="-fx-text-fill: -fx-text-muted;" text=" Admin" />
-                        <Label style="-fx-font-weight: bold;" text="Sistema" />
+                        <Label text=" Admin" style="-fx-text-fill: #94a1b2;" />
+                        <Label text="Sistema" style="-fx-font-weight: bold; -fx-text-fill: white;" />
                     </children>
                 </HBox>
             </children>
         </HBox>
     </top>
 
-
-
     <center>
-        <VBox spacing="25.0" style="-fx-background-color: -fx-bg-dark-primary; -fx-padding: 30;" BorderPane.alignment="CENTER">
+        <VBox spacing="25.0" style="-fx-background-color: #0d1b2a; -fx-padding: 30;" BorderPane.alignment="CENTER">
             <children>
-
                 <VBox spacing="5.0">
                     <children>
-                        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Resumen del Sistema" />
-                        <Label style="-fx-text-fill: -fx-text-muted;" text="Vista general del estado actual de la plataforma." />
+                        <Label text="Resumen del Sistema" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Vista general del estado actual de la plataforma." style="-fx-text-fill: #94a1b2;" />
                     </children>
                 </VBox>
 
-                <HBox spacing="20.0" stylesheets="@/css/admin.css">
+                <HBox spacing="20.0">
                     <children>
-
-                        <HBox spacing="15.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                        <HBox spacing="15.0" HBox.hgrow="ALWAYS" style="-fx-background-color: #152238; -fx-padding: 20; -fx-background-radius: 12; -fx-border-color: #2b3a4a; -fx-border-radius: 12;">
                             <children>
-                                <Label styleClass="stat-icon" text="👥" />
+                                <Label text="👥" style="-fx-font-size: 32; -fx-text-fill: #415a77;" />
                                 <VBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Label styleClass="stat-title" text="Total Estudiantes" />
-                                        <Label styleClass="stat-value" text="1,245" />
-                                    </children>
+                                    <Label text="Total Estudiantes" style="-fx-text-fill: #94a1b2; -fx-font-size: 12;" />
+                                    <Label text="1,245" style="-fx-text-fill: white; -fx-font-size: 22; -fx-font-weight: bold;" />
                                 </VBox>
                             </children>
                         </HBox>
-
-                        <HBox spacing="15.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label styleClass="stat-icon" style="-fx-text-fill: -fx-accent-green;" text="📅" />
-                                <VBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Label styleClass="stat-title" text="Periodo Activo" />
-                                        <Label styleClass="stat-value" text="2025-1" />
-                                    </children>
-                                </VBox>
-                            </children>
-                        </HBox>
-
-                        <HBox spacing="15.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label styleClass="stat-icon" text="📖" />
-                                <VBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Label styleClass="stat-title" text="Asignaturas Activas" />
-                                        <Label styleClass="stat-value" text="312" />
-                                    </children>
-                                </VBox>
-                            </children>
-                        </HBox>
-
                     </children>
                 </HBox>
-
-                <VBox spacing="10.0" stylesheets="@/css/dasboard.css" VBox.vgrow="ALWAYS">
-                    <children>
-                        <Label style="-fx-font-weight: bold;" text="Acciones Frecuentes" />
-                        <GridPane hgap="15.0" vgap="15.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="120.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-
-                                <Button maxWidth="Infinity" maxHeight="Infinity" mnemonicParsing="false" styleClass="quick-access-btn" text="Abrir / Cerrar Periodo Académico" GridPane.columnIndex="0" />
-                                <Button maxWidth="Infinity" maxHeight="Infinity" mnemonicParsing="false" styleClass="quick-access-btn" text="Añadir Nueva Asignatura al Catálogo" GridPane.columnIndex="1" />
-
-                            </children>
-                        </GridPane>
-                    </children>
-                </VBox>
-
             </children>
         </VBox>
     </center>

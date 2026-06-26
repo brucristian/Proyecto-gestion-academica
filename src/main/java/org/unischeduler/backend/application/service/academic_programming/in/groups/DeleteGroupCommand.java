@@ -1,4 +1,4 @@
-package org.unischeduler.backend.application.service.academic_programming.in;
+package org.unischeduler.backend.application.service.academic_programming.in.groups;
 
 public class DeleteGroupCommand {
     private final String groupId;

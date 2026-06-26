@@ -18,11 +18,9 @@ import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.Del
 import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.FindAllPrerequisitesUseCase;
 import org.unischeduler.backend.domain.port.in.academic_catalog.prerequisite.RegisterPrerequisiteUseCase;
 import org.unischeduler.backend.domain.port.in.academic_history.GetAcademicHistoryUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.ListAllGroupsUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.RegisterGroupUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.UpdateGroupUseCase;
+import org.unischeduler.backend.domain.port.in.academic_programming.*;
 import org.unischeduler.backend.domain.port.in.academic_programming.schedule.GetScheduleUseCase;
+import org.unischeduler.backend.domain.port.in.auth.ChangePasswordUseCase;
 import org.unischeduler.backend.domain.port.in.auth.LoginUserUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.*;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
@@ -56,6 +54,8 @@ public class AppContext {
     private static GetScheduleUseCase getScheduleService;
     private static RegisterEnrollmentUseCase registerEnrollmentService;
     private static RegisterPrerequisiteUseCase registerPrerequisiteService;
+    private static ListAllTeachersUseCase listAllTeachersService;
+    private static ChangePasswordUseCase changePasswordService;
 
     private AppContext() {}
 
@@ -257,5 +257,21 @@ public class AppContext {
 
     public static void setRegisterPrerequisiteService(RegisterPrerequisiteUseCase registerPrerequisiteService) {
         AppContext.registerPrerequisiteService = registerPrerequisiteService;
+    }
+
+    public static ListAllTeachersUseCase getListAllTeachersService() {
+        return listAllTeachersService;
+    }
+
+    public static void setListAllTeachersService(ListAllTeachersUseCase listAllTeachersService) {
+        AppContext.listAllTeachersService = listAllTeachersService;
+    }
+
+    public static ChangePasswordUseCase getChangePasswordService() {
+        return changePasswordService;
+    }
+
+    public static void setChangePasswordService(ChangePasswordUseCase changePasswordService) {
+        AppContext.changePasswordService = changePasswordService;
     }
 }

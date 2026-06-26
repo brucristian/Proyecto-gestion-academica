@@ -28,4 +28,17 @@ public class GroupScheduleRepositoryImpl implements GroupScheduleRepository {
 
         return groupSchedules;
     }
+
+    @Override
+    public GroupSchedule save(GroupSchedule groupSchedule) {
+        GroupScheduleEntity entity = GroupScheduleMapper.toEntity(groupSchedule);
+        GroupScheduleEntity entitySaved = groupScheduleRepository.save(entity);
+
+        return GroupScheduleMapper.toDomain(entitySaved);
+    }
+
+    @Override
+    public void deleteAllWhereGroupId(String groupId) {
+        groupScheduleRepository.deleteAllWhereGroupId(groupId);
+    }
 }
