@@ -1,0 +1,4100 @@
+{
+  "_lumlVersion": "2.0",
+  "exportType": "diagram",
+  "diagramId": "diagram-unischeduler-domain-model",
+  "diagramName": "UniScheduler - Domain Model Class Diagram",
+  "model": {
+    "id": "model-unischeduler-domain-model",
+    "name": "UniScheduler Domain Model",
+    "version": "1.0.0",
+    "packages": {
+      "pkg-academic_catalog.entity": {
+        "id": "pkg-academic_catalog.entity",
+        "kind": "PACKAGE",
+        "name": "academic_catalog.entity",
+        "packageIds": [],
+        "classIds": [
+          "cls-academic_catalog.entity-AcademicPeriod",
+          "cls-academic_catalog.entity-AcademicProgram",
+          "cls-academic_catalog.entity-Course",
+          "cls-academic_catalog.entity-Prerequisite"
+        ],
+        "interfaceIds": [],
+        "enumIds": [],
+        "dataTypeIds": []
+      },
+      "pkg-academic_history.entity": {
+        "id": "pkg-academic_history.entity",
+        "kind": "PACKAGE",
+        "name": "academic_history.entity",
+        "packageIds": [],
+        "classIds": [
+          "cls-academic_history.entity-AcademicHistory"
+        ],
+        "interfaceIds": [],
+        "enumIds": [],
+        "dataTypeIds": []
+      },
+      "pkg-academic_programming.entity": {
+        "id": "pkg-academic_programming.entity",
+        "kind": "PACKAGE",
+        "name": "academic_programming.entity",
+        "packageIds": [],
+        "classIds": [
+          "cls-academic_programming.entity-Group",
+          "cls-academic_programming.entity-GroupSchedule",
+          "cls-academic_programming.entity-SemesterTemplateDetail",
+          "cls-academic_programming.entity-SemesterTemplate",
+          "cls-academic_programming.entity-Teacher"
+        ],
+        "interfaceIds": [],
+        "enumIds": [],
+        "dataTypeIds": []
+      },
+      "pkg-auth.entity": {
+        "id": "pkg-auth.entity",
+        "kind": "PACKAGE",
+        "name": "auth.entity",
+        "packageIds": [],
+        "classIds": [
+          "cls-auth.entity-User"
+        ],
+        "interfaceIds": [],
+        "enumIds": [],
+        "dataTypeIds": []
+      },
+      "pkg-auth.vo": {
+        "id": "pkg-auth.vo",
+        "kind": "PACKAGE",
+        "name": "auth.vo",
+        "packageIds": [],
+        "classIds": [
+          "cls-auth.vo-Email",
+          "cls-auth.vo-EncodedPassword",
+          "cls-auth.vo-Password"
+        ],
+        "interfaceIds": [],
+        "enumIds": [],
+        "dataTypeIds": []
+      },
+      "pkg-enrollment.entity": {
+        "id": "pkg-enrollment.entity",
+        "kind": "PACKAGE",
+        "name": "enrollment.entity",
+        "packageIds": [],
+        "classIds": [
+          "cls-enrollment.entity-EnrollmentDetail",
+          "cls-enrollment.entity-Enrollment",
+          "cls-enrollment.entity-Student"
+        ],
+        "interfaceIds": [],
+        "enumIds": [],
+        "dataTypeIds": []
+      },
+      "pkg-academic_catalog.enums": {
+        "id": "pkg-academic_catalog.enums",
+        "kind": "PACKAGE",
+        "name": "academic_catalog.enums",
+        "packageIds": [],
+        "classIds": [],
+        "interfaceIds": [],
+        "enumIds": [
+          "enum-academic_catalog.enums-AcademicPeriodStatus"
+        ],
+        "dataTypeIds": []
+      },
+      "pkg-academic_history.enums": {
+        "id": "pkg-academic_history.enums",
+        "kind": "PACKAGE",
+        "name": "academic_history.enums",
+        "packageIds": [],
+        "classIds": [],
+        "interfaceIds": [],
+        "enumIds": [
+          "enum-academic_history.enums-AcademicHistoryCourseStatus"
+        ],
+        "dataTypeIds": []
+      },
+      "pkg-academic_programming.enums": {
+        "id": "pkg-academic_programming.enums",
+        "kind": "PACKAGE",
+        "name": "academic_programming.enums",
+        "packageIds": [],
+        "classIds": [],
+        "interfaceIds": [],
+        "enumIds": [
+          "enum-academic_programming.enums-WeekDays"
+        ],
+        "dataTypeIds": []
+      },
+      "pkg-auth.enums": {
+        "id": "pkg-auth.enums",
+        "kind": "PACKAGE",
+        "name": "auth.enums",
+        "packageIds": [],
+        "classIds": [],
+        "interfaceIds": [],
+        "enumIds": [
+          "enum-auth.enums-DocumentType",
+          "enum-auth.enums-Gender",
+          "enum-auth.enums-Role",
+          "enum-auth.enums-Status"
+        ],
+        "dataTypeIds": []
+      },
+      "pkg-enrollment.enums": {
+        "id": "pkg-enrollment.enums",
+        "kind": "PACKAGE",
+        "name": "enrollment.enums",
+        "packageIds": [],
+        "classIds": [],
+        "interfaceIds": [],
+        "enumIds": [
+          "enum-enrollment.enums-EnrollmentStatus"
+        ],
+        "dataTypeIds": []
+      }
+    },
+    "classes": {
+      "cls-academic_catalog.entity-AcademicPeriod": {
+        "id": "cls-academic_catalog.entity-AcademicPeriod",
+        "kind": "CLASS",
+        "name": "AcademicPeriod",
+        "attributeIds": [
+          "attr-cls-academic_catalog.entity-AcademicPeriod-academicPeriodId",
+          "attr-cls-academic_catalog.entity-AcademicPeriod-code",
+          "attr-cls-academic_catalog.entity-AcademicPeriod-name",
+          "attr-cls-academic_catalog.entity-AcademicPeriod-startDate",
+          "attr-cls-academic_catalog.entity-AcademicPeriod-endDate",
+          "attr-cls-academic_catalog.entity-AcademicPeriod-status"
+        ],
+        "operationIds": [
+          "op-cls-academic_catalog.entity-AcademicPeriod-AcademicPeriod",
+          "op-cls-academic_catalog.entity-AcademicPeriod-getAcademicPeriodId",
+          "op-cls-academic_catalog.entity-AcademicPeriod-getCode",
+          "op-cls-academic_catalog.entity-AcademicPeriod-getName",
+          "op-cls-academic_catalog.entity-AcademicPeriod-getStartDate",
+          "op-cls-academic_catalog.entity-AcademicPeriod-getEndDate",
+          "op-cls-academic_catalog.entity-AcademicPeriod-getStatus",
+          "op-cls-academic_catalog.entity-AcademicPeriod-setName",
+          "op-cls-academic_catalog.entity-AcademicPeriod-setStatus"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_catalog.entity",
+        "packageName": "academic_catalog.entity"
+      },
+      "cls-academic_catalog.entity-AcademicProgram": {
+        "id": "cls-academic_catalog.entity-AcademicProgram",
+        "kind": "CLASS",
+        "name": "AcademicProgram",
+        "attributeIds": [
+          "attr-cls-academic_catalog.entity-AcademicProgram-academicProgramId",
+          "attr-cls-academic_catalog.entity-AcademicProgram-name",
+          "attr-cls-academic_catalog.entity-AcademicProgram-totalSemesters"
+        ],
+        "operationIds": [
+          "op-cls-academic_catalog.entity-AcademicProgram-AcademicProgram",
+          "op-cls-academic_catalog.entity-AcademicProgram-AcademicProgram2",
+          "op-cls-academic_catalog.entity-AcademicProgram-getAcademicProgramId",
+          "op-cls-academic_catalog.entity-AcademicProgram-setAcademicProgramId",
+          "op-cls-academic_catalog.entity-AcademicProgram-getName",
+          "op-cls-academic_catalog.entity-AcademicProgram-setName",
+          "op-cls-academic_catalog.entity-AcademicProgram-getTotalSemesters"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_catalog.entity",
+        "packageName": "academic_catalog.entity"
+      },
+      "cls-academic_catalog.entity-Course": {
+        "id": "cls-academic_catalog.entity-Course",
+        "kind": "CLASS",
+        "name": "Course",
+        "attributeIds": [
+          "attr-cls-academic_catalog.entity-Course-courseId",
+          "attr-cls-academic_catalog.entity-Course-name",
+          "attr-cls-academic_catalog.entity-Course-code",
+          "attr-cls-academic_catalog.entity-Course-credits",
+          "attr-cls-academic_catalog.entity-Course-description",
+          "attr-cls-academic_catalog.entity-Course-prerequisites"
+        ],
+        "operationIds": [
+          "op-cls-academic_catalog.entity-Course-Course",
+          "op-cls-academic_catalog.entity-Course-getCourseId",
+          "op-cls-academic_catalog.entity-Course-setCourseId",
+          "op-cls-academic_catalog.entity-Course-getName",
+          "op-cls-academic_catalog.entity-Course-setName",
+          "op-cls-academic_catalog.entity-Course-getCode",
+          "op-cls-academic_catalog.entity-Course-setCode",
+          "op-cls-academic_catalog.entity-Course-getCredits",
+          "op-cls-academic_catalog.entity-Course-setCredits",
+          "op-cls-academic_catalog.entity-Course-getDescription",
+          "op-cls-academic_catalog.entity-Course-setDescription",
+          "op-cls-academic_catalog.entity-Course-getPrerequisites",
+          "op-cls-academic_catalog.entity-Course-setPrerequisites"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_catalog.entity",
+        "packageName": "academic_catalog.entity"
+      },
+      "cls-academic_catalog.entity-Prerequisite": {
+        "id": "cls-academic_catalog.entity-Prerequisite",
+        "kind": "CLASS",
+        "name": "Prerequisite",
+        "attributeIds": [
+          "attr-cls-academic_catalog.entity-Prerequisite-prerequisite",
+          "attr-cls-academic_catalog.entity-Prerequisite-courseId",
+          "attr-cls-academic_catalog.entity-Prerequisite-requiredCourse"
+        ],
+        "operationIds": [
+          "op-cls-academic_catalog.entity-Prerequisite-Prerequisite",
+          "op-cls-academic_catalog.entity-Prerequisite-getPrerequisite",
+          "op-cls-academic_catalog.entity-Prerequisite-setPrerequisite",
+          "op-cls-academic_catalog.entity-Prerequisite-getCourseId",
+          "op-cls-academic_catalog.entity-Prerequisite-setCourseId",
+          "op-cls-academic_catalog.entity-Prerequisite-getRequiredCourse",
+          "op-cls-academic_catalog.entity-Prerequisite-setRequiredCourse"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_catalog.entity",
+        "packageName": "academic_catalog.entity"
+      },
+      "cls-academic_history.entity-AcademicHistory": {
+        "id": "cls-academic_history.entity-AcademicHistory",
+        "kind": "CLASS",
+        "name": "AcademicHistory",
+        "attributeIds": [
+          "attr-cls-academic_history.entity-AcademicHistory-historyId",
+          "attr-cls-academic_history.entity-AcademicHistory-student",
+          "attr-cls-academic_history.entity-AcademicHistory-completedCourses",
+          "attr-cls-academic_history.entity-AcademicHistory-grade",
+          "attr-cls-academic_history.entity-AcademicHistory-status"
+        ],
+        "operationIds": [
+          "op-cls-academic_history.entity-AcademicHistory-AcademicHistory",
+          "op-cls-academic_history.entity-AcademicHistory-getHistoryId",
+          "op-cls-academic_history.entity-AcademicHistory-setHistoryId",
+          "op-cls-academic_history.entity-AcademicHistory-getStudent",
+          "op-cls-academic_history.entity-AcademicHistory-setStudent",
+          "op-cls-academic_history.entity-AcademicHistory-getCompletedCourses",
+          "op-cls-academic_history.entity-AcademicHistory-setCompletedCourses",
+          "op-cls-academic_history.entity-AcademicHistory-getGrade",
+          "op-cls-academic_history.entity-AcademicHistory-setGrade",
+          "op-cls-academic_history.entity-AcademicHistory-getStatus",
+          "op-cls-academic_history.entity-AcademicHistory-setStatus"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_history.entity",
+        "packageName": "academic_history.entity"
+      },
+      "cls-academic_programming.entity-Group": {
+        "id": "cls-academic_programming.entity-Group",
+        "kind": "CLASS",
+        "name": "Group",
+        "attributeIds": [
+          "attr-cls-academic_programming.entity-Group-groupId",
+          "attr-cls-academic_programming.entity-Group-course",
+          "attr-cls-academic_programming.entity-Group-groupCode",
+          "attr-cls-academic_programming.entity-Group-teacher",
+          "attr-cls-academic_programming.entity-Group-capacity",
+          "attr-cls-academic_programming.entity-Group-schedules"
+        ],
+        "operationIds": [
+          "op-cls-academic_programming.entity-Group-Group",
+          "op-cls-academic_programming.entity-Group-Group2",
+          "op-cls-academic_programming.entity-Group-getGroupId",
+          "op-cls-academic_programming.entity-Group-setGroupId",
+          "op-cls-academic_programming.entity-Group-getCourse",
+          "op-cls-academic_programming.entity-Group-setCourse",
+          "op-cls-academic_programming.entity-Group-getGroupCode",
+          "op-cls-academic_programming.entity-Group-setGroupCode",
+          "op-cls-academic_programming.entity-Group-getTeacher",
+          "op-cls-academic_programming.entity-Group-setTeacher",
+          "op-cls-academic_programming.entity-Group-getCapacity",
+          "op-cls-academic_programming.entity-Group-setCapacity",
+          "op-cls-academic_programming.entity-Group-getSchedules",
+          "op-cls-academic_programming.entity-Group-setSchedules"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_programming.entity",
+        "packageName": "academic_programming.entity"
+      },
+      "cls-academic_programming.entity-GroupSchedule": {
+        "id": "cls-academic_programming.entity-GroupSchedule",
+        "kind": "CLASS",
+        "name": "GroupSchedule",
+        "attributeIds": [
+          "attr-cls-academic_programming.entity-GroupSchedule-groupScheduleId",
+          "attr-cls-academic_programming.entity-GroupSchedule-groupId",
+          "attr-cls-academic_programming.entity-GroupSchedule-dayOfWeek",
+          "attr-cls-academic_programming.entity-GroupSchedule-startTime",
+          "attr-cls-academic_programming.entity-GroupSchedule-endTime",
+          "attr-cls-academic_programming.entity-GroupSchedule-classroom"
+        ],
+        "operationIds": [
+          "op-cls-academic_programming.entity-GroupSchedule-GroupSchedule",
+          "op-cls-academic_programming.entity-GroupSchedule-GroupSchedule2",
+          "op-cls-academic_programming.entity-GroupSchedule-getGroupScheduleId",
+          "op-cls-academic_programming.entity-GroupSchedule-setGroupScheduleId",
+          "op-cls-academic_programming.entity-GroupSchedule-getGroupId",
+          "op-cls-academic_programming.entity-GroupSchedule-setGroupId",
+          "op-cls-academic_programming.entity-GroupSchedule-getDayOfWeek",
+          "op-cls-academic_programming.entity-GroupSchedule-setDayOfWeek",
+          "op-cls-academic_programming.entity-GroupSchedule-getStartTime",
+          "op-cls-academic_programming.entity-GroupSchedule-setStartTime",
+          "op-cls-academic_programming.entity-GroupSchedule-getEndTime",
+          "op-cls-academic_programming.entity-GroupSchedule-setEndTime",
+          "op-cls-academic_programming.entity-GroupSchedule-getClassroom",
+          "op-cls-academic_programming.entity-GroupSchedule-setClassroom"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_programming.entity",
+        "packageName": "academic_programming.entity"
+      },
+      "cls-academic_programming.entity-SemesterTemplateDetail": {
+        "id": "cls-academic_programming.entity-SemesterTemplateDetail",
+        "kind": "CLASS",
+        "name": "SemesterTemplateDetail",
+        "attributeIds": [
+          "attr-cls-academic_programming.entity-SemesterTemplateDetail-templateDetailId",
+          "attr-cls-academic_programming.entity-SemesterTemplateDetail-group"
+        ],
+        "operationIds": [
+          "op-cls-academic_programming.entity-SemesterTemplateDetail-SemesterTemplateDetail",
+          "op-cls-academic_programming.entity-SemesterTemplateDetail-getTemplateDetailId",
+          "op-cls-academic_programming.entity-SemesterTemplateDetail-setTemplateDetailId",
+          "op-cls-academic_programming.entity-SemesterTemplateDetail-getGroup",
+          "op-cls-academic_programming.entity-SemesterTemplateDetail-setGroup"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_programming.entity",
+        "packageName": "academic_programming.entity"
+      },
+      "cls-academic_programming.entity-SemesterTemplate": {
+        "id": "cls-academic_programming.entity-SemesterTemplate",
+        "kind": "CLASS",
+        "name": "SemesterTemplate",
+        "attributeIds": [
+          "attr-cls-academic_programming.entity-SemesterTemplate-templateId",
+          "attr-cls-academic_programming.entity-SemesterTemplate-academicProgram",
+          "attr-cls-academic_programming.entity-SemesterTemplate-semester",
+          "attr-cls-academic_programming.entity-SemesterTemplate-details"
+        ],
+        "operationIds": [
+          "op-cls-academic_programming.entity-SemesterTemplate-SemesterTemplate",
+          "op-cls-academic_programming.entity-SemesterTemplate-getTemplateId",
+          "op-cls-academic_programming.entity-SemesterTemplate-setTemplateId",
+          "op-cls-academic_programming.entity-SemesterTemplate-getAcademicProgram",
+          "op-cls-academic_programming.entity-SemesterTemplate-setAcademicProgram",
+          "op-cls-academic_programming.entity-SemesterTemplate-getSemester",
+          "op-cls-academic_programming.entity-SemesterTemplate-setSemester",
+          "op-cls-academic_programming.entity-SemesterTemplate-getDetails",
+          "op-cls-academic_programming.entity-SemesterTemplate-setDetails"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_programming.entity",
+        "packageName": "academic_programming.entity"
+      },
+      "cls-academic_programming.entity-Teacher": {
+        "id": "cls-academic_programming.entity-Teacher",
+        "kind": "CLASS",
+        "name": "Teacher",
+        "attributeIds": [
+          "attr-cls-academic_programming.entity-Teacher-teacherId",
+          "attr-cls-academic_programming.entity-Teacher-name"
+        ],
+        "operationIds": [
+          "op-cls-academic_programming.entity-Teacher-Teacher",
+          "op-cls-academic_programming.entity-Teacher-getTeacherId",
+          "op-cls-academic_programming.entity-Teacher-getName"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-academic_programming.entity",
+        "packageName": "academic_programming.entity"
+      },
+      "cls-auth.entity-User": {
+        "id": "cls-auth.entity-User",
+        "kind": "CLASS",
+        "name": "User",
+        "attributeIds": [
+          "attr-cls-auth.entity-User-userId",
+          "attr-cls-auth.entity-User-firstName",
+          "attr-cls-auth.entity-User-lastName",
+          "attr-cls-auth.entity-User-documentType",
+          "attr-cls-auth.entity-User-documentNumber",
+          "attr-cls-auth.entity-User-birthDate",
+          "attr-cls-auth.entity-User-gender",
+          "attr-cls-auth.entity-User-phoneNumber",
+          "attr-cls-auth.entity-User-address",
+          "attr-cls-auth.entity-User-email",
+          "attr-cls-auth.entity-User-password",
+          "attr-cls-auth.entity-User-status",
+          "attr-cls-auth.entity-User-role",
+          "attr-cls-auth.entity-User-createdAt"
+        ],
+        "operationIds": [
+          "op-cls-auth.entity-User-User",
+          "op-cls-auth.entity-User-getUserId",
+          "op-cls-auth.entity-User-getFirstName",
+          "op-cls-auth.entity-User-getLastName",
+          "op-cls-auth.entity-User-getDocumentType",
+          "op-cls-auth.entity-User-getDocumentNumber",
+          "op-cls-auth.entity-User-getBirthDate",
+          "op-cls-auth.entity-User-getGender",
+          "op-cls-auth.entity-User-getPhoneNumber",
+          "op-cls-auth.entity-User-getAddress",
+          "op-cls-auth.entity-User-getEmail",
+          "op-cls-auth.entity-User-getPassword",
+          "op-cls-auth.entity-User-getStatus",
+          "op-cls-auth.entity-User-getRole",
+          "op-cls-auth.entity-User-getCreatedAt",
+          "op-cls-auth.entity-User-setDocumentType",
+          "op-cls-auth.entity-User-setPhoneNumber",
+          "op-cls-auth.entity-User-setAddress",
+          "op-cls-auth.entity-User-setPassword",
+          "op-cls-auth.entity-User-setStatus"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-auth.entity",
+        "packageName": "auth.entity"
+      },
+      "cls-auth.vo-Email": {
+        "id": "cls-auth.vo-Email",
+        "kind": "CLASS",
+        "name": "Email",
+        "attributeIds": [
+          "attr-cls-auth.vo-Email-value"
+        ],
+        "operationIds": [
+          "op-cls-auth.vo-Email-Email",
+          "op-cls-auth.vo-Email-getValue"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-auth.vo",
+        "packageName": "auth.vo"
+      },
+      "cls-auth.vo-EncodedPassword": {
+        "id": "cls-auth.vo-EncodedPassword",
+        "kind": "CLASS",
+        "name": "EncodedPassword",
+        "attributeIds": [
+          "attr-cls-auth.vo-EncodedPassword-value"
+        ],
+        "operationIds": [
+          "op-cls-auth.vo-EncodedPassword-EncodedPassword",
+          "op-cls-auth.vo-EncodedPassword-getValue"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-auth.vo",
+        "packageName": "auth.vo"
+      },
+      "cls-auth.vo-Password": {
+        "id": "cls-auth.vo-Password",
+        "kind": "CLASS",
+        "name": "Password",
+        "attributeIds": [
+          "attr-cls-auth.vo-Password-value"
+        ],
+        "operationIds": [
+          "op-cls-auth.vo-Password-Password",
+          "op-cls-auth.vo-Password-getValue"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-auth.vo",
+        "packageName": "auth.vo"
+      },
+      "cls-enrollment.entity-EnrollmentDetail": {
+        "id": "cls-enrollment.entity-EnrollmentDetail",
+        "kind": "CLASS",
+        "name": "EnrollmentDetail",
+        "attributeIds": [
+          "attr-cls-enrollment.entity-EnrollmentDetail-enrollmentDetailId",
+          "attr-cls-enrollment.entity-EnrollmentDetail-group",
+          "attr-cls-enrollment.entity-EnrollmentDetail-status",
+          "attr-cls-enrollment.entity-EnrollmentDetail-finalGrade"
+        ],
+        "operationIds": [
+          "op-cls-enrollment.entity-EnrollmentDetail-EnrollmentDetail",
+          "op-cls-enrollment.entity-EnrollmentDetail-getEnrollmentDetailId",
+          "op-cls-enrollment.entity-EnrollmentDetail-getGroup",
+          "op-cls-enrollment.entity-EnrollmentDetail-getStatus",
+          "op-cls-enrollment.entity-EnrollmentDetail-getFinalGrade",
+          "op-cls-enrollment.entity-EnrollmentDetail-setGroup",
+          "op-cls-enrollment.entity-EnrollmentDetail-setStatus",
+          "op-cls-enrollment.entity-EnrollmentDetail-setFinalGrade"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-enrollment.entity",
+        "packageName": "enrollment.entity"
+      },
+      "cls-enrollment.entity-Enrollment": {
+        "id": "cls-enrollment.entity-Enrollment",
+        "kind": "CLASS",
+        "name": "Enrollment",
+        "attributeIds": [
+          "attr-cls-enrollment.entity-Enrollment-enrollmentId",
+          "attr-cls-enrollment.entity-Enrollment-student",
+          "attr-cls-enrollment.entity-Enrollment-academicProgram",
+          "attr-cls-enrollment.entity-Enrollment-enrollmentDate",
+          "attr-cls-enrollment.entity-Enrollment-details",
+          "attr-cls-enrollment.entity-Enrollment-academicPeriod"
+        ],
+        "operationIds": [
+          "op-cls-enrollment.entity-Enrollment-Enrollment",
+          "op-cls-enrollment.entity-Enrollment-getEnrollmentId",
+          "op-cls-enrollment.entity-Enrollment-getStudent",
+          "op-cls-enrollment.entity-Enrollment-getAcademicProgram",
+          "op-cls-enrollment.entity-Enrollment-setAcademicProgram",
+          "op-cls-enrollment.entity-Enrollment-getEnrollmentDate",
+          "op-cls-enrollment.entity-Enrollment-getDetails",
+          "op-cls-enrollment.entity-Enrollment-setDetails",
+          "op-cls-enrollment.entity-Enrollment-getAcademicPeriod",
+          "op-cls-enrollment.entity-Enrollment-setAcademicPeriod"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-enrollment.entity",
+        "packageName": "enrollment.entity"
+      },
+      "cls-enrollment.entity-Student": {
+        "id": "cls-enrollment.entity-Student",
+        "kind": "CLASS",
+        "name": "Student",
+        "attributeIds": [
+          "attr-cls-enrollment.entity-Student-studentId",
+          "attr-cls-enrollment.entity-Student-studentCode",
+          "attr-cls-enrollment.entity-Student-user",
+          "attr-cls-enrollment.entity-Student-academicProgram"
+        ],
+        "operationIds": [
+          "op-cls-enrollment.entity-Student-Student",
+          "op-cls-enrollment.entity-Student-getStudentId",
+          "op-cls-enrollment.entity-Student-getStudentCode",
+          "op-cls-enrollment.entity-Student-getUser",
+          "op-cls-enrollment.entity-Student-getAcademicProgram"
+        ],
+        "visibility": "public",
+        "isAbstract": false,
+        "packageId": "pkg-enrollment.entity",
+        "packageName": "enrollment.entity"
+      }
+    },
+    "interfaces": {},
+    "enums": {
+      "enum-academic_catalog.enums-AcademicPeriodStatus": {
+        "id": "enum-academic_catalog.enums-AcademicPeriodStatus",
+        "kind": "ENUM",
+        "name": "AcademicPeriodStatus",
+        "packageId": "pkg-academic_catalog.enums",
+        "packageName": "academic_catalog.enums",
+        "attributeIds": [
+          "attr-enum-academic_catalog.enums-AcademicPeriodStatus-ACTIVE",
+          "attr-enum-academic_catalog.enums-AcademicPeriodStatus-SCHEDULED",
+          "attr-enum-academic_catalog.enums-AcademicPeriodStatus-CLOSED"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      },
+      "enum-academic_history.enums-AcademicHistoryCourseStatus": {
+        "id": "enum-academic_history.enums-AcademicHistoryCourseStatus",
+        "kind": "ENUM",
+        "name": "AcademicHistoryCourseStatus",
+        "packageId": "pkg-academic_history.enums",
+        "packageName": "academic_history.enums",
+        "attributeIds": [
+          "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-IN_PROGRESS",
+          "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-APPROVED",
+          "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-FAILED",
+          "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-WITHDRAWN"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      },
+      "enum-academic_programming.enums-WeekDays": {
+        "id": "enum-academic_programming.enums-WeekDays",
+        "kind": "ENUM",
+        "name": "WeekDays",
+        "packageId": "pkg-academic_programming.enums",
+        "packageName": "academic_programming.enums",
+        "attributeIds": [
+          "attr-enum-academic_programming.enums-WeekDays-LUNES",
+          "attr-enum-academic_programming.enums-WeekDays-MARTES",
+          "attr-enum-academic_programming.enums-WeekDays-MIERCOLES",
+          "attr-enum-academic_programming.enums-WeekDays-JUEVES",
+          "attr-enum-academic_programming.enums-WeekDays-VIERNES",
+          "attr-enum-academic_programming.enums-WeekDays-SABADO",
+          "attr-enum-academic_programming.enums-WeekDays-DOMINGO"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      },
+      "enum-auth.enums-DocumentType": {
+        "id": "enum-auth.enums-DocumentType",
+        "kind": "ENUM",
+        "name": "DocumentType",
+        "packageId": "pkg-auth.enums",
+        "packageName": "auth.enums",
+        "attributeIds": [
+          "attr-enum-auth.enums-DocumentType-CC",
+          "attr-enum-auth.enums-DocumentType-TI",
+          "attr-enum-auth.enums-DocumentType-CE",
+          "attr-enum-auth.enums-DocumentType-PASSPORT"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      },
+      "enum-auth.enums-Gender": {
+        "id": "enum-auth.enums-Gender",
+        "kind": "ENUM",
+        "name": "Gender",
+        "packageId": "pkg-auth.enums",
+        "packageName": "auth.enums",
+        "attributeIds": [
+          "attr-enum-auth.enums-Gender-MALE",
+          "attr-enum-auth.enums-Gender-FEMALE",
+          "attr-enum-auth.enums-Gender-OTHER"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      },
+      "enum-auth.enums-Role": {
+        "id": "enum-auth.enums-Role",
+        "kind": "ENUM",
+        "name": "Role",
+        "packageId": "pkg-auth.enums",
+        "packageName": "auth.enums",
+        "attributeIds": [
+          "attr-enum-auth.enums-Role-ADMIN",
+          "attr-enum-auth.enums-Role-TEACHER",
+          "attr-enum-auth.enums-Role-STUDENT"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      },
+      "enum-auth.enums-Status": {
+        "id": "enum-auth.enums-Status",
+        "kind": "ENUM",
+        "name": "Status",
+        "packageId": "pkg-auth.enums",
+        "packageName": "auth.enums",
+        "attributeIds": [
+          "attr-enum-auth.enums-Status-ACTIVE"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      },
+      "enum-enrollment.enums-EnrollmentStatus": {
+        "id": "enum-enrollment.enums-EnrollmentStatus",
+        "kind": "ENUM",
+        "name": "EnrollmentStatus",
+        "packageId": "pkg-enrollment.enums",
+        "packageName": "enrollment.enums",
+        "attributeIds": [
+          "attr-enum-enrollment.enums-EnrollmentStatus-ENROLLED",
+          "attr-enum-enrollment.enums-EnrollmentStatus-CANCELLED",
+          "attr-enum-enrollment.enums-EnrollmentStatus-COMPLETED",
+          "attr-enum-enrollment.enums-EnrollmentStatus-FAILED",
+          "attr-enum-enrollment.enums-EnrollmentStatus-WITHDRAWN"
+        ],
+        "operationIds": [],
+        "visibility": "public"
+      }
+    },
+    "dataTypes": {},
+    "attributes": {
+      "attr-cls-academic_catalog.entity-AcademicPeriod-academicPeriodId": {
+        "id": "attr-cls-academic_catalog.entity-AcademicPeriod-academicPeriodId",
+        "kind": "ATTRIBUTE",
+        "name": "academicPeriodId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicPeriod-code": {
+        "id": "attr-cls-academic_catalog.entity-AcademicPeriod-code",
+        "kind": "ATTRIBUTE",
+        "name": "code",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicPeriod-name": {
+        "id": "attr-cls-academic_catalog.entity-AcademicPeriod-name",
+        "kind": "ATTRIBUTE",
+        "name": "name",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicPeriod-startDate": {
+        "id": "attr-cls-academic_catalog.entity-AcademicPeriod-startDate",
+        "kind": "ATTRIBUTE",
+        "name": "startDate",
+        "type": "LocalDate",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicPeriod-endDate": {
+        "id": "attr-cls-academic_catalog.entity-AcademicPeriod-endDate",
+        "kind": "ATTRIBUTE",
+        "name": "endDate",
+        "type": "LocalDate",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicPeriod-status": {
+        "id": "attr-cls-academic_catalog.entity-AcademicPeriod-status",
+        "kind": "ATTRIBUTE",
+        "name": "status",
+        "type": "AcademicPeriodStatus",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicProgram-academicProgramId": {
+        "id": "attr-cls-academic_catalog.entity-AcademicProgram-academicProgramId",
+        "kind": "ATTRIBUTE",
+        "name": "academicProgramId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicProgram-name": {
+        "id": "attr-cls-academic_catalog.entity-AcademicProgram-name",
+        "kind": "ATTRIBUTE",
+        "name": "name",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-AcademicProgram-totalSemesters": {
+        "id": "attr-cls-academic_catalog.entity-AcademicProgram-totalSemesters",
+        "kind": "ATTRIBUTE",
+        "name": "totalSemesters",
+        "type": "int",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Course-courseId": {
+        "id": "attr-cls-academic_catalog.entity-Course-courseId",
+        "kind": "ATTRIBUTE",
+        "name": "courseId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Course-name": {
+        "id": "attr-cls-academic_catalog.entity-Course-name",
+        "kind": "ATTRIBUTE",
+        "name": "name",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Course-code": {
+        "id": "attr-cls-academic_catalog.entity-Course-code",
+        "kind": "ATTRIBUTE",
+        "name": "code",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Course-credits": {
+        "id": "attr-cls-academic_catalog.entity-Course-credits",
+        "kind": "ATTRIBUTE",
+        "name": "credits",
+        "type": "int",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Course-description": {
+        "id": "attr-cls-academic_catalog.entity-Course-description",
+        "kind": "ATTRIBUTE",
+        "name": "description",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Course-prerequisites": {
+        "id": "attr-cls-academic_catalog.entity-Course-prerequisites",
+        "kind": "ATTRIBUTE",
+        "name": "prerequisites",
+        "type": "List<Course>",
+        "visibility": "private",
+        "multiplicity": "0..*"
+      },
+      "attr-cls-academic_catalog.entity-Prerequisite-prerequisite": {
+        "id": "attr-cls-academic_catalog.entity-Prerequisite-prerequisite",
+        "kind": "ATTRIBUTE",
+        "name": "prerequisite",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Prerequisite-courseId": {
+        "id": "attr-cls-academic_catalog.entity-Prerequisite-courseId",
+        "kind": "ATTRIBUTE",
+        "name": "courseId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_catalog.entity-Prerequisite-requiredCourse": {
+        "id": "attr-cls-academic_catalog.entity-Prerequisite-requiredCourse",
+        "kind": "ATTRIBUTE",
+        "name": "requiredCourse",
+        "type": "Course",
+        "visibility": "private"
+      },
+      "attr-cls-academic_history.entity-AcademicHistory-historyId": {
+        "id": "attr-cls-academic_history.entity-AcademicHistory-historyId",
+        "kind": "ATTRIBUTE",
+        "name": "historyId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_history.entity-AcademicHistory-student": {
+        "id": "attr-cls-academic_history.entity-AcademicHistory-student",
+        "kind": "ATTRIBUTE",
+        "name": "student",
+        "type": "Student",
+        "visibility": "private"
+      },
+      "attr-cls-academic_history.entity-AcademicHistory-completedCourses": {
+        "id": "attr-cls-academic_history.entity-AcademicHistory-completedCourses",
+        "kind": "ATTRIBUTE",
+        "name": "completedCourses",
+        "type": "ArrayList<Course>",
+        "visibility": "private",
+        "multiplicity": "0..*"
+      },
+      "attr-cls-academic_history.entity-AcademicHistory-grade": {
+        "id": "attr-cls-academic_history.entity-AcademicHistory-grade",
+        "kind": "ATTRIBUTE",
+        "name": "grade",
+        "type": "double",
+        "visibility": "private"
+      },
+      "attr-cls-academic_history.entity-AcademicHistory-status": {
+        "id": "attr-cls-academic_history.entity-AcademicHistory-status",
+        "kind": "ATTRIBUTE",
+        "name": "status",
+        "type": "AcademicHistoryCourseStatus",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-Group-groupId": {
+        "id": "attr-cls-academic_programming.entity-Group-groupId",
+        "kind": "ATTRIBUTE",
+        "name": "groupId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-Group-course": {
+        "id": "attr-cls-academic_programming.entity-Group-course",
+        "kind": "ATTRIBUTE",
+        "name": "course",
+        "type": "Course",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-Group-groupCode": {
+        "id": "attr-cls-academic_programming.entity-Group-groupCode",
+        "kind": "ATTRIBUTE",
+        "name": "groupCode",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-Group-teacher": {
+        "id": "attr-cls-academic_programming.entity-Group-teacher",
+        "kind": "ATTRIBUTE",
+        "name": "teacher",
+        "type": "Teacher",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-Group-capacity": {
+        "id": "attr-cls-academic_programming.entity-Group-capacity",
+        "kind": "ATTRIBUTE",
+        "name": "capacity",
+        "type": "int",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-Group-schedules": {
+        "id": "attr-cls-academic_programming.entity-Group-schedules",
+        "kind": "ATTRIBUTE",
+        "name": "schedules",
+        "type": "List<GroupSchedule>",
+        "visibility": "private",
+        "multiplicity": "0..*"
+      },
+      "attr-cls-academic_programming.entity-GroupSchedule-groupScheduleId": {
+        "id": "attr-cls-academic_programming.entity-GroupSchedule-groupScheduleId",
+        "kind": "ATTRIBUTE",
+        "name": "groupScheduleId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-GroupSchedule-groupId": {
+        "id": "attr-cls-academic_programming.entity-GroupSchedule-groupId",
+        "kind": "ATTRIBUTE",
+        "name": "groupId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-GroupSchedule-dayOfWeek": {
+        "id": "attr-cls-academic_programming.entity-GroupSchedule-dayOfWeek",
+        "kind": "ATTRIBUTE",
+        "name": "dayOfWeek",
+        "type": "WeekDays",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-GroupSchedule-startTime": {
+        "id": "attr-cls-academic_programming.entity-GroupSchedule-startTime",
+        "kind": "ATTRIBUTE",
+        "name": "startTime",
+        "type": "LocalTime",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-GroupSchedule-endTime": {
+        "id": "attr-cls-academic_programming.entity-GroupSchedule-endTime",
+        "kind": "ATTRIBUTE",
+        "name": "endTime",
+        "type": "LocalTime",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-GroupSchedule-classroom": {
+        "id": "attr-cls-academic_programming.entity-GroupSchedule-classroom",
+        "kind": "ATTRIBUTE",
+        "name": "classroom",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-SemesterTemplateDetail-templateDetailId": {
+        "id": "attr-cls-academic_programming.entity-SemesterTemplateDetail-templateDetailId",
+        "kind": "ATTRIBUTE",
+        "name": "templateDetailId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-SemesterTemplateDetail-group": {
+        "id": "attr-cls-academic_programming.entity-SemesterTemplateDetail-group",
+        "kind": "ATTRIBUTE",
+        "name": "group",
+        "type": "Group",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-SemesterTemplate-templateId": {
+        "id": "attr-cls-academic_programming.entity-SemesterTemplate-templateId",
+        "kind": "ATTRIBUTE",
+        "name": "templateId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-SemesterTemplate-academicProgram": {
+        "id": "attr-cls-academic_programming.entity-SemesterTemplate-academicProgram",
+        "kind": "ATTRIBUTE",
+        "name": "academicProgram",
+        "type": "AcademicProgram",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-SemesterTemplate-semester": {
+        "id": "attr-cls-academic_programming.entity-SemesterTemplate-semester",
+        "kind": "ATTRIBUTE",
+        "name": "semester",
+        "type": "int",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-SemesterTemplate-details": {
+        "id": "attr-cls-academic_programming.entity-SemesterTemplate-details",
+        "kind": "ATTRIBUTE",
+        "name": "details",
+        "type": "List<SemesterTemplateDetail>",
+        "visibility": "private",
+        "multiplicity": "0..*"
+      },
+      "attr-cls-academic_programming.entity-Teacher-teacherId": {
+        "id": "attr-cls-academic_programming.entity-Teacher-teacherId",
+        "kind": "ATTRIBUTE",
+        "name": "teacherId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-academic_programming.entity-Teacher-name": {
+        "id": "attr-cls-academic_programming.entity-Teacher-name",
+        "kind": "ATTRIBUTE",
+        "name": "name",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-userId": {
+        "id": "attr-cls-auth.entity-User-userId",
+        "kind": "ATTRIBUTE",
+        "name": "userId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-firstName": {
+        "id": "attr-cls-auth.entity-User-firstName",
+        "kind": "ATTRIBUTE",
+        "name": "firstName",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-lastName": {
+        "id": "attr-cls-auth.entity-User-lastName",
+        "kind": "ATTRIBUTE",
+        "name": "lastName",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-documentType": {
+        "id": "attr-cls-auth.entity-User-documentType",
+        "kind": "ATTRIBUTE",
+        "name": "documentType",
+        "type": "DocumentType",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-documentNumber": {
+        "id": "attr-cls-auth.entity-User-documentNumber",
+        "kind": "ATTRIBUTE",
+        "name": "documentNumber",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-birthDate": {
+        "id": "attr-cls-auth.entity-User-birthDate",
+        "kind": "ATTRIBUTE",
+        "name": "birthDate",
+        "type": "LocalDate",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-gender": {
+        "id": "attr-cls-auth.entity-User-gender",
+        "kind": "ATTRIBUTE",
+        "name": "gender",
+        "type": "Gender",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-phoneNumber": {
+        "id": "attr-cls-auth.entity-User-phoneNumber",
+        "kind": "ATTRIBUTE",
+        "name": "phoneNumber",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-address": {
+        "id": "attr-cls-auth.entity-User-address",
+        "kind": "ATTRIBUTE",
+        "name": "address",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-email": {
+        "id": "attr-cls-auth.entity-User-email",
+        "kind": "ATTRIBUTE",
+        "name": "email",
+        "type": "Email",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-password": {
+        "id": "attr-cls-auth.entity-User-password",
+        "kind": "ATTRIBUTE",
+        "name": "password",
+        "type": "EncodedPassword",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-status": {
+        "id": "attr-cls-auth.entity-User-status",
+        "kind": "ATTRIBUTE",
+        "name": "status",
+        "type": "Status",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-role": {
+        "id": "attr-cls-auth.entity-User-role",
+        "kind": "ATTRIBUTE",
+        "name": "role",
+        "type": "Role",
+        "visibility": "private"
+      },
+      "attr-cls-auth.entity-User-createdAt": {
+        "id": "attr-cls-auth.entity-User-createdAt",
+        "kind": "ATTRIBUTE",
+        "name": "createdAt",
+        "type": "LocalDateTime",
+        "visibility": "private"
+      },
+      "attr-cls-auth.vo-Email-value": {
+        "id": "attr-cls-auth.vo-Email-value",
+        "kind": "ATTRIBUTE",
+        "name": "value",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.vo-EncodedPassword-value": {
+        "id": "attr-cls-auth.vo-EncodedPassword-value",
+        "kind": "ATTRIBUTE",
+        "name": "value",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-auth.vo-Password-value": {
+        "id": "attr-cls-auth.vo-Password-value",
+        "kind": "ATTRIBUTE",
+        "name": "value",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-EnrollmentDetail-enrollmentDetailId": {
+        "id": "attr-cls-enrollment.entity-EnrollmentDetail-enrollmentDetailId",
+        "kind": "ATTRIBUTE",
+        "name": "enrollmentDetailId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-EnrollmentDetail-group": {
+        "id": "attr-cls-enrollment.entity-EnrollmentDetail-group",
+        "kind": "ATTRIBUTE",
+        "name": "group",
+        "type": "Group",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-EnrollmentDetail-status": {
+        "id": "attr-cls-enrollment.entity-EnrollmentDetail-status",
+        "kind": "ATTRIBUTE",
+        "name": "status",
+        "type": "EnrollmentStatus",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-EnrollmentDetail-finalGrade": {
+        "id": "attr-cls-enrollment.entity-EnrollmentDetail-finalGrade",
+        "kind": "ATTRIBUTE",
+        "name": "finalGrade",
+        "type": "Double",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Enrollment-enrollmentId": {
+        "id": "attr-cls-enrollment.entity-Enrollment-enrollmentId",
+        "kind": "ATTRIBUTE",
+        "name": "enrollmentId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Enrollment-student": {
+        "id": "attr-cls-enrollment.entity-Enrollment-student",
+        "kind": "ATTRIBUTE",
+        "name": "student",
+        "type": "Student",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Enrollment-academicProgram": {
+        "id": "attr-cls-enrollment.entity-Enrollment-academicProgram",
+        "kind": "ATTRIBUTE",
+        "name": "academicProgram",
+        "type": "AcademicProgram",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Enrollment-enrollmentDate": {
+        "id": "attr-cls-enrollment.entity-Enrollment-enrollmentDate",
+        "kind": "ATTRIBUTE",
+        "name": "enrollmentDate",
+        "type": "LocalDate",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Enrollment-details": {
+        "id": "attr-cls-enrollment.entity-Enrollment-details",
+        "kind": "ATTRIBUTE",
+        "name": "details",
+        "type": "List<EnrollmentDetail>",
+        "visibility": "private",
+        "multiplicity": "0..*"
+      },
+      "attr-cls-enrollment.entity-Enrollment-academicPeriod": {
+        "id": "attr-cls-enrollment.entity-Enrollment-academicPeriod",
+        "kind": "ATTRIBUTE",
+        "name": "academicPeriod",
+        "type": "AcademicPeriod",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Student-studentId": {
+        "id": "attr-cls-enrollment.entity-Student-studentId",
+        "kind": "ATTRIBUTE",
+        "name": "studentId",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Student-studentCode": {
+        "id": "attr-cls-enrollment.entity-Student-studentCode",
+        "kind": "ATTRIBUTE",
+        "name": "studentCode",
+        "type": "String",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Student-user": {
+        "id": "attr-cls-enrollment.entity-Student-user",
+        "kind": "ATTRIBUTE",
+        "name": "user",
+        "type": "User",
+        "visibility": "private"
+      },
+      "attr-cls-enrollment.entity-Student-academicProgram": {
+        "id": "attr-cls-enrollment.entity-Student-academicProgram",
+        "kind": "ATTRIBUTE",
+        "name": "academicProgram",
+        "type": "AcademicProgram",
+        "visibility": "private"
+      },
+      "attr-enum-academic_catalog.enums-AcademicPeriodStatus-ACTIVE": {
+        "id": "attr-enum-academic_catalog.enums-AcademicPeriodStatus-ACTIVE",
+        "kind": "ATTRIBUTE",
+        "name": "ACTIVE",
+        "type": "AcademicPeriodStatus",
+        "visibility": "public"
+      },
+      "attr-enum-academic_catalog.enums-AcademicPeriodStatus-SCHEDULED": {
+        "id": "attr-enum-academic_catalog.enums-AcademicPeriodStatus-SCHEDULED",
+        "kind": "ATTRIBUTE",
+        "name": "SCHEDULED",
+        "type": "AcademicPeriodStatus",
+        "visibility": "public"
+      },
+      "attr-enum-academic_catalog.enums-AcademicPeriodStatus-CLOSED": {
+        "id": "attr-enum-academic_catalog.enums-AcademicPeriodStatus-CLOSED",
+        "kind": "ATTRIBUTE",
+        "name": "CLOSED",
+        "type": "AcademicPeriodStatus",
+        "visibility": "public"
+      },
+      "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-IN_PROGRESS": {
+        "id": "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-IN_PROGRESS",
+        "kind": "ATTRIBUTE",
+        "name": "IN_PROGRESS",
+        "type": "AcademicHistoryCourseStatus",
+        "visibility": "public"
+      },
+      "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-APPROVED": {
+        "id": "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-APPROVED",
+        "kind": "ATTRIBUTE",
+        "name": "APPROVED",
+        "type": "AcademicHistoryCourseStatus",
+        "visibility": "public"
+      },
+      "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-FAILED": {
+        "id": "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-FAILED",
+        "kind": "ATTRIBUTE",
+        "name": "FAILED",
+        "type": "AcademicHistoryCourseStatus",
+        "visibility": "public"
+      },
+      "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-WITHDRAWN": {
+        "id": "attr-enum-academic_history.enums-AcademicHistoryCourseStatus-WITHDRAWN",
+        "kind": "ATTRIBUTE",
+        "name": "WITHDRAWN",
+        "type": "AcademicHistoryCourseStatus",
+        "visibility": "public"
+      },
+      "attr-enum-academic_programming.enums-WeekDays-LUNES": {
+        "id": "attr-enum-academic_programming.enums-WeekDays-LUNES",
+        "kind": "ATTRIBUTE",
+        "name": "LUNES",
+        "type": "WeekDays",
+        "visibility": "public"
+      },
+      "attr-enum-academic_programming.enums-WeekDays-MARTES": {
+        "id": "attr-enum-academic_programming.enums-WeekDays-MARTES",
+        "kind": "ATTRIBUTE",
+        "name": "MARTES",
+        "type": "WeekDays",
+        "visibility": "public"
+      },
+      "attr-enum-academic_programming.enums-WeekDays-MIERCOLES": {
+        "id": "attr-enum-academic_programming.enums-WeekDays-MIERCOLES",
+        "kind": "ATTRIBUTE",
+        "name": "MIERCOLES",
+        "type": "WeekDays",
+        "visibility": "public"
+      },
+      "attr-enum-academic_programming.enums-WeekDays-JUEVES": {
+        "id": "attr-enum-academic_programming.enums-WeekDays-JUEVES",
+        "kind": "ATTRIBUTE",
+        "name": "JUEVES",
+        "type": "WeekDays",
+        "visibility": "public"
+      },
+      "attr-enum-academic_programming.enums-WeekDays-VIERNES": {
+        "id": "attr-enum-academic_programming.enums-WeekDays-VIERNES",
+        "kind": "ATTRIBUTE",
+        "name": "VIERNES",
+        "type": "WeekDays",
+        "visibility": "public"
+      },
+      "attr-enum-academic_programming.enums-WeekDays-SABADO": {
+        "id": "attr-enum-academic_programming.enums-WeekDays-SABADO",
+        "kind": "ATTRIBUTE",
+        "name": "SABADO",
+        "type": "WeekDays",
+        "visibility": "public"
+      },
+      "attr-enum-academic_programming.enums-WeekDays-DOMINGO": {
+        "id": "attr-enum-academic_programming.enums-WeekDays-DOMINGO",
+        "kind": "ATTRIBUTE",
+        "name": "DOMINGO",
+        "type": "WeekDays",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-DocumentType-CC": {
+        "id": "attr-enum-auth.enums-DocumentType-CC",
+        "kind": "ATTRIBUTE",
+        "name": "CC",
+        "type": "DocumentType",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-DocumentType-TI": {
+        "id": "attr-enum-auth.enums-DocumentType-TI",
+        "kind": "ATTRIBUTE",
+        "name": "TI",
+        "type": "DocumentType",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-DocumentType-CE": {
+        "id": "attr-enum-auth.enums-DocumentType-CE",
+        "kind": "ATTRIBUTE",
+        "name": "CE",
+        "type": "DocumentType",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-DocumentType-PASSPORT": {
+        "id": "attr-enum-auth.enums-DocumentType-PASSPORT",
+        "kind": "ATTRIBUTE",
+        "name": "PASSPORT",
+        "type": "DocumentType",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-Gender-MALE": {
+        "id": "attr-enum-auth.enums-Gender-MALE",
+        "kind": "ATTRIBUTE",
+        "name": "MALE",
+        "type": "Gender",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-Gender-FEMALE": {
+        "id": "attr-enum-auth.enums-Gender-FEMALE",
+        "kind": "ATTRIBUTE",
+        "name": "FEMALE",
+        "type": "Gender",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-Gender-OTHER": {
+        "id": "attr-enum-auth.enums-Gender-OTHER",
+        "kind": "ATTRIBUTE",
+        "name": "OTHER",
+        "type": "Gender",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-Role-ADMIN": {
+        "id": "attr-enum-auth.enums-Role-ADMIN",
+        "kind": "ATTRIBUTE",
+        "name": "ADMIN",
+        "type": "Role",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-Role-TEACHER": {
+        "id": "attr-enum-auth.enums-Role-TEACHER",
+        "kind": "ATTRIBUTE",
+        "name": "TEACHER",
+        "type": "Role",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-Role-STUDENT": {
+        "id": "attr-enum-auth.enums-Role-STUDENT",
+        "kind": "ATTRIBUTE",
+        "name": "STUDENT",
+        "type": "Role",
+        "visibility": "public"
+      },
+      "attr-enum-auth.enums-Status-ACTIVE": {
+        "id": "attr-enum-auth.enums-Status-ACTIVE",
+        "kind": "ATTRIBUTE",
+        "name": "ACTIVE",
+        "type": "Status",
+        "visibility": "public"
+      },
+      "attr-enum-enrollment.enums-EnrollmentStatus-ENROLLED": {
+        "id": "attr-enum-enrollment.enums-EnrollmentStatus-ENROLLED",
+        "kind": "ATTRIBUTE",
+        "name": "ENROLLED",
+        "type": "EnrollmentStatus",
+        "visibility": "public"
+      },
+      "attr-enum-enrollment.enums-EnrollmentStatus-CANCELLED": {
+        "id": "attr-enum-enrollment.enums-EnrollmentStatus-CANCELLED",
+        "kind": "ATTRIBUTE",
+        "name": "CANCELLED",
+        "type": "EnrollmentStatus",
+        "visibility": "public"
+      },
+      "attr-enum-enrollment.enums-EnrollmentStatus-COMPLETED": {
+        "id": "attr-enum-enrollment.enums-EnrollmentStatus-COMPLETED",
+        "kind": "ATTRIBUTE",
+        "name": "COMPLETED",
+        "type": "EnrollmentStatus",
+        "visibility": "public"
+      },
+      "attr-enum-enrollment.enums-EnrollmentStatus-FAILED": {
+        "id": "attr-enum-enrollment.enums-EnrollmentStatus-FAILED",
+        "kind": "ATTRIBUTE",
+        "name": "FAILED",
+        "type": "EnrollmentStatus",
+        "visibility": "public"
+      },
+      "attr-enum-enrollment.enums-EnrollmentStatus-WITHDRAWN": {
+        "id": "attr-enum-enrollment.enums-EnrollmentStatus-WITHDRAWN",
+        "kind": "ATTRIBUTE",
+        "name": "WITHDRAWN",
+        "type": "EnrollmentStatus",
+        "visibility": "public"
+      }
+    },
+    "operations": {
+      "op-cls-academic_catalog.entity-AcademicPeriod-AcademicPeriod": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-AcademicPeriod",
+        "kind": "OPERATION",
+        "name": "AcademicPeriod",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "academicPeriodId",
+            "type": "String"
+          },
+          {
+            "name": "code",
+            "type": "String"
+          },
+          {
+            "name": "name",
+            "type": "String"
+          },
+          {
+            "name": "startDate",
+            "type": "LocalDate"
+          },
+          {
+            "name": "endDate",
+            "type": "LocalDate"
+          },
+          {
+            "name": "status",
+            "type": "AcademicPeriodStatus"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-getAcademicPeriodId": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-getAcademicPeriodId",
+        "kind": "OPERATION",
+        "name": "getAcademicPeriodId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-getCode": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-getCode",
+        "kind": "OPERATION",
+        "name": "getCode",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-getName": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-getName",
+        "kind": "OPERATION",
+        "name": "getName",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-getStartDate": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-getStartDate",
+        "kind": "OPERATION",
+        "name": "getStartDate",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "LocalDate"
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-getEndDate": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-getEndDate",
+        "kind": "OPERATION",
+        "name": "getEndDate",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "LocalDate"
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-getStatus": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-getStatus",
+        "kind": "OPERATION",
+        "name": "getStatus",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "AcademicPeriodStatus"
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-setName": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-setName",
+        "kind": "OPERATION",
+        "name": "setName",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "name",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-AcademicPeriod-setStatus": {
+        "id": "op-cls-academic_catalog.entity-AcademicPeriod-setStatus",
+        "kind": "OPERATION",
+        "name": "setStatus",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "status",
+            "type": "AcademicPeriodStatus"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-AcademicProgram-AcademicProgram": {
+        "id": "op-cls-academic_catalog.entity-AcademicProgram-AcademicProgram",
+        "kind": "OPERATION",
+        "name": "AcademicProgram",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_catalog.entity-AcademicProgram-AcademicProgram2": {
+        "id": "op-cls-academic_catalog.entity-AcademicProgram-AcademicProgram2",
+        "kind": "OPERATION",
+        "name": "AcademicProgram",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "academicProgramId",
+            "type": "String"
+          },
+          {
+            "name": "name",
+            "type": "String"
+          },
+          {
+            "name": "totalSemesters",
+            "type": "int"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_catalog.entity-AcademicProgram-getAcademicProgramId": {
+        "id": "op-cls-academic_catalog.entity-AcademicProgram-getAcademicProgramId",
+        "kind": "OPERATION",
+        "name": "getAcademicProgramId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-AcademicProgram-setAcademicProgramId": {
+        "id": "op-cls-academic_catalog.entity-AcademicProgram-setAcademicProgramId",
+        "kind": "OPERATION",
+        "name": "setAcademicProgramId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "academicProgramId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-AcademicProgram-getName": {
+        "id": "op-cls-academic_catalog.entity-AcademicProgram-getName",
+        "kind": "OPERATION",
+        "name": "getName",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-AcademicProgram-setName": {
+        "id": "op-cls-academic_catalog.entity-AcademicProgram-setName",
+        "kind": "OPERATION",
+        "name": "setName",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "name",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-AcademicProgram-getTotalSemesters": {
+        "id": "op-cls-academic_catalog.entity-AcademicProgram-getTotalSemesters",
+        "kind": "OPERATION",
+        "name": "getTotalSemesters",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "int"
+      },
+      "op-cls-academic_catalog.entity-Course-Course": {
+        "id": "op-cls-academic_catalog.entity-Course-Course",
+        "kind": "OPERATION",
+        "name": "Course",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "courseId",
+            "type": "String"
+          },
+          {
+            "name": "name",
+            "type": "String"
+          },
+          {
+            "name": "code",
+            "type": "String"
+          },
+          {
+            "name": "credits",
+            "type": "int"
+          },
+          {
+            "name": "description",
+            "type": "String"
+          },
+          {
+            "name": "prerequisites",
+            "type": "List<Course>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_catalog.entity-Course-getCourseId": {
+        "id": "op-cls-academic_catalog.entity-Course-getCourseId",
+        "kind": "OPERATION",
+        "name": "getCourseId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-Course-setCourseId": {
+        "id": "op-cls-academic_catalog.entity-Course-setCourseId",
+        "kind": "OPERATION",
+        "name": "setCourseId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "courseId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Course-getName": {
+        "id": "op-cls-academic_catalog.entity-Course-getName",
+        "kind": "OPERATION",
+        "name": "getName",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-Course-setName": {
+        "id": "op-cls-academic_catalog.entity-Course-setName",
+        "kind": "OPERATION",
+        "name": "setName",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "name",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Course-getCode": {
+        "id": "op-cls-academic_catalog.entity-Course-getCode",
+        "kind": "OPERATION",
+        "name": "getCode",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-Course-setCode": {
+        "id": "op-cls-academic_catalog.entity-Course-setCode",
+        "kind": "OPERATION",
+        "name": "setCode",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "code",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Course-getCredits": {
+        "id": "op-cls-academic_catalog.entity-Course-getCredits",
+        "kind": "OPERATION",
+        "name": "getCredits",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "int"
+      },
+      "op-cls-academic_catalog.entity-Course-setCredits": {
+        "id": "op-cls-academic_catalog.entity-Course-setCredits",
+        "kind": "OPERATION",
+        "name": "setCredits",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "credits",
+            "type": "int"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Course-getDescription": {
+        "id": "op-cls-academic_catalog.entity-Course-getDescription",
+        "kind": "OPERATION",
+        "name": "getDescription",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-Course-setDescription": {
+        "id": "op-cls-academic_catalog.entity-Course-setDescription",
+        "kind": "OPERATION",
+        "name": "setDescription",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "description",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Course-getPrerequisites": {
+        "id": "op-cls-academic_catalog.entity-Course-getPrerequisites",
+        "kind": "OPERATION",
+        "name": "getPrerequisites",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "List<Course>"
+      },
+      "op-cls-academic_catalog.entity-Course-setPrerequisites": {
+        "id": "op-cls-academic_catalog.entity-Course-setPrerequisites",
+        "kind": "OPERATION",
+        "name": "setPrerequisites",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "prerequisites",
+            "type": "List<Course>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Prerequisite-Prerequisite": {
+        "id": "op-cls-academic_catalog.entity-Prerequisite-Prerequisite",
+        "kind": "OPERATION",
+        "name": "Prerequisite",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "prerequisite",
+            "type": "String"
+          },
+          {
+            "name": "courseId",
+            "type": "String"
+          },
+          {
+            "name": "requiredCourse",
+            "type": "Course"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_catalog.entity-Prerequisite-getPrerequisite": {
+        "id": "op-cls-academic_catalog.entity-Prerequisite-getPrerequisite",
+        "kind": "OPERATION",
+        "name": "getPrerequisite",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-Prerequisite-setPrerequisite": {
+        "id": "op-cls-academic_catalog.entity-Prerequisite-setPrerequisite",
+        "kind": "OPERATION",
+        "name": "setPrerequisite",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "prerequisite",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Prerequisite-getCourseId": {
+        "id": "op-cls-academic_catalog.entity-Prerequisite-getCourseId",
+        "kind": "OPERATION",
+        "name": "getCourseId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_catalog.entity-Prerequisite-setCourseId": {
+        "id": "op-cls-academic_catalog.entity-Prerequisite-setCourseId",
+        "kind": "OPERATION",
+        "name": "setCourseId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "courseId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_catalog.entity-Prerequisite-getRequiredCourse": {
+        "id": "op-cls-academic_catalog.entity-Prerequisite-getRequiredCourse",
+        "kind": "OPERATION",
+        "name": "getRequiredCourse",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Course"
+      },
+      "op-cls-academic_catalog.entity-Prerequisite-setRequiredCourse": {
+        "id": "op-cls-academic_catalog.entity-Prerequisite-setRequiredCourse",
+        "kind": "OPERATION",
+        "name": "setRequiredCourse",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "requiredCourse",
+            "type": "Course"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-AcademicHistory": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-AcademicHistory",
+        "kind": "OPERATION",
+        "name": "AcademicHistory",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "historyId",
+            "type": "String"
+          },
+          {
+            "name": "student",
+            "type": "Student"
+          },
+          {
+            "name": "completedCourses",
+            "type": "ArrayList<Course>"
+          },
+          {
+            "name": "grade",
+            "type": "double"
+          },
+          {
+            "name": "status",
+            "type": "AcademicHistoryCourseStatus"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_history.entity-AcademicHistory-getHistoryId": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-getHistoryId",
+        "kind": "OPERATION",
+        "name": "getHistoryId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-setHistoryId": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-setHistoryId",
+        "kind": "OPERATION",
+        "name": "setHistoryId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "historyId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-getStudent": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-getStudent",
+        "kind": "OPERATION",
+        "name": "getStudent",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Student"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-setStudent": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-setStudent",
+        "kind": "OPERATION",
+        "name": "setStudent",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "student",
+            "type": "Student"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-getCompletedCourses": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-getCompletedCourses",
+        "kind": "OPERATION",
+        "name": "getCompletedCourses",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "ArrayList<Course>"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-setCompletedCourses": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-setCompletedCourses",
+        "kind": "OPERATION",
+        "name": "setCompletedCourses",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "completedCourses",
+            "type": "ArrayList<Course>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-getGrade": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-getGrade",
+        "kind": "OPERATION",
+        "name": "getGrade",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "double"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-setGrade": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-setGrade",
+        "kind": "OPERATION",
+        "name": "setGrade",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "grade",
+            "type": "double"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-getStatus": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-getStatus",
+        "kind": "OPERATION",
+        "name": "getStatus",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "AcademicHistoryCourseStatus"
+      },
+      "op-cls-academic_history.entity-AcademicHistory-setStatus": {
+        "id": "op-cls-academic_history.entity-AcademicHistory-setStatus",
+        "kind": "OPERATION",
+        "name": "setStatus",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "status",
+            "type": "AcademicHistoryCourseStatus"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-Group-Group": {
+        "id": "op-cls-academic_programming.entity-Group-Group",
+        "kind": "OPERATION",
+        "name": "Group",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_programming.entity-Group-Group2": {
+        "id": "op-cls-academic_programming.entity-Group-Group2",
+        "kind": "OPERATION",
+        "name": "Group",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "groupId",
+            "type": "String"
+          },
+          {
+            "name": "course",
+            "type": "Course"
+          },
+          {
+            "name": "groupCode",
+            "type": "String"
+          },
+          {
+            "name": "teacher",
+            "type": "Teacher"
+          },
+          {
+            "name": "capacity",
+            "type": "int"
+          },
+          {
+            "name": "schedules",
+            "type": "List<GroupSchedule>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_programming.entity-Group-getGroupId": {
+        "id": "op-cls-academic_programming.entity-Group-getGroupId",
+        "kind": "OPERATION",
+        "name": "getGroupId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-Group-setGroupId": {
+        "id": "op-cls-academic_programming.entity-Group-setGroupId",
+        "kind": "OPERATION",
+        "name": "setGroupId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "groupId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-Group-getCourse": {
+        "id": "op-cls-academic_programming.entity-Group-getCourse",
+        "kind": "OPERATION",
+        "name": "getCourse",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Course"
+      },
+      "op-cls-academic_programming.entity-Group-setCourse": {
+        "id": "op-cls-academic_programming.entity-Group-setCourse",
+        "kind": "OPERATION",
+        "name": "setCourse",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "course",
+            "type": "Course"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-Group-getGroupCode": {
+        "id": "op-cls-academic_programming.entity-Group-getGroupCode",
+        "kind": "OPERATION",
+        "name": "getGroupCode",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-Group-setGroupCode": {
+        "id": "op-cls-academic_programming.entity-Group-setGroupCode",
+        "kind": "OPERATION",
+        "name": "setGroupCode",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "groupCode",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-Group-getTeacher": {
+        "id": "op-cls-academic_programming.entity-Group-getTeacher",
+        "kind": "OPERATION",
+        "name": "getTeacher",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Teacher"
+      },
+      "op-cls-academic_programming.entity-Group-setTeacher": {
+        "id": "op-cls-academic_programming.entity-Group-setTeacher",
+        "kind": "OPERATION",
+        "name": "setTeacher",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "teacher",
+            "type": "Teacher"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-Group-getCapacity": {
+        "id": "op-cls-academic_programming.entity-Group-getCapacity",
+        "kind": "OPERATION",
+        "name": "getCapacity",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "int"
+      },
+      "op-cls-academic_programming.entity-Group-setCapacity": {
+        "id": "op-cls-academic_programming.entity-Group-setCapacity",
+        "kind": "OPERATION",
+        "name": "setCapacity",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "capacity",
+            "type": "int"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Group"
+      },
+      "op-cls-academic_programming.entity-Group-getSchedules": {
+        "id": "op-cls-academic_programming.entity-Group-getSchedules",
+        "kind": "OPERATION",
+        "name": "getSchedules",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "List<GroupSchedule>"
+      },
+      "op-cls-academic_programming.entity-Group-setSchedules": {
+        "id": "op-cls-academic_programming.entity-Group-setSchedules",
+        "kind": "OPERATION",
+        "name": "setSchedules",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "schedules",
+            "type": "ArrayList<GroupSchedule>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-GroupSchedule": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-GroupSchedule",
+        "kind": "OPERATION",
+        "name": "GroupSchedule",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-GroupSchedule2": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-GroupSchedule2",
+        "kind": "OPERATION",
+        "name": "GroupSchedule",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "groupScheduleId",
+            "type": "String"
+          },
+          {
+            "name": "groupId",
+            "type": "String"
+          },
+          {
+            "name": "dayOfWeek",
+            "type": "WeekDays"
+          },
+          {
+            "name": "startTime",
+            "type": "LocalTime"
+          },
+          {
+            "name": "endTime",
+            "type": "LocalTime"
+          },
+          {
+            "name": "classroom",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-getGroupScheduleId": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-getGroupScheduleId",
+        "kind": "OPERATION",
+        "name": "getGroupScheduleId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-setGroupScheduleId": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-setGroupScheduleId",
+        "kind": "OPERATION",
+        "name": "setGroupScheduleId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "groupScheduleId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-getGroupId": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-getGroupId",
+        "kind": "OPERATION",
+        "name": "getGroupId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-setGroupId": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-setGroupId",
+        "kind": "OPERATION",
+        "name": "setGroupId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "groupId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-getDayOfWeek": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-getDayOfWeek",
+        "kind": "OPERATION",
+        "name": "getDayOfWeek",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "WeekDays"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-setDayOfWeek": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-setDayOfWeek",
+        "kind": "OPERATION",
+        "name": "setDayOfWeek",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "dayOfWeek",
+            "type": "WeekDays"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-getStartTime": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-getStartTime",
+        "kind": "OPERATION",
+        "name": "getStartTime",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "LocalTime"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-setStartTime": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-setStartTime",
+        "kind": "OPERATION",
+        "name": "setStartTime",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "startTime",
+            "type": "LocalTime"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-getEndTime": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-getEndTime",
+        "kind": "OPERATION",
+        "name": "getEndTime",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "LocalTime"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-setEndTime": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-setEndTime",
+        "kind": "OPERATION",
+        "name": "setEndTime",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "endTime",
+            "type": "LocalTime"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-getClassroom": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-getClassroom",
+        "kind": "OPERATION",
+        "name": "getClassroom",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-GroupSchedule-setClassroom": {
+        "id": "op-cls-academic_programming.entity-GroupSchedule-setClassroom",
+        "kind": "OPERATION",
+        "name": "setClassroom",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "classroom",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplateDetail-SemesterTemplateDetail": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplateDetail-SemesterTemplateDetail",
+        "kind": "OPERATION",
+        "name": "SemesterTemplateDetail",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "templateDetailId",
+            "type": "String"
+          },
+          {
+            "name": "group",
+            "type": "Group"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_programming.entity-SemesterTemplateDetail-getTemplateDetailId": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplateDetail-getTemplateDetailId",
+        "kind": "OPERATION",
+        "name": "getTemplateDetailId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplateDetail-setTemplateDetailId": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplateDetail-setTemplateDetailId",
+        "kind": "OPERATION",
+        "name": "setTemplateDetailId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "templateDetailId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplateDetail-getGroup": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplateDetail-getGroup",
+        "kind": "OPERATION",
+        "name": "getGroup",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Group"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplateDetail-setGroup": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplateDetail-setGroup",
+        "kind": "OPERATION",
+        "name": "setGroup",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "group",
+            "type": "Group"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-SemesterTemplate": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-SemesterTemplate",
+        "kind": "OPERATION",
+        "name": "SemesterTemplate",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "templateId",
+            "type": "String"
+          },
+          {
+            "name": "academicProgram",
+            "type": "AcademicProgram"
+          },
+          {
+            "name": "semester",
+            "type": "int"
+          },
+          {
+            "name": "details",
+            "type": "List<SemesterTemplateDetail>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-getTemplateId": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-getTemplateId",
+        "kind": "OPERATION",
+        "name": "getTemplateId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-setTemplateId": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-setTemplateId",
+        "kind": "OPERATION",
+        "name": "setTemplateId",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "templateId",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-getAcademicProgram": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-getAcademicProgram",
+        "kind": "OPERATION",
+        "name": "getAcademicProgram",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "AcademicProgram"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-setAcademicProgram": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-setAcademicProgram",
+        "kind": "OPERATION",
+        "name": "setAcademicProgram",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "academicProgram",
+            "type": "AcademicProgram"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-getSemester": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-getSemester",
+        "kind": "OPERATION",
+        "name": "getSemester",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "int"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-setSemester": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-setSemester",
+        "kind": "OPERATION",
+        "name": "setSemester",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "semester",
+            "type": "int"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-getDetails": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-getDetails",
+        "kind": "OPERATION",
+        "name": "getDetails",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "List<SemesterTemplateDetail>"
+      },
+      "op-cls-academic_programming.entity-SemesterTemplate-setDetails": {
+        "id": "op-cls-academic_programming.entity-SemesterTemplate-setDetails",
+        "kind": "OPERATION",
+        "name": "setDetails",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "details",
+            "type": "List<SemesterTemplateDetail>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-academic_programming.entity-Teacher-Teacher": {
+        "id": "op-cls-academic_programming.entity-Teacher-Teacher",
+        "kind": "OPERATION",
+        "name": "Teacher",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "teacherId",
+            "type": "String"
+          },
+          {
+            "name": "name",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-academic_programming.entity-Teacher-getTeacherId": {
+        "id": "op-cls-academic_programming.entity-Teacher-getTeacherId",
+        "kind": "OPERATION",
+        "name": "getTeacherId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-academic_programming.entity-Teacher-getName": {
+        "id": "op-cls-academic_programming.entity-Teacher-getName",
+        "kind": "OPERATION",
+        "name": "getName",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.entity-User-User": {
+        "id": "op-cls-auth.entity-User-User",
+        "kind": "OPERATION",
+        "name": "User",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "userId",
+            "type": "String"
+          },
+          {
+            "name": "firstName",
+            "type": "String"
+          },
+          {
+            "name": "lastName",
+            "type": "String"
+          },
+          {
+            "name": "documentType",
+            "type": "DocumentType"
+          },
+          {
+            "name": "documentNumber",
+            "type": "String"
+          },
+          {
+            "name": "birthDate",
+            "type": "LocalDate"
+          },
+          {
+            "name": "gender",
+            "type": "Gender"
+          },
+          {
+            "name": "phoneNumber",
+            "type": "String"
+          },
+          {
+            "name": "address",
+            "type": "String"
+          },
+          {
+            "name": "email",
+            "type": "Email"
+          },
+          {
+            "name": "password",
+            "type": "EncodedPassword"
+          },
+          {
+            "name": "status",
+            "type": "Status"
+          },
+          {
+            "name": "role",
+            "type": "Role"
+          },
+          {
+            "name": "createdAt",
+            "type": "LocalDateTime"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-auth.entity-User-getUserId": {
+        "id": "op-cls-auth.entity-User-getUserId",
+        "kind": "OPERATION",
+        "name": "getUserId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.entity-User-getFirstName": {
+        "id": "op-cls-auth.entity-User-getFirstName",
+        "kind": "OPERATION",
+        "name": "getFirstName",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.entity-User-getLastName": {
+        "id": "op-cls-auth.entity-User-getLastName",
+        "kind": "OPERATION",
+        "name": "getLastName",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.entity-User-getDocumentType": {
+        "id": "op-cls-auth.entity-User-getDocumentType",
+        "kind": "OPERATION",
+        "name": "getDocumentType",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "DocumentType"
+      },
+      "op-cls-auth.entity-User-getDocumentNumber": {
+        "id": "op-cls-auth.entity-User-getDocumentNumber",
+        "kind": "OPERATION",
+        "name": "getDocumentNumber",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.entity-User-getBirthDate": {
+        "id": "op-cls-auth.entity-User-getBirthDate",
+        "kind": "OPERATION",
+        "name": "getBirthDate",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "LocalDate"
+      },
+      "op-cls-auth.entity-User-getGender": {
+        "id": "op-cls-auth.entity-User-getGender",
+        "kind": "OPERATION",
+        "name": "getGender",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Gender"
+      },
+      "op-cls-auth.entity-User-getPhoneNumber": {
+        "id": "op-cls-auth.entity-User-getPhoneNumber",
+        "kind": "OPERATION",
+        "name": "getPhoneNumber",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.entity-User-getAddress": {
+        "id": "op-cls-auth.entity-User-getAddress",
+        "kind": "OPERATION",
+        "name": "getAddress",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.entity-User-getEmail": {
+        "id": "op-cls-auth.entity-User-getEmail",
+        "kind": "OPERATION",
+        "name": "getEmail",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Email"
+      },
+      "op-cls-auth.entity-User-getPassword": {
+        "id": "op-cls-auth.entity-User-getPassword",
+        "kind": "OPERATION",
+        "name": "getPassword",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "EncodedPassword"
+      },
+      "op-cls-auth.entity-User-getStatus": {
+        "id": "op-cls-auth.entity-User-getStatus",
+        "kind": "OPERATION",
+        "name": "getStatus",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Status"
+      },
+      "op-cls-auth.entity-User-getRole": {
+        "id": "op-cls-auth.entity-User-getRole",
+        "kind": "OPERATION",
+        "name": "getRole",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Role"
+      },
+      "op-cls-auth.entity-User-getCreatedAt": {
+        "id": "op-cls-auth.entity-User-getCreatedAt",
+        "kind": "OPERATION",
+        "name": "getCreatedAt",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "LocalDateTime"
+      },
+      "op-cls-auth.entity-User-setDocumentType": {
+        "id": "op-cls-auth.entity-User-setDocumentType",
+        "kind": "OPERATION",
+        "name": "setDocumentType",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "documentType",
+            "type": "DocumentType"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-auth.entity-User-setPhoneNumber": {
+        "id": "op-cls-auth.entity-User-setPhoneNumber",
+        "kind": "OPERATION",
+        "name": "setPhoneNumber",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "phoneNumber",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-auth.entity-User-setAddress": {
+        "id": "op-cls-auth.entity-User-setAddress",
+        "kind": "OPERATION",
+        "name": "setAddress",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "address",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-auth.entity-User-setPassword": {
+        "id": "op-cls-auth.entity-User-setPassword",
+        "kind": "OPERATION",
+        "name": "setPassword",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "password",
+            "type": "EncodedPassword"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-auth.entity-User-setStatus": {
+        "id": "op-cls-auth.entity-User-setStatus",
+        "kind": "OPERATION",
+        "name": "setStatus",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "status",
+            "type": "Status"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-auth.vo-Email-Email": {
+        "id": "op-cls-auth.vo-Email-Email",
+        "kind": "OPERATION",
+        "name": "Email",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "value",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-auth.vo-Email-getValue": {
+        "id": "op-cls-auth.vo-Email-getValue",
+        "kind": "OPERATION",
+        "name": "getValue",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.vo-EncodedPassword-EncodedPassword": {
+        "id": "op-cls-auth.vo-EncodedPassword-EncodedPassword",
+        "kind": "OPERATION",
+        "name": "EncodedPassword",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "value",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-auth.vo-EncodedPassword-getValue": {
+        "id": "op-cls-auth.vo-EncodedPassword-getValue",
+        "kind": "OPERATION",
+        "name": "getValue",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-auth.vo-Password-Password": {
+        "id": "op-cls-auth.vo-Password-Password",
+        "kind": "OPERATION",
+        "name": "Password",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "value",
+            "type": "String"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-auth.vo-Password-getValue": {
+        "id": "op-cls-auth.vo-Password-getValue",
+        "kind": "OPERATION",
+        "name": "getValue",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-EnrollmentDetail": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-EnrollmentDetail",
+        "kind": "OPERATION",
+        "name": "EnrollmentDetail",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "enrollmentDetailId",
+            "type": "String"
+          },
+          {
+            "name": "group",
+            "type": "Group"
+          },
+          {
+            "name": "status",
+            "type": "EnrollmentStatus"
+          },
+          {
+            "name": "finalGrade",
+            "type": "Double"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-getEnrollmentDetailId": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-getEnrollmentDetailId",
+        "kind": "OPERATION",
+        "name": "getEnrollmentDetailId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-getGroup": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-getGroup",
+        "kind": "OPERATION",
+        "name": "getGroup",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Group"
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-getStatus": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-getStatus",
+        "kind": "OPERATION",
+        "name": "getStatus",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "EnrollmentStatus"
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-getFinalGrade": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-getFinalGrade",
+        "kind": "OPERATION",
+        "name": "getFinalGrade",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Double"
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-setGroup": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-setGroup",
+        "kind": "OPERATION",
+        "name": "setGroup",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "group",
+            "type": "Group"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-setStatus": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-setStatus",
+        "kind": "OPERATION",
+        "name": "setStatus",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "status",
+            "type": "EnrollmentStatus"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-enrollment.entity-EnrollmentDetail-setFinalGrade": {
+        "id": "op-cls-enrollment.entity-EnrollmentDetail-setFinalGrade",
+        "kind": "OPERATION",
+        "name": "setFinalGrade",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "finalGrade",
+            "type": "Double"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-enrollment.entity-Enrollment-Enrollment": {
+        "id": "op-cls-enrollment.entity-Enrollment-Enrollment",
+        "kind": "OPERATION",
+        "name": "Enrollment",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "enrollmentId",
+            "type": "String"
+          },
+          {
+            "name": "student",
+            "type": "Student"
+          },
+          {
+            "name": "academicProgram",
+            "type": "AcademicProgram"
+          },
+          {
+            "name": "enrollmentDate",
+            "type": "LocalDate"
+          },
+          {
+            "name": "details",
+            "type": "List<EnrollmentDetail>"
+          },
+          {
+            "name": "academicPeriod",
+            "type": "AcademicPeriod"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-enrollment.entity-Enrollment-getEnrollmentId": {
+        "id": "op-cls-enrollment.entity-Enrollment-getEnrollmentId",
+        "kind": "OPERATION",
+        "name": "getEnrollmentId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-enrollment.entity-Enrollment-getStudent": {
+        "id": "op-cls-enrollment.entity-Enrollment-getStudent",
+        "kind": "OPERATION",
+        "name": "getStudent",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "Student"
+      },
+      "op-cls-enrollment.entity-Enrollment-getAcademicProgram": {
+        "id": "op-cls-enrollment.entity-Enrollment-getAcademicProgram",
+        "kind": "OPERATION",
+        "name": "getAcademicProgram",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "AcademicProgram"
+      },
+      "op-cls-enrollment.entity-Enrollment-setAcademicProgram": {
+        "id": "op-cls-enrollment.entity-Enrollment-setAcademicProgram",
+        "kind": "OPERATION",
+        "name": "setAcademicProgram",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "academicProgram",
+            "type": "AcademicProgram"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-enrollment.entity-Enrollment-getEnrollmentDate": {
+        "id": "op-cls-enrollment.entity-Enrollment-getEnrollmentDate",
+        "kind": "OPERATION",
+        "name": "getEnrollmentDate",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "LocalDate"
+      },
+      "op-cls-enrollment.entity-Enrollment-getDetails": {
+        "id": "op-cls-enrollment.entity-Enrollment-getDetails",
+        "kind": "OPERATION",
+        "name": "getDetails",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "List<EnrollmentDetail>"
+      },
+      "op-cls-enrollment.entity-Enrollment-setDetails": {
+        "id": "op-cls-enrollment.entity-Enrollment-setDetails",
+        "kind": "OPERATION",
+        "name": "setDetails",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "details",
+            "type": "List<EnrollmentDetail>"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-enrollment.entity-Enrollment-getAcademicPeriod": {
+        "id": "op-cls-enrollment.entity-Enrollment-getAcademicPeriod",
+        "kind": "OPERATION",
+        "name": "getAcademicPeriod",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "AcademicPeriod"
+      },
+      "op-cls-enrollment.entity-Enrollment-setAcademicPeriod": {
+        "id": "op-cls-enrollment.entity-Enrollment-setAcademicPeriod",
+        "kind": "OPERATION",
+        "name": "setAcademicPeriod",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "academicPeriod",
+            "type": "AcademicPeriod"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "void"
+      },
+      "op-cls-enrollment.entity-Student-Student": {
+        "id": "op-cls-enrollment.entity-Student-Student",
+        "kind": "OPERATION",
+        "name": "Student",
+        "visibility": "public",
+        "parameters": [
+          {
+            "name": "studentId",
+            "type": "String"
+          },
+          {
+            "name": "studentCode",
+            "type": "String"
+          },
+          {
+            "name": "user",
+            "type": "User"
+          },
+          {
+            "name": "academicProgram",
+            "type": "AcademicProgram"
+          }
+        ],
+        "isStatic": false,
+        "isAbstract": false
+      },
+      "op-cls-enrollment.entity-Student-getStudentId": {
+        "id": "op-cls-enrollment.entity-Student-getStudentId",
+        "kind": "OPERATION",
+        "name": "getStudentId",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-enrollment.entity-Student-getStudentCode": {
+        "id": "op-cls-enrollment.entity-Student-getStudentCode",
+        "kind": "OPERATION",
+        "name": "getStudentCode",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "String"
+      },
+      "op-cls-enrollment.entity-Student-getUser": {
+        "id": "op-cls-enrollment.entity-Student-getUser",
+        "kind": "OPERATION",
+        "name": "getUser",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "User"
+      },
+      "op-cls-enrollment.entity-Student-getAcademicProgram": {
+        "id": "op-cls-enrollment.entity-Student-getAcademicProgram",
+        "kind": "OPERATION",
+        "name": "getAcademicProgram",
+        "visibility": "public",
+        "parameters": [],
+        "isStatic": false,
+        "isAbstract": false,
+        "returnType": "AcademicProgram"
+      }
+    },
+    "actors": {},
+    "useCases": {},
+    "activityNodes": {},
+    "objectInstances": {},
+    "components": {},
+    "nodes": {},
+    "artifacts": {},
+    "relations": {
+      "rel-AGGREGATION-cls-academic_catalog.entity-Course-cls-academic_catalog.entity-Course": {
+        "id": "rel-AGGREGATION-cls-academic_catalog.entity-Course-cls-academic_catalog.entity-Course",
+        "kind": "AGGREGATION",
+        "sourceId": "cls-academic_catalog.entity-Course",
+        "targetId": "cls-academic_catalog.entity-Course",
+        "sourceEnd": {
+          "elementId": "cls-academic_catalog.entity-Course",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "shared",
+          "role": "prerequisites"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-Course",
+          "multiplicity": "0..*",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-academic_catalog.entity-Prerequisite-cls-academic_catalog.entity-Course": {
+        "id": "rel-ASSOCIATION-cls-academic_catalog.entity-Prerequisite-cls-academic_catalog.entity-Course",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-academic_catalog.entity-Prerequisite",
+        "targetId": "cls-academic_catalog.entity-Course",
+        "sourceEnd": {
+          "elementId": "cls-academic_catalog.entity-Prerequisite",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "requiredCourse"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-Course",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_catalog.entity-Course": {
+        "id": "rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_catalog.entity-Course",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-academic_programming.entity-Group",
+        "targetId": "cls-academic_catalog.entity-Course",
+        "sourceEnd": {
+          "elementId": "cls-academic_programming.entity-Group",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "course"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-Course",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_programming.entity-Teacher": {
+        "id": "rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_programming.entity-Teacher",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-academic_programming.entity-Group",
+        "targetId": "cls-academic_programming.entity-Teacher",
+        "sourceEnd": {
+          "elementId": "cls-academic_programming.entity-Group",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "teacher"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_programming.entity-Teacher",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-COMPOSITION-cls-academic_programming.entity-Group-cls-academic_programming.entity-GroupSchedule": {
+        "id": "rel-COMPOSITION-cls-academic_programming.entity-Group-cls-academic_programming.entity-GroupSchedule",
+        "kind": "COMPOSITION",
+        "sourceId": "cls-academic_programming.entity-Group",
+        "targetId": "cls-academic_programming.entity-GroupSchedule",
+        "sourceEnd": {
+          "elementId": "cls-academic_programming.entity-Group",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "composite",
+          "role": "schedules"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_programming.entity-GroupSchedule",
+          "multiplicity": "0..*",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplateDetail-cls-academic_programming.entity-Group": {
+        "id": "rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplateDetail-cls-academic_programming.entity-Group",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-academic_programming.entity-SemesterTemplateDetail",
+        "targetId": "cls-academic_programming.entity-Group",
+        "sourceEnd": {
+          "elementId": "cls-academic_programming.entity-SemesterTemplateDetail",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "group"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_programming.entity-Group",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplate-cls-academic_catalog.entity-AcademicProgram": {
+        "id": "rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplate-cls-academic_catalog.entity-AcademicProgram",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-academic_programming.entity-SemesterTemplate",
+        "targetId": "cls-academic_catalog.entity-AcademicProgram",
+        "sourceEnd": {
+          "elementId": "cls-academic_programming.entity-SemesterTemplate",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "academicProgram"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-AcademicProgram",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-COMPOSITION-cls-academic_programming.entity-SemesterTemplate-cls-academic_programming.entity-SemesterTemplateDetail": {
+        "id": "rel-COMPOSITION-cls-academic_programming.entity-SemesterTemplate-cls-academic_programming.entity-SemesterTemplateDetail",
+        "kind": "COMPOSITION",
+        "sourceId": "cls-academic_programming.entity-SemesterTemplate",
+        "targetId": "cls-academic_programming.entity-SemesterTemplateDetail",
+        "sourceEnd": {
+          "elementId": "cls-academic_programming.entity-SemesterTemplate",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "composite",
+          "role": "details"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_programming.entity-SemesterTemplateDetail",
+          "multiplicity": "0..*",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-Email": {
+        "id": "rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-Email",
+        "kind": "COMPOSITION",
+        "sourceId": "cls-auth.entity-User",
+        "targetId": "cls-auth.vo-Email",
+        "sourceEnd": {
+          "elementId": "cls-auth.entity-User",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "composite",
+          "role": "email"
+        },
+        "targetEnd": {
+          "elementId": "cls-auth.vo-Email",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-EncodedPassword": {
+        "id": "rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-EncodedPassword",
+        "kind": "COMPOSITION",
+        "sourceId": "cls-auth.entity-User",
+        "targetId": "cls-auth.vo-EncodedPassword",
+        "sourceEnd": {
+          "elementId": "cls-auth.entity-User",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "composite",
+          "role": "password"
+        },
+        "targetEnd": {
+          "elementId": "cls-auth.vo-EncodedPassword",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-Student": {
+        "id": "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-Student",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-enrollment.entity-Enrollment",
+        "targetId": "cls-enrollment.entity-Student",
+        "sourceEnd": {
+          "elementId": "cls-enrollment.entity-Enrollment",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "student"
+        },
+        "targetEnd": {
+          "elementId": "cls-enrollment.entity-Student",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicProgram": {
+        "id": "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicProgram",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-enrollment.entity-Enrollment",
+        "targetId": "cls-academic_catalog.entity-AcademicProgram",
+        "sourceEnd": {
+          "elementId": "cls-enrollment.entity-Enrollment",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "academicProgram"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-AcademicProgram",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicPeriod": {
+        "id": "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicPeriod",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-enrollment.entity-Enrollment",
+        "targetId": "cls-academic_catalog.entity-AcademicPeriod",
+        "sourceEnd": {
+          "elementId": "cls-enrollment.entity-Enrollment",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "academicPeriod"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-AcademicPeriod",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-COMPOSITION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-EnrollmentDetail": {
+        "id": "rel-COMPOSITION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-EnrollmentDetail",
+        "kind": "COMPOSITION",
+        "sourceId": "cls-enrollment.entity-Enrollment",
+        "targetId": "cls-enrollment.entity-EnrollmentDetail",
+        "sourceEnd": {
+          "elementId": "cls-enrollment.entity-Enrollment",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "composite",
+          "role": "details"
+        },
+        "targetEnd": {
+          "elementId": "cls-enrollment.entity-EnrollmentDetail",
+          "multiplicity": "0..*",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-enrollment.entity-EnrollmentDetail-cls-academic_programming.entity-Group": {
+        "id": "rel-ASSOCIATION-cls-enrollment.entity-EnrollmentDetail-cls-academic_programming.entity-Group",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-enrollment.entity-EnrollmentDetail",
+        "targetId": "cls-academic_programming.entity-Group",
+        "sourceEnd": {
+          "elementId": "cls-enrollment.entity-EnrollmentDetail",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "group"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_programming.entity-Group",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-enrollment.entity-Student-cls-auth.entity-User": {
+        "id": "rel-ASSOCIATION-cls-enrollment.entity-Student-cls-auth.entity-User",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-enrollment.entity-Student",
+        "targetId": "cls-auth.entity-User",
+        "sourceEnd": {
+          "elementId": "cls-enrollment.entity-Student",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "user"
+        },
+        "targetEnd": {
+          "elementId": "cls-auth.entity-User",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-enrollment.entity-Student-cls-academic_catalog.entity-AcademicProgram": {
+        "id": "rel-ASSOCIATION-cls-enrollment.entity-Student-cls-academic_catalog.entity-AcademicProgram",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-enrollment.entity-Student",
+        "targetId": "cls-academic_catalog.entity-AcademicProgram",
+        "sourceEnd": {
+          "elementId": "cls-enrollment.entity-Student",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "academicProgram"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-AcademicProgram",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-ASSOCIATION-cls-academic_history.entity-AcademicHistory-cls-enrollment.entity-Student": {
+        "id": "rel-ASSOCIATION-cls-academic_history.entity-AcademicHistory-cls-enrollment.entity-Student",
+        "kind": "ASSOCIATION",
+        "sourceId": "cls-academic_history.entity-AcademicHistory",
+        "targetId": "cls-enrollment.entity-Student",
+        "sourceEnd": {
+          "elementId": "cls-academic_history.entity-AcademicHistory",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "none",
+          "role": "student"
+        },
+        "targetEnd": {
+          "elementId": "cls-enrollment.entity-Student",
+          "multiplicity": "1",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      },
+      "rel-AGGREGATION-cls-academic_history.entity-AcademicHistory-cls-academic_catalog.entity-Course": {
+        "id": "rel-AGGREGATION-cls-academic_history.entity-AcademicHistory-cls-academic_catalog.entity-Course",
+        "kind": "AGGREGATION",
+        "sourceId": "cls-academic_history.entity-AcademicHistory",
+        "targetId": "cls-academic_catalog.entity-Course",
+        "sourceEnd": {
+          "elementId": "cls-academic_history.entity-AcademicHistory",
+          "multiplicity": "1",
+          "isNavigable": true,
+          "aggregation": "shared",
+          "role": "completedCourses"
+        },
+        "targetEnd": {
+          "elementId": "cls-academic_catalog.entity-Course",
+          "multiplicity": "0..*",
+          "isNavigable": false,
+          "aggregation": "none"
+        }
+      }
+    },
+    "createdAt": 1782492776697,
+    "updatedAt": 1782492776697
+  },
+  "view": {
+    "diagramId": "diagram-unischeduler-domain-model",
+    "nodes": [
+      {
+        "id": "node-cls-auth.entity-User",
+        "elementId": "cls-auth.entity-User",
+        "x": 80,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-cls-auth.vo-Email",
+        "elementId": "cls-auth.vo-Email",
+        "x": 360,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-cls-auth.vo-EncodedPassword",
+        "elementId": "cls-auth.vo-EncodedPassword",
+        "x": 640,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-cls-auth.vo-Password",
+        "elementId": "cls-auth.vo-Password",
+        "x": 920,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-enum-auth.enums-DocumentType",
+        "elementId": "enum-auth.enums-DocumentType",
+        "x": 1200,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-enum-auth.enums-Gender",
+        "elementId": "enum-auth.enums-Gender",
+        "x": 1480,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-enum-auth.enums-Role",
+        "elementId": "enum-auth.enums-Role",
+        "x": 1760,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-enum-auth.enums-Status",
+        "elementId": "enum-auth.enums-Status",
+        "x": 2040,
+        "y": 80,
+        "width": 220
+      },
+      {
+        "id": "node-cls-enrollment.entity-Student",
+        "elementId": "cls-enrollment.entity-Student",
+        "x": 80,
+        "y": 1180,
+        "width": 220
+      },
+      {
+        "id": "node-cls-enrollment.entity-Enrollment",
+        "elementId": "cls-enrollment.entity-Enrollment",
+        "x": 360,
+        "y": 1180,
+        "width": 220
+      },
+      {
+        "id": "node-cls-enrollment.entity-EnrollmentDetail",
+        "elementId": "cls-enrollment.entity-EnrollmentDetail",
+        "x": 640,
+        "y": 1180,
+        "width": 220
+      },
+      {
+        "id": "node-enum-enrollment.enums-EnrollmentStatus",
+        "elementId": "enum-enrollment.enums-EnrollmentStatus",
+        "x": 920,
+        "y": 1180,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_history.entity-AcademicHistory",
+        "elementId": "cls-academic_history.entity-AcademicHistory",
+        "x": 80,
+        "y": 1780,
+        "width": 220
+      },
+      {
+        "id": "node-enum-academic_history.enums-AcademicHistoryCourseStatus",
+        "elementId": "enum-academic_history.enums-AcademicHistoryCourseStatus",
+        "x": 360,
+        "y": 1780,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_catalog.entity-Course",
+        "elementId": "cls-academic_catalog.entity-Course",
+        "x": 80,
+        "y": 2300,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_catalog.entity-Prerequisite",
+        "elementId": "cls-academic_catalog.entity-Prerequisite",
+        "x": 360,
+        "y": 2300,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_catalog.entity-AcademicPeriod",
+        "elementId": "cls-academic_catalog.entity-AcademicPeriod",
+        "x": 640,
+        "y": 2300,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_catalog.entity-AcademicProgram",
+        "elementId": "cls-academic_catalog.entity-AcademicProgram",
+        "x": 920,
+        "y": 2300,
+        "width": 220
+      },
+      {
+        "id": "node-enum-academic_catalog.enums-AcademicPeriodStatus",
+        "elementId": "enum-academic_catalog.enums-AcademicPeriodStatus",
+        "x": 1200,
+        "y": 2300,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_programming.entity-Group",
+        "elementId": "cls-academic_programming.entity-Group",
+        "x": 80,
+        "y": 2900,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_programming.entity-GroupSchedule",
+        "elementId": "cls-academic_programming.entity-GroupSchedule",
+        "x": 360,
+        "y": 2900,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_programming.entity-Teacher",
+        "elementId": "cls-academic_programming.entity-Teacher",
+        "x": 640,
+        "y": 2900,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_programming.entity-SemesterTemplate",
+        "elementId": "cls-academic_programming.entity-SemesterTemplate",
+        "x": 920,
+        "y": 2900,
+        "width": 220
+      },
+      {
+        "id": "node-cls-academic_programming.entity-SemesterTemplateDetail",
+        "elementId": "cls-academic_programming.entity-SemesterTemplateDetail",
+        "x": 1200,
+        "y": 2900,
+        "width": 220
+      },
+      {
+        "id": "node-enum-academic_programming.enums-WeekDays",
+        "elementId": "enum-academic_programming.enums-WeekDays",
+        "x": 1480,
+        "y": 2900,
+        "width": 220
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-rel-AGGREGATION-cls-academic_catalog.entity-Course-cls-academic_catalog.entity-Course",
+        "relationId": "rel-AGGREGATION-cls-academic_catalog.entity-Course-cls-academic_catalog.entity-Course",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "0..*",
+        "sourceRole": "prerequisites"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-academic_catalog.entity-Prerequisite-cls-academic_catalog.entity-Course",
+        "relationId": "rel-ASSOCIATION-cls-academic_catalog.entity-Prerequisite-cls-academic_catalog.entity-Course",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "requiredCourse"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_catalog.entity-Course",
+        "relationId": "rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_catalog.entity-Course",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "course"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_programming.entity-Teacher",
+        "relationId": "rel-ASSOCIATION-cls-academic_programming.entity-Group-cls-academic_programming.entity-Teacher",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "teacher"
+      },
+      {
+        "id": "edge-rel-COMPOSITION-cls-academic_programming.entity-Group-cls-academic_programming.entity-GroupSchedule",
+        "relationId": "rel-COMPOSITION-cls-academic_programming.entity-Group-cls-academic_programming.entity-GroupSchedule",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "0..*",
+        "sourceRole": "schedules"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplateDetail-cls-academic_programming.entity-Group",
+        "relationId": "rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplateDetail-cls-academic_programming.entity-Group",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "group"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplate-cls-academic_catalog.entity-AcademicProgram",
+        "relationId": "rel-ASSOCIATION-cls-academic_programming.entity-SemesterTemplate-cls-academic_catalog.entity-AcademicProgram",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "academicProgram"
+      },
+      {
+        "id": "edge-rel-COMPOSITION-cls-academic_programming.entity-SemesterTemplate-cls-academic_programming.entity-SemesterTemplateDetail",
+        "relationId": "rel-COMPOSITION-cls-academic_programming.entity-SemesterTemplate-cls-academic_programming.entity-SemesterTemplateDetail",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "0..*",
+        "sourceRole": "details"
+      },
+      {
+        "id": "edge-rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-Email",
+        "relationId": "rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-Email",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "email"
+      },
+      {
+        "id": "edge-rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-EncodedPassword",
+        "relationId": "rel-COMPOSITION-cls-auth.entity-User-cls-auth.vo-EncodedPassword",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "password"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-Student",
+        "relationId": "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-Student",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "student"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicProgram",
+        "relationId": "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicProgram",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "academicProgram"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicPeriod",
+        "relationId": "rel-ASSOCIATION-cls-enrollment.entity-Enrollment-cls-academic_catalog.entity-AcademicPeriod",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "academicPeriod"
+      },
+      {
+        "id": "edge-rel-COMPOSITION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-EnrollmentDetail",
+        "relationId": "rel-COMPOSITION-cls-enrollment.entity-Enrollment-cls-enrollment.entity-EnrollmentDetail",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "0..*",
+        "sourceRole": "details"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-enrollment.entity-EnrollmentDetail-cls-academic_programming.entity-Group",
+        "relationId": "rel-ASSOCIATION-cls-enrollment.entity-EnrollmentDetail-cls-academic_programming.entity-Group",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "group"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-enrollment.entity-Student-cls-auth.entity-User",
+        "relationId": "rel-ASSOCIATION-cls-enrollment.entity-Student-cls-auth.entity-User",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "user"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-enrollment.entity-Student-cls-academic_catalog.entity-AcademicProgram",
+        "relationId": "rel-ASSOCIATION-cls-enrollment.entity-Student-cls-academic_catalog.entity-AcademicProgram",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "academicProgram"
+      },
+      {
+        "id": "edge-rel-ASSOCIATION-cls-academic_history.entity-AcademicHistory-cls-enrollment.entity-Student",
+        "relationId": "rel-ASSOCIATION-cls-academic_history.entity-AcademicHistory-cls-enrollment.entity-Student",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "1",
+        "sourceRole": "student"
+      },
+      {
+        "id": "edge-rel-AGGREGATION-cls-academic_history.entity-AcademicHistory-cls-academic_catalog.entity-Course",
+        "relationId": "rel-AGGREGATION-cls-academic_history.entity-AcademicHistory-cls-academic_catalog.entity-Course",
+        "waypoints": [],
+        "sourceMultiplicity": "1",
+        "targetMultiplicity": "0..*",
+        "sourceRole": "completedCourses"
+      }
+    ]
+  }
+}
