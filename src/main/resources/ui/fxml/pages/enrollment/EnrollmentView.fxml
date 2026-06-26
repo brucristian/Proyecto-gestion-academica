@@ -4,13 +4,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="700.0"
@@ -20,7 +18,8 @@
       stylesheets="@/css/global.css"
       VBox.vgrow="ALWAYS"
       xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1">
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.unischeduler.ui.pages.enrollment.EnrollmentController">
 
     <children>
         <Label styleClass="label-title" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="Proceso de Matrícula Académica" />
@@ -58,21 +57,21 @@
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                             <children>
                                 <Label text="Filtrar por:" style="-fx-text-fill: -fx-text-muted;" />
-                                <ComboBox fx:id="cmbCourseFilter" promptText="Todas las asignaturas" prefWidth="180.0" style="-fx-cursor: hand;" />
-                                <TextField fx:id="txtSearchGroup" promptText="Buscar asignatura o código..." HBox.hgrow="ALWAYS" />
-                                <Button fx:id="btnSearch" text="🔍" styleClass="button" style="-fx-background-color: -fx-bg-dark-tertiary; -fx-cursor: hand;" />
+                                <ComboBox fx:id="courseFilterCombo" promptText="Todas las asignaturas" prefWidth="180.0" style="-fx-cursor: hand;" />
+                                <TextField fx:id="searchField" promptText="Buscar asignatura o código..." HBox.hgrow="ALWAYS" />
+                                <Button text="🔍" styleClass="button" style="-fx-background-color: -fx-bg-dark-tertiary; -fx-cursor: hand;" />
                             </children>
                         </HBox>
 
-                        <TableView fx:id="tvAvailableGroups" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="availableGroupsTable" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn fx:id="colSelect" prefWidth="40.0" style="-fx-alignment: CENTER;" text="+" />
-                                <TableColumn fx:id="colGroupCode" prefWidth="75.0" text="Código" />
-                                <TableColumn fx:id="colGroupName" prefWidth="185.0" text="Asignatura" />
-                                <TableColumn fx:id="colGroupNumber" prefWidth="60.0" style="-fx-alignment: CENTER;" text="Grupo" />
-                                <TableColumn fx:id="colGroupTeacher" prefWidth="120.0" text="Docente" />
-                                <TableColumn fx:id="colGroupSchedule" prefWidth="120.0" text="Horario" />
-                                <TableColumn fx:id="colGroupQuota" prefWidth="65.0" style="-fx-alignment: CENTER;" text="Cupos" />
+                                <TableColumn fx:id="selectedColumn" prefWidth="40.0" style="-fx-alignment: CENTER;" text="+" />
+                                <TableColumn fx:id="codeColumn" prefWidth="75.0" text="Código" />
+                                <TableColumn fx:id="courseColumn" prefWidth="185.0" text="Asignatura" />
+                                <TableColumn fx:id="groupColumn" prefWidth="60.0" style="-fx-alignment: CENTER;" text="Grupo" />
+                                <TableColumn fx:id="teacherColumn" prefWidth="120.0" text="Docente" />
+                                <TableColumn fx:id="scheduleColumn" prefWidth="120.0" text="Horario" />
+                                <TableColumn fx:id="capacityColumn" prefWidth="65.0" style="-fx-alignment: CENTER;" text="Cupos" />
                             </columns>
                         </TableView>
                     </children>
@@ -82,26 +81,25 @@
                     <children>
                         <Label style="-fx-font-weight: bold; -fx-text-fill: white;" text="Horario Provisional (Seleccionados)" />
 
-                        <TableView fx:id="tvSelectedGroups" prefHeight="250.0">
+                        <TableView fx:id="selectedGroupsTable" prefHeight="250.0">
                             <columns>
-                                <TableColumn fx:id="colSelectedName" prefWidth="150.0" text="Asignatura" />
-                                <TableColumn fx:id="colSelectedNumber" prefWidth="60.0" style="-fx-alignment: CENTER;" text="Grupo" />
-                                <TableColumn fx:id="colSelectedSchedule" prefWidth="140.0" text="Horario" />
-                                <TableColumn fx:id="colSelectedAction" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Acción" />
+                                <TableColumn fx:id="selectedCourseColumn" prefWidth="150.0" text="Asignatura" />
+                                <TableColumn fx:id="selectedGroupColumn" prefWidth="60.0" style="-fx-alignment: CENTER;" text="Grupo" />
+                                <TableColumn fx:id="selectedScheduleColumn" prefWidth="140.0" text="Horario" />
+                                <TableColumn fx:id="removeColumn" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Acción" />
                             </columns>
                         </TableView>
 
-                        <VBox fx:id="panelValidationWarnings" spacing="5.0" styleClass="warning-box" stylesheets="@/css/enrollment.css">
+                        <VBox spacing="5.0" styleClass="warning-box" stylesheets="@/css/enrollment.css" VBox.vgrow="ALWAYS">
                             <children>
                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -fx-accent-red;" text="⚠️ Validaciones en Tiempo Real" />
-                                <Label styleClass="warning-text" style="-fx-text-fill: #FCA5A5;" text="• Cruce de horario entre Programación I (G01) y Cálculo II (G01) los días Lunes." wrapText="true" />
-                                <Label styleClass="warning-text" style="-fx-text-fill: #FCA5A5;" text="• Prerrequisito pendiente para FIS101: Física Mecánica." wrapText="true" />
+                                <ListView fx:id="validationListView" prefHeight="100.0" VBox.vgrow="ALWAYS" />
                             </children>
                         </VBox>
 
                         <HBox alignment="CENTER_LEFT" style="-fx-padding: 5 0 0 0;">
                             <children>
-                                <Label fx:id="lblTotalCredits" style="-fx-font-weight: bold; -fx-font-size: 15px; -fx-text-fill: -fx-accent-green;" text="Total Créditos Seleccionados: 6" />
+                                <Label fx:id="totalCreditsLabel" style="-fx-font-weight: bold; -fx-font-size: 15px; -fx-text-fill: -fx-accent-green;" text="0" />
                             </children>
                         </HBox>
                     </children>
@@ -112,8 +110,8 @@
 
         <HBox alignment="CENTER_RIGHT" spacing="15.0">
             <children>
-                <Button fx:id="btnClearSelection" text="Limpiar Selección" style="-fx-background-color: transparent; -fx-border-color: -fx-bg-dark-tertiary; -fx-text-fill: -fx-text-muted; -fx-cursor: hand;" styleClass="button" />
-                <Button fx:id="btnNextStep" text="Siguiente: Validar ➔">
+                <Button fx:id="clearSelectionButton" onAction="#onClearSelection" text="Limpiar Selección" style="-fx-background-color: transparent; -fx-border-color: -fx-bg-dark-tertiary; -fx-text-fill: -fx-text-muted; -fx-cursor: hand;" styleClass="button" />
+                <Button fx:id="nextButton" onAction="#onNext" text="Siguiente: Validar ➔">
                     <styleClass>
                         <String fx:value="button" />
                         <String fx:value="btn-success" />
