@@ -23,6 +23,15 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User changePassword(User user) {
+        UserEntity entity = UserMapper.toEntity(user);
+
+        UserEntity entityUpdated = excelUserRepository.changePassword(entity);
+
+        return UserMapper.toDomain(entityUpdated);
+    }
+
+    @Override
     public Optional<User> findByEmail(String email) {
         Optional<UserEntity> entityOptional = excelUserRepository.findByEmail(email);
 

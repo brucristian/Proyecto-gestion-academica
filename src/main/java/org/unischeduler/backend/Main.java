@@ -22,6 +22,9 @@ import org.unischeduler.backend.application.service.academic_programming.in.grou
 import org.unischeduler.backend.application.service.academic_programming.out.GetScheduleService;
 import org.unischeduler.backend.application.service.academic_programming.out.ListAllGroupsServices;
 import org.unischeduler.backend.application.service.academic_programming.out.ListAllTeachersService;
+import org.unischeduler.backend.application.service.auth.ChangePasswordCommand;
+import org.unischeduler.backend.application.service.auth.ChangePasswordResponse;
+import org.unischeduler.backend.application.service.auth.ChangePasswordService;
 import org.unischeduler.backend.application.service.auth.login.RegisterUserService;
 import org.unischeduler.backend.application.service.enrollment.ValidateCreditLimitService;
 import org.unischeduler.backend.application.service.enrollment.register.RegisterEnrollmentService;
@@ -47,6 +50,7 @@ import org.unischeduler.backend.application.service.enrollment.register.Register
 import org.unischeduler.backend.domain.port.in.academic_programming.group_schedule.DeleteGroupSchedulesUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.group_schedule.UpdateGroupScheduleUseCase;
 import org.unischeduler.backend.domain.port.in.academic_programming.schedule.GetScheduleUseCase;
+import org.unischeduler.backend.domain.port.in.auth.ChangePasswordUseCase;
 import org.unischeduler.backend.domain.port.in.auth.LoginUserUseCase;
 import org.unischeduler.backend.domain.port.in.auth.RegisterUserUseCase;
 import org.unischeduler.backend.domain.port.in.enrollment.*;
@@ -255,6 +259,19 @@ public class Main {
 
     ListAllTeachersUseCase listAllTeachersService = new ListAllTeachersService(teacherRepository);
     AppContext.setListAllTeachersService(listAllTeachersService);
+
+    ChangePasswordUseCase changePasswordService = new ChangePasswordService(userRepository, passwordEncoderPort);
+
+    ChangePasswordCommand command = new ChangePasswordCommand(
+            "6",
+            "CURhX*FE",
+            "Camilo123*",
+            "Camilo123*"
+    );
+
+    ChangePasswordResponse response = changePasswordService.execute(command);
+    System.out.println("Success: " + response.isSuccessfully());
+    System.out.println("Message: " + response.getMessage());
 
   }
 

@@ -1,5 +1,6 @@
 package org.unischeduler.backend.infrastructure.out.persistence.excel.repository.auth;
 
+import org.unischeduler.backend.domain.model.auth.entity.User;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelDataStore;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.core.ExcelIdGenerator;
 import org.unischeduler.backend.infrastructure.out.entity.auth.UserEntity;
@@ -36,6 +37,15 @@ public class ExcelUserRepository {
         store.getUsers().put(id, entity);
 
         return entity;
+    }
+
+    public UserEntity changePassword(UserEntity user) {
+        store.getUsers().get(user.getUserId())
+                .setPassword(user.getPassword());
+
+        return store.getUsers().get(user.getUserId());
+
+
     }
 
     // =====================================================
