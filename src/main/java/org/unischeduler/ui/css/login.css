@@ -1,0 +1,61 @@
+/* ==========================================================================
+   PANTALLA DE LOGIN (W_Login)
+   ========================================================================== */
+
+/* Contenedor izquierdo azul (Información de la App) */
+.login-left-panel {
+    -fx-background-color: #0A2540; /* Azul oscuro mate de tu diseño */
+    -fx-padding: 40px;
+    -fx-alignment: CENTER;
+}
+
+.login-app-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-text-alignment: CENTER;
+    -fx-wrap-text: true;
+}
+
+.login-app-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #A0AEC0;
+    -fx-text-alignment: CENTER;
+}
+
+/* Contenedor derecho blanco (Formulario) */
+.login-right-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 50px;
+    -fx-alignment: CENTER;
+}
+
+.login-welcome-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0A2540;
+}
+
+/* Enlace de "Olvidó su contraseña?" o "Contacte al administrador" */
+.login-link {
+    -fx-text-fill: #0078D4;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+.login-link:hover {
+    -fx-text-fill: #005A9E;
+}
+
+/* Botón Ingresar (Grande y Azul) */
+.btn-login {
+    -fx-background-color: #0A2540;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0px; /* Ancho completo */
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+.btn-login:hover {
+    -fx-background-color: #1A365D;
+}

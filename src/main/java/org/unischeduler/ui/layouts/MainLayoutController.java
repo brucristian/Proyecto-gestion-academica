@@ -9,7 +9,8 @@ import org.unischeduler.ui.app.SceneManager;
 
 import java.io.IOException;
 
-public class MainLayoutController {
+public class
+MainLayoutController {
 
     @FXML
     private StackPane navbarContainer;

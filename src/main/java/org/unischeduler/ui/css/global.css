@@ -1,0 +1,90 @@
+/* ==========================================================================
+   VARIABLES GLOBALES (Colores del Sistema de Matrícula)
+   ========================================================================== */
+.root {
+    /* Paleta de colores extraída de tus diseños */
+    -fx-primary-dark: #0A2540;       /* Azul oscuro de las barras laterales */
+    -fx-primary-light: #1A365D;      /* Variación azul para elementos activos */
+    -fx-accent-blue: #0078D4;       /* Azul de realce / enlaces */
+    -fx-background-gray: #F4F6F9;    /* Fondo gris claro de las ventanas */
+    -fx-surface-white: #FFFFFF;      /* Fondo de los contenedores/tarjetas blancas */
+
+    /* Colores de estado (Botones de acción) */
+    -fx-success-green: #2ECC71;     /* Botón verde (+ Nuevo, Ingresar, Guardar) */
+    -fx-danger-red: #E74C3C;        /* Botón rojo (Eliminar) */
+    -fx-info-blue: #3498DB;          /* Botón azul (Editar) */
+
+    /* Textos */
+    -fx-text-main: #2C3E50;          /* Texto principal oscuro */
+    -fx-text-muted: #7F8C8D;         /* Texto secundario gris */
+
+    /* Tipografía */
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* Fondo general de las pantallas */
+.anchor-pane, .vbox, .hbox {
+    -fx-background-color: -fx-background-gray;
+}
+
+/* ==========================================================================
+   ELEMENTOS DE TEXTO
+   ========================================================================== */
+.label {
+    -fx-text-fill: -fx-text-main;
+}
+
+/* Títulos de sección (ej. "Panel de Administración", "Oferta Académica") */
+.titulo-seccion {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-dark;
+}
+
+/* Subtítulos o datos informativos */
+.texto-informativo {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-text-muted;
+}
+
+/* ==========================================================================
+   FORMULARIOS (TextFields y ComboBoxes)
+   ========================================================================== */
+.text-field, .password-field, .combo-box {
+    -fx-background-color: -fx-surface-white;
+    -fx-border-color: #DCDDE1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 10px;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+}
+
+/* Encabezados de la tabla */
+.table-view .column-header-background {
+    -fx-background-color: #EDF2F7;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 35px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text-main;
+    -fx-font-weight: bold;
+}
+
+/* Filas */
+.table-row-cell {
+    -fx-background-color: -fx-surface-white;
+    -fx-border-color: transparent transparent #EDF2F7 transparent;
+}
+
