@@ -1,36 +1,6 @@
 /* ==========================================
    VARIABLES Y COLORES GLOBALES
    ========================================== */
-.root {
-    -fx-bg-dark-primary: #0d1b2a;
-    -fx-bg-dark-secondary: #1b263b;
-    -fx-bg-dark-tertiary: #415a77;
-    -fx-accent-blue: #0077b6;
-    -fx-accent-green: #2a9d8f;
-    -fx-accent-red: #e63946;
-    -fx-text-main: #f8f9fa;
-    -fx-text-muted: #e0e1dd;
-
-    -fx-background-color: -fx-bg-dark-primary;
-    -fx-font-family: "Segoe UI", "Arial", sans-serif;
-}
-
-.label {
-    -fx-text-fill: -fx-text-main;
-}
-.label-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: -fx-text-main;
-}
-.label-subtitle {
-    -fx-font-size: 14px;
-    -fx-text-fill: -fx-text-muted;
-}
-
-/* ==========================================
-   CAMPOS DE TEXTO (INPUTS)
-   ========================================== */
 .text-field, .password-field, .combo-box {
     -fx-background-color: -fx-bg-dark-secondary;
     -fx-text-fill: -fx-text-main;
