@@ -1,4 +1,8 @@
-package org.unischeduler.backend.application.service.academic_programming.in;
+package org.unischeduler.backend.application.service.academic_programming.in.groups;
+
+import org.unischeduler.backend.application.service.academic_programming.in.group_schedules.RegisterGroupScheduleCommand;
+
+import java.util.List;
 
 public class UpdateGroupCommand {
     private final String groupId;
@@ -6,13 +10,15 @@ public class UpdateGroupCommand {
     private final String groupCode;
     private final String teacherId;
     private final int capacity;
+    private final List<RegisterGroupScheduleCommand> groupSchedules;
 
-    public UpdateGroupCommand(String groupId, String courseId, String groupCode, String teacherId, int capacity) {
+    public UpdateGroupCommand(String groupId, String courseId, String groupCode, String teacherId, int capacity, List<RegisterGroupScheduleCommand> groupSchedules) {
         this.groupId = groupId;
         this.courseId = courseId;
         this.groupCode = groupCode;
         this.teacherId = teacherId;
         this.capacity = capacity;
+        this.groupSchedules = groupSchedules;
     }
 
     public String getGroupId() {
@@ -33,5 +39,9 @@ public class UpdateGroupCommand {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public List<RegisterGroupScheduleCommand> getGroupSchedules() {
+        return groupSchedules;
     }
 }

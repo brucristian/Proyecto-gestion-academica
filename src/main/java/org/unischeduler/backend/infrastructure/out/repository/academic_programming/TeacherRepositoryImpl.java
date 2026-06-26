@@ -6,6 +6,7 @@ import org.unischeduler.backend.infrastructure.out.entity.academic_programming.T
 import org.unischeduler.backend.infrastructure.out.mapper.academic_programming.TeacherMapper;
 import org.unischeduler.backend.infrastructure.out.persistence.excel.repository.academic_program.ExcelTeacherRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -25,5 +26,15 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 
         TeacherEntity entity = entityOptional.get();
         return Optional.of(TeacherMapper.toDomain(entity));
+    }
+
+    @Override
+    public List<Teacher> findAll() {
+        List<TeacherEntity> entities = teacherRepository.findAll();
+
+        return entities
+                .stream()
+                .map(TeacherMapper::toDomain)
+                .toList();
     }
 }

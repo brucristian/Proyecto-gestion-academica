@@ -78,7 +78,7 @@ public class Group {
         return schedules;
     }
 
-    public void setSchedules(ArrayList<GroupSchedule> schedules) {
+    public void setSchedules(List<GroupSchedule> schedules) {
         this.schedules = schedules;
     }
 

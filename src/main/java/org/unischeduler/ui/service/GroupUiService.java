@@ -1,13 +1,10 @@
 package org.unischeduler.ui.service;
 
-import org.unischeduler.backend.application.service.academic_programming.in.DeleteGroupCommand;
-import org.unischeduler.backend.application.service.academic_programming.in.RegisterGroupCommand;
-import org.unischeduler.backend.application.service.academic_programming.in.UpdateGroupCommand;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.DeleteGroupCommand;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.RegisterGroupCommand;
+import org.unischeduler.backend.application.service.academic_programming.in.groups.UpdateGroupCommand;
 import org.unischeduler.backend.domain.port.in.academic_catalog.course.ListAllCoursesUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.DeleteGroupUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.ListAllGroupsUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.RegisterGroupUseCase;
-import org.unischeduler.backend.domain.port.in.academic_programming.UpdateGroupUseCase;
+import org.unischeduler.backend.domain.port.in.academic_programming.*;
 import org.unischeduler.ui.app.AppContext;
 import org.unischeduler.ui.mapper.GroupMapper;
 import org.unischeduler.ui.viewmodel.group.CourseSelectionViewModel;
@@ -23,6 +20,7 @@ public class GroupUiService {
     private final RegisterGroupUseCase registerGroupUseCase;
     private final UpdateGroupUseCase updateGroupUseCase;
     private final DeleteGroupUseCase deleteGroupUseCase;
+    private final ListAllTeachersUseCase listAllTeachersUseCase;
 
     private final ListAllCoursesUseCase listAllCoursesUseCase;
 
@@ -42,6 +40,8 @@ public class GroupUiService {
 
         this.listAllCoursesUseCase =
                 AppContext.getListAllCoursesService();
+
+        this.listAllTeachersUseCase = AppContext.getListAllTeachersService();
 
     }
 
@@ -73,24 +73,10 @@ public class GroupUiService {
 
     public List<TeacherViewModel> loadTeachers() {
 
-        return List.of(
-
-                new TeacherViewModel(
-                        "T001",
-                        "Juan Pérez"
-                ),
-
-                new TeacherViewModel(
-                        "T002",
-                        "María Gómez"
-                ),
-
-                new TeacherViewModel(
-                        "T003",
-                        "Carlos Rodríguez"
-                )
-
-        );
+        return listAllTeachersUseCase.execute()
+                .stream()
+                .map(TeacherViewModel::toModel)
+                .toList();
     }
 
     public void registerGroup(
