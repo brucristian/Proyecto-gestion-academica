@@ -3,13 +3,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.unischeduler.ui.components.navbar.NavbarController"
-      spacing="10"
-      prefHeight="60">
-
+<HBox prefHeight="50.0" spacing="20.0"
+      style="-fx-background-color: -fx-bg-dark-secondary; -fx-padding: 0 20; -fx-border-color: transparent transparent -fx-bg-dark-tertiary transparent; -fx-alignment: CENTER_LEFT;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.unischeduler.ui.components.navbar.NavbarController">
     <children>
-        <Label text="UniScheduler"/>
-    </children>
+        <Label fx:id="lblNavTitle" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: white;" text="UniSchedule" />
 
+        <HBox alignment="CENTER_RIGHT" spacing="15.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="lblUserCode" style="-fx-text-fill: -fx-text-muted; -fx-font-size: 13px;" text="👤 20211234" />
+                <Label fx:id="lblUserRole" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 13px;" text="Estudiante" />
+            </children>
+        </HBox>
+    </children>
 </HBox>

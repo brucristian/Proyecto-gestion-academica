@@ -19,7 +19,7 @@
                 <Label style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: -fx-accent-blue;" text="Admin Workspace" HBox.hgrow="ALWAYS" />
                 <HBox alignment="CENTER_RIGHT" spacing="10.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label style="-fx-text-fill: -fx-text-muted;" text="👑 Admin" />
+                        <Label style="-fx-text-fill: -fx-text-muted;" text=" Admin" />
                         <Label style="-fx-font-weight: bold;" text="Sistema" />
                     </children>
                 </HBox>
@@ -27,31 +27,7 @@
         </HBox>
     </top>
 
-    <left>
-        <VBox prefWidth="230.0" styleClass="admin-sidebar" stylesheets="@/css/admin.css" BorderPane.alignment="CENTER">
-            <children>
-                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn-active" stylesheets="@/css/dasboard.css" text="📊 Panel Principal" />
-                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" stylesheets="@/css/dasboard.css" text="📅 Gestión de Periodos" />
-                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" stylesheets="@/css/dasboard.css" text="📖 Catálogo de Asignaturas" />
-                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" stylesheets="@/css/dasboard.css" text="👥 Gestión de Estudiantes" />
-                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" stylesheets="@/css/dasboard.css" text="📝 Historial Académico" />
-                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" stylesheets="@/css/dasboard.css" text="⚙️ Configuración" />
 
-                <VBox alignment="BOTTOM_LEFT" VBox.vgrow="ALWAYS">
-                    <children>
-                        <Button maxWidth="Infinity" mnemonicParsing="false" text="🚪 Cerrar Sesión">
-                            <styleClass>
-                                <String fx:value="sidebar-btn" />
-                            </styleClass>
-                            <stylesheets>
-                                <String fx:value="@/css/dasboard.css" />
-                            </stylesheets>
-                        </Button>
-                    </children>
-                </VBox>
-            </children>
-        </VBox>
-    </left>
 
     <center>
         <VBox spacing="25.0" style="-fx-background-color: -fx-bg-dark-primary; -fx-padding: 30;" BorderPane.alignment="CENTER">
