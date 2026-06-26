@@ -1,0 +1,19 @@
+/* Tarjetas de información del encabezado */
+.summary-card {
+    -fx-background-color: -fx-bg-dark-secondary;
+    -fx-padding: 15px 20px;
+    -fx-background-radius: 8px;
+    -fx-border-color: -fx-bg-dark-tertiary;
+    -fx-border-radius: 8px;
+}
+
+.summary-card-title {
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-size: 12px;
+}
+
+.summary-card-value {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-main;
+}

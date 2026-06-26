@@ -1,18 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.unischeduler.ui.pages.dashboard.StudentDashboardController"
-      spacing="20">
+<BorderPane prefHeight="700.0" prefWidth="1100.0" stylesheets="@/css/global.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 
-    <children>
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="20.0" style="-fx-background-color: -fx-bg-dark-secondary; -fx-padding: 0 20; -fx-border-color: transparent transparent -fx-bg-dark-tertiary transparent;">
+            <children>
+                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white;" text="☰" />
+                <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Dashboard Estudiante" HBox.hgrow="ALWAYS" />
+                <HBox alignment="CENTER_RIGHT" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label style="-fx-text-fill: -fx-text-muted;" text="👤 20211234" />
+                        <Label style="-fx-font-weight: bold;" text="Estudiante" />
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+    </top>
 
-        <Label text="Student Dashboard"/>
+    <left>
+        <VBox prefWidth="220.0" styleClass="sidebar" stylesheets="@/css/dasboard.css" BorderPane.alignment="CENTER">
+            <children>
+                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn-active" text="🏠 Inicio" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" text="📚 Mi Matrícula" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" text=" Historial Académico" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" text=" Horario Provisional" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" text=" Notificaciones" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" styleClass="sidebar-btn" text="👤 Perfil" />
 
-        <Label text="Bienvenido a UniScheduler"/>
+                <VBox alignment="BOTTOM_LEFT" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button maxWidth="Infinity" mnemonicParsing="false" text="🚪 Cerrar Sesión">
+                            <styleClass>
+                                <String fx:value="sidebar-btn" />
+                            </styleClass>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
 
-    </children>
+    <center>
+        <VBox spacing="25.0" style="-fx-background-color: -fx-bg-dark-primary; -fx-padding: 30;" stylesheets="@/css/dasboard.css" BorderPane.alignment="CENTER">
+            <children>
 
-</VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: -fx-accent-green;" text="¡Bienvenido, Juan Pérez!" />
+                        <Label style="-fx-text-fill: -fx-text-muted;" text="Aquí tienes un resumen de tu información académica." />
+                    </children>
+                </VBox>
+
+                <HBox spacing="20.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="info-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-size: 24px;" text="🎓" />
+                                <VBox>
+                                    <children>
+                                        <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 11px;" text="Programa Académico" />
+                                        <Label style="-fx-font-weight: bold;" text="Ingeniería de Sistemas" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="info-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-size: 24px;" text="" />
+                                <VBox>
+                                    <children>
+                                        <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 11px;" text="Periodo Activo" />
+                                        <Label style="-fx-font-weight: bold;" text="2025-1" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+
+                <VBox spacing="10.0">
+                    <children>
+                        <Label style="-fx-font-weight: bold;" text="Accesos Rápidos" />
+                        <GridPane hgap="15.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="100.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Button maxWidth="Infinity" maxHeight="Infinity" mnemonicParsing="false" styleClass="quick-access-btn" text="Iniciar Proceso de Matrícula" GridPane.columnIndex="0" />
+                                <Button maxWidth="Infinity" maxHeight="Infinity" mnemonicParsing="false" styleClass="quick-access-btn" text="Consultar Historial Académico" GridPane.columnIndex="1" />
+                                <Button maxWidth="Infinity" maxHeight="Infinity" mnemonicParsing="false" styleClass="quick-access-btn" text="Ver Horario Provisional" GridPane.columnIndex="2" />
+                                <Button maxWidth="Infinity" maxHeight="Infinity" mnemonicParsing="false" styleClass="quick-access-btn" text="Notificaciones" GridPane.columnIndex="3" />
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+
+                <VBox spacing="10.0" styleClass="info-card" VBox.vgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label style="-fx-font-weight: bold;" text="Avisos" />
+                                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Hyperlink text="Ver todos" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+                        <VBox>
+                            <children>
+                                <Label styleClass="notice-item" text="• La matrícula ordinaria estará habilitada desde el 01/05/2025 hasta el 15/05/2025." wrapText="true" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

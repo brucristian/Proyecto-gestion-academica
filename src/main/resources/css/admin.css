@@ -1,0 +1,33 @@
+/* Tarjetas de Estadísticas (Admin) */
+.stat-card {
+    -fx-background-color: -fx-bg-dark-secondary;
+    -fx-padding: 20px;
+    -fx-background-radius: 8px;
+    -fx-border-color: -fx-bg-dark-tertiary;
+    -fx-border-radius: 8px;
+    -fx-alignment: center-left;
+}
+
+.stat-icon {
+    -fx-font-size: 32px;
+    -fx-text-fill: -fx-accent-blue;
+}
+
+.stat-title {
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-size: 13px;
+}
+
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-main;
+}
+
+/* Panel lateral del Admin (Ligeramente distinto para diferenciarlo) */
+.admin-sidebar {
+    -fx-background-color: #0b132b;
+    -fx-padding: 20px 0px;
+    -fx-border-color: transparent #1b263b transparent transparent;
+    -fx-border-width: 1px;
+}

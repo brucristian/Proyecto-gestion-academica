@@ -1,0 +1,37 @@
+/* Contenedor de la barra de progreso (Stepper) */
+.stepper-container {
+    -fx-background-color: -fx-bg-dark-secondary;
+    -fx-padding: 15px;
+    -fx-background-radius: 8px;
+    -fx-border-color: -fx-bg-dark-tertiary;
+    -fx-border-radius: 8px;
+}
+
+/* Bolitas y texto de los pasos */
+.step-active {
+    -fx-background-color: -fx-accent-green;
+    -fx-text-fill: white;
+    -fx-background-radius: 15px;
+    -fx-padding: 5px 12px;
+    -fx-font-weight: bold;
+}
+
+.step-inactive {
+    -fx-background-color: -fx-bg-dark-tertiary;
+    -fx-text-fill: -fx-text-muted;
+    -fx-background-radius: 15px;
+    -fx-padding: 5px 12px;
+}
+
+/* Caja de advertencias (Validaciones de cruce de horario) */
+.warning-box {
+    -fx-background-color: rgba(230, 57, 70, 0.1);
+    -fx-border-color: -fx-accent-red;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+}
+.warning-text {
+    -fx-text-fill: #ff6b6b;
+    -fx-font-size: 12px;
+}

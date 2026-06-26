@@ -1,0 +1,16 @@
+.login-container {
+    -fx-background-color: linear-gradient(to bottom right, #0d1b2a, #ffffff);
+}
+.login-card {
+    -fx-background-color: #152238;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #415a77;
+    -fx-border-width: 1px;
+    -fx-padding: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 4);
+}
+.login-side-pane {
+    -fx-background-color: #0b132b;
+    -fx-padding: 40px;
+}

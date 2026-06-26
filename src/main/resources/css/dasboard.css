@@ -1,0 +1,26 @@
+.top-bar {
+    -fx-background-color: #0b132b;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #415a77;
+    -fx-border-width: 0 0 1 0;
+}
+.card-welcome {
+    -fx-background-color: #1b263b;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+    -fx-border-color: #415a77;
+    -fx-border-radius: 8px;
+}
+.quick-access-card {
+    -fx-background-color: #152238;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-color: #415a77;
+    -fx-padding: 15px;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+}
+.quick-access-card:hover {
+    -fx-background-color: #1c3144;
+    -fx-border-color: #0077b6;
+}

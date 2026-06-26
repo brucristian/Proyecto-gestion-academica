@@ -26,15 +26,18 @@ public class LoginController {
 
         String username = usernameField.getText();
         String password = passwordField.getText();
-
+        System.out.println(username);
+        System.out.println(password);
         LoginUserResponse response =
                 authUiService.login(username, password);
 
         if (response.isSuccessfully()) {
             AppContext.setCurrentUser(response.getUser());
             AppNavigator.navigateToMainLayout();
+            System.out.println("usuario encontrado");
         } else {
             messageLabel.setText(response.getMessage());
+            System.out.println("usuario no encontrado");
         }
     }
 }

@@ -1,0 +1,131 @@
+/* ==========================================
+   VARIABLES Y COLORES GLOBALES
+   ========================================== */
+.root {
+    -fx-bg-dark-primary: #0d1b2a;
+    -fx-bg-dark-secondary: #1b263b;
+    -fx-bg-dark-tertiary: #415a77;
+    -fx-accent-blue: #0077b6;
+    -fx-accent-green: #2a9d8f;
+    -fx-accent-red: #e63946;
+    -fx-text-main: #f8f9fa;
+    -fx-text-muted: #e0e1dd;
+
+    -fx-background-color: -fx-bg-dark-primary;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ==========================================
+   ETIQUETAS Y TEXTOS
+   ========================================== */
+.label {
+    -fx-text-fill: -fx-text-main;
+}
+.label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-main;
+}
+.label-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-muted;
+}
+
+/* ==========================================
+   CAMPOS DE TEXTO (INPUTS)
+   ========================================== */
+.text-field, .password-field, .combo-box {
+    -fx-background-color: -fx-bg-dark-secondary;
+    -fx-text-fill: -fx-text-main;
+    -fx-border-color: -fx-bg-dark-tertiary;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px;
+}
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: -fx-accent-blue;
+}
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+.button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+.btn-primary {
+    -fx-background-color: -fx-accent-blue;
+}
+.btn-primary:hover {
+    -fx-background-color: #0096c7;
+}
+.btn-success {
+    -fx-background-color: -fx-accent-green;
+}
+.btn-success:hover {
+    -fx-background-color: #35b0a2;
+}
+.btn-danger {
+    -fx-background-color: -fx-accent-red;
+}
+.btn-danger:hover {
+    -fx-background-color: #f05461;
+}
+
+/* ==========================================
+   TABLAS (TableView)
+   ========================================== */
+.table-view {
+    -fx-background-color: -fx-bg-dark-secondary;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: -fx-bg-dark-tertiary;
+}
+.table-view .column-header-background {
+    -fx-background-color: -fx-bg-dark-tertiary;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 35px;
+}
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text-main;
+    -fx-font-weight: bold;
+}
+.table-row-cell {
+    -fx-background-color: -fx-bg-dark-secondary;
+    -fx-border-color: #2b3a4a;
+    -fx-border-width: 0 0 1 0;
+}
+.table-row-cell:selected {
+    -fx-background-color: -fx-accent-blue;
+}
+.table-cell:selected {
+    -fx-background-color: -fx-accent-blue;
+}
+
+/* ==========================================
+   SIDEBAR (Menú Lateral Común)
+   ========================================== */
+.sidebar {
+    -fx-background-color: -fx-bg-dark-secondary;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+}
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-muted;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-font-size: 13px;
+    -fx-padding: 10px 15px;
+    -fx-max-width: Infinity;
+}
+.sidebar-button:hover {
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: white;
+}
