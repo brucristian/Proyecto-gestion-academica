@@ -1,122 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <VBox spacing="20.0"
-      style="-fx-background-color: -fx-bg-dark-primary; -fx-padding: 25;"
-      stylesheets="@/css/global.css"
+      style="-fx-background-color: #0d1b2a;"
       VBox.vgrow="ALWAYS"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.unischeduler.ui.pages.academic_history.AcademicHistoryManagementController">
 
-    <children>
-        <VBox spacing="5.0">
-            <children>
-                <Label style="-fx-font-weight: bold; -fx-font-size: 22px; -fx-text-fill: white;" text="Gestión de Historial Académico" />
-                <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 13px;" text="Administre las calificaciones y estados de progreso académico de cualquier estudiante." />
-            </children>
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <!-- HEADER -->
+    <VBox spacing="5.0">
+
+        <Label text="Gestión de Historial Académico"
+               style="-fx-font-weight: bold; -fx-font-size: 22px; -fx-text-fill: #ffffff;" />
+
+        <Label text="Administre las calificaciones y estados de progreso académico de cualquier estudiante."
+               style="-fx-text-fill: #94a1b2; -fx-font-size: 13px;" />
+
+    </VBox>
+
+    <Separator style="-fx-opacity: 0.2; -fx-background-color: #415a77;" />
+
+    <!-- CONTENT -->
+    <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+
+        <!-- LEFT -->
+        <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+
+            <Label text="Búsqueda de Estudiante"
+                   style="-fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-font-size: 14px;" />
+
+            <HBox spacing="10.0">
+
+                <TextField fx:id="searchStudentField"
+                           promptText="Ingrese el código o ID único del estudiante..."
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-background-color: #0d1b2a; -fx-text-fill: #ffffff; -fx-border-color: #415a77;" />
+
+                <Button fx:id="btnSearch"
+                        text="Buscar"
+                        style="-fx-background-color: #415a77; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-cursor: hand;" />
+
+            </HBox>
+
+            <Label text="Asignaturas Registradas"
+                   style="-fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-font-size: 14px;" />
+
+            <TableView fx:id="coursesTable"
+                       VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: #0d1b2a; -fx-border-color: #415a77;">
+
+                <columns>
+
+                    <TableColumn fx:id="periodColumn" prefWidth="100.0" text="Periodo" />
+                    <TableColumn fx:id="codeColumn" prefWidth="90.0" text="Código" />
+                    <TableColumn fx:id="subjectColumn" prefWidth="240.0" text="Asignatura" />
+                    <TableColumn fx:id="creditsColumn" prefWidth="80.0" text="Créditos" style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="gradeColumn" prefWidth="80.0" text="Nota" style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="statusColumn" prefWidth="110.0" text="Estado" style="-fx-alignment: CENTER;" />
+
+                </columns>
+
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
+
+            </TableView>
+
         </VBox>
 
-        <Separator style="-fx-opacity: 0.1;" />
+        <!-- RIGHT PANEL -->
+        <VBox prefWidth="320.0"
+              spacing="20.0"
+              style="-fx-background-color: #152238; -fx-padding: 20; -fx-background-radius: 8;">
 
-        <HBox spacing="25.0" VBox.vgrow="ALWAYS">
-            <children>
-                <VBox spacing="15.0" HBox.hgrow="ALWAYS">
-                    <children>
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px;" text="Búsqueda de Estudiante" />
+            <Label text="Información Académica"
+                   style="-fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-font-size: 15px;" />
 
-                        <HBox spacing="10.0">
-                            <children>
-                                <TextField fx:id="searchStudentField"
-                                           promptText="Ingrese el código o ID único del estudiante..."
-                                           HBox.hgrow="ALWAYS"
-                                           style="-fx-background-color: -fx-bg-dark-secondary; -fx-text-fill: white;" />
-                                <Button fx:id="btnSearch"
-                                        mnemonicParsing="false"
-                                        style="-fx-background-color: -fx-bg-dark-tertiary; -fx-text-fill: white; -fx-cursor: hand; -fx-font-weight: bold;"
-                                        text="Buscar" />
-                            </children>
-                        </HBox>
+            <VBox spacing="14.0">
 
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px;" text="Asignaturas Registradas" />
+                <VBox spacing="3.0">
 
-                        <TableView fx:id="coursesTable" VBox.vgrow="ALWAYS">
-                            <columns>
-                                <TableColumn fx:id="periodColumn" prefWidth="100.0" text="Periodo" />
-                                <TableColumn fx:id="codeColumn" prefWidth="90.0" text="Código" />
-                                <TableColumn fx:id="subjectColumn" prefWidth="240.0" text="Asignatura" />
-                                <TableColumn fx:id="creditsColumn" prefWidth="80.0" style="-fx-alignment: CENTER;" text="Créditos" />
-                                <TableColumn fx:id="gradeColumn" prefWidth="80.0" style="-fx-alignment: CENTER;" text="Nota" />
-                                <TableColumn fx:id="statusColumn" prefWidth="110.0" style="-fx-alignment: CENTER;" text="Estado" />
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                    </children>
+                    <Label text="Estudiante Seleccionado:"
+                           style="-fx-text-fill: #94a1b2; -fx-font-size: 11px;" />
+
+                    <Label fx:id="studentNameLabel"
+                           text="Ninguno seleccionado"
+                           style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+
                 </VBox>
 
-                <VBox prefWidth="320.0" spacing="20.0" style="-fx-background-color: -fx-bg-dark-secondary; -fx-padding: 20; -fx-background-radius: 6;">
-                    <children>
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 15px;" text="Información Académica" />
+                <VBox spacing="3.0">
 
-                        <VBox spacing="14.0">
-                            <children>
-                                <VBox spacing="3.0">
-                                    <children>
-                                        <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 11px;" text="Estudiante Seleccionado:" />
-                                        <Label fx:id="studentNameLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="Ninguno seleccionado" />
-                                    </children>
-                                </VBox>
-                                <VBox spacing="3.0">
-                                    <children>
-                                        <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 11px;" text="Programa de Estudios:" />
-                                        <Label fx:id="programLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="---" />
-                                    </children>
-                                </VBox>
-                                <VBox spacing="3.0">
-                                    <children>
-                                        <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 11px;" text="Créditos Aprobados:" />
-                                        <Label fx:id="approvedCreditsLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" />
-                                    </children>
-                                </VBox>
-                                <VBox spacing="3.0">
-                                    <children>
-                                        <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 11px;" text="Promedio Acumulado (PGA):" />
-                                        <Label fx:id="gpaLabel" style="-fx-text-fill: -fx-accent-green; -fx-font-weight: bold; -fx-font-size: 22px;" text="0.00" />
-                                    </children>
-                                </VBox>
-                            </children>
-                        </VBox>
+                    <Label text="Programa de Estudios:"
+                           style="-fx-text-fill: #94a1b2; -fx-font-size: 11px;" />
 
-                        <Separator style="-fx-opacity: 0.1;" />
+                    <Label fx:id="programLabel"
+                           text="---"
+                           style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
 
-                        <Label style="-fx-text-fill: -fx-text-muted; -fx-font-size: 11px;"
-                               text="Instrucciones: Busque un estudiante. Haga doble clic en la celda 'Nota' para modificar el valor. Presione enter para confirmar y luego guarde."
-                               wrapText="true" />
-                    </children>
                 </VBox>
-            </children>
-        </HBox>
 
-        <HBox alignment="CENTER_RIGHT" spacing="12.0">
-            <children>
-                <Button fx:id="btnCancel" mnemonicParsing="false"
-                        style="-fx-background-color: transparent; -fx-border-color: -fx-bg-dark-tertiary; -fx-text-fill: -fx-text-muted; -fx-cursor: hand;"
-                        text="Limpiar Pantalla" />
-                <Button fx:id="btnSave" mnemonicParsing="false"
-                        style="-fx-background-color: -fx-accent-green; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"
-                        text="Guardar Cambios" />
-            </children>
-        </HBox>
-    </children>
+                <VBox spacing="3.0">
+
+                    <Label text="Créditos Aprobados:"
+                           style="-fx-text-fill: #94a1b2; -fx-font-size: 11px;" />
+
+                    <Label fx:id="approvedCreditsLabel"
+                           text="0"
+                           style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+
+                </VBox>
+
+                <VBox spacing="3.0">
+
+                    <Label text="Promedio Acumulado (PGA):"
+                           style="-fx-text-fill: #94a1b2; -fx-font-size: 11px;" />
+
+                    <Label fx:id="gpaLabel"
+                           text="0.00"
+                           style="-fx-text-fill: #2a9d8f; -fx-font-weight: bold; -fx-font-size: 22px;" />
+
+                </VBox>
+
+            </VBox>
+
+            <Separator style="-fx-opacity: 0.2; -fx-background-color: #415a77;" />
+
+            <Label text="Instrucciones: Busque un estudiante. Haga doble clic en la celda 'Nota' para modificar el valor. Presione enter para confirmar y luego guarde."
+                   wrapText="true"
+                   style="-fx-text-fill: #94a1b2; -fx-font-size: 11px;" />
+
+        </VBox>
+
+    </HBox>
+
+    <!-- FOOTER -->
+    <HBox alignment="CENTER_RIGHT" spacing="12.0">
+
+        <Button fx:id="btnCancel"
+                text="Limpiar Pantalla"
+                style="-fx-background-color: transparent; -fx-border-color: #415a77; -fx-text-fill: #94a1b2; -fx-cursor: hand;" />
+
+        <Button fx:id="btnSave"
+                text="Guardar Cambios"
+                style="-fx-background-color: #2a9d8f; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-cursor: hand;" />
+
+    </HBox>
+
 </VBox>

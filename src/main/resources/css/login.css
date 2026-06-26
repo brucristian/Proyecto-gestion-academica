@@ -1,16 +1,84 @@
+/* Paleta de colores base */
+* {
+    -fx-bg-dark-primary: #0d1b2a;
+    -fx-bg-dark-secondary: #1b263b;
+    -fx-accent-blue: #415a77;
+    -fx-accent-blue-light: #778da9;
+    -fx-text-main: #e0e1dd;
+    -fx-text-muted: #94a1b2;
+}
+
+/* Contenedor derecho (Fondo con gradiente) */
 .login-container {
-    -fx-background-color: linear-gradient(to bottom right, #0d1b2a, #ffffff);
+    -fx-background-color: linear-gradient(to bottom right, #0d1b2a, #1b263b);
 }
-.login-card {
-    -fx-background-color: #152238;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-border-color: #415a77;
-    -fx-border-width: 1px;
-    -fx-padding: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 4);
-}
+
+/* Panel izquierdo (Logo y bienvenida) */
 .login-side-pane {
     -fx-background-color: #0b132b;
     -fx-padding: 40px;
+    -fx-text-fill: white;
+}
+
+/* La tarjeta central del formulario */
+.login-card {
+    -fx-background-color: #152238;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-color: #415a77;
+    -fx-border-width: 1px;
+    -fx-padding: 35px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 15, 0, 0, 5);
+}
+
+/* Etiquetas */
+.label-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.label-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-text-muted;
+}
+
+/* Inputs de texto */
+.text-field, .password-field {
+    -fx-background-color: #0d1b2a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #415a77;
+    -fx-border-color: #415a77;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 10px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #778da9;
+    -fx-background-color: #0d1b2a;
+}
+
+/* Checkbox */
+.check-box {
+    -fx-text-fill: -fx-text-muted;
+}
+
+/* Botón principal */
+.btn-primary {
+    -fx-background-color: #415a77;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #778da9;
+}
+
+/* Link */
+.hyperlink {
+    -fx-text-fill: #778da9;
 }

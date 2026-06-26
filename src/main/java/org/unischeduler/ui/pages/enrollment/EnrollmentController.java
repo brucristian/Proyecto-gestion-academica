@@ -116,6 +116,7 @@ public class EnrollmentController {
 
     @FXML
     public void initialize() {
+        String css = this.getClass().getResource("/css/enrollment.css").toExternalForm();
 
         configureAvailableGroupsTable();
         configureSelectedGroupsTable();

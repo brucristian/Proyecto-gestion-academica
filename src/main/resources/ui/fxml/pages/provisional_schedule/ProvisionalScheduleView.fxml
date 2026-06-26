@@ -3,19 +3,34 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.unischeduler.ui.pages.schedule.ScheduleController">
+            fx:controller="org.unischeduler.ui.pages.schedule.ScheduleController"
+            style="-fx-background-color: #0d1b2a;">
 
     <center>
-        <ScrollPane fitToWidth="true"
-                    fitToHeight="true">
+        <VBox style="-fx-padding: 20; -fx-background-color: #0d1b2a;" alignment="TOP_CENTER">
 
-            <GridPane fx:id="scheduleGrid"
-                      hgap="1"
-                      vgap="1"/>
+            <ScrollPane fitToWidth="true"
+                        fitToHeight="true"
+                        style="-fx-background-color: transparent; -fx-background: #0d1b2a; -fx-border-color: transparent;">
 
-        </ScrollPane>
+                <GridPane fx:id="scheduleGrid"
+                          hgap="2"
+                          vgap="2"
+                          alignment="CENTER"
+                          style="-fx-background-color: #415a77; -fx-padding: 2; -fx-background-radius: 6;">
+
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100.0" hgrow="ALWAYS" />
+                    </columnConstraints>
+
+                </GridPane>
+
+            </ScrollPane>
+        </VBox>
     </center>
 
 </BorderPane>
