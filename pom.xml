@@ -18,7 +18,7 @@
     <dependencies>
 
         <!-- =========================
-             🎨 JavaFX (UI)
+              JavaFX (UI)
         ========================= -->
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -33,7 +33,7 @@
         </dependency>
 
         <!-- =========================
-             📊 Apache POI (Excel)
+              Apache POI (Excel)
         ========================= -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -48,7 +48,7 @@
         </dependency>
 
         <!-- =========================
-             🔐 BCrypt (password hashing)
+              BCrypt (password hashing)
         ========================= -->
         <dependency>
             <groupId>org.mindrot</groupId>
@@ -57,7 +57,7 @@
         </dependency>
 
         <!-- =========================
-             📄 ODS support (OpenDocument)
+              ODS support (OpenDocument)
         ========================= -->
         <dependency>
             <groupId>org.odftoolkit</groupId>

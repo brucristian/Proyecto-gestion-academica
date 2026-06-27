@@ -42,9 +42,18 @@
                     </GridPane>
 
                     <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
-                        <Button fx:id="newGroupButton" text="+ Nuevo" style="-fx-background-color: #415a77; -fx-text-fill: white; -fx-cursor: hand;"/>
-                        <Button fx:id="saveGroupButton" text="Guardar" style="-fx-background-color: #2a9d8f; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
-                        <Button fx:id="deleteGroupButton" text="Eliminar" style="-fx-background-color: #e76f51; -fx-text-fill: white; -fx-cursor: hand;"/>
+                        <Button fx:id="newGroupButton"
+                                text="+ Nuevo"
+                                style="-fx-background-color: #415a77; -fx-text-fill: white; -fx-cursor: hand;"
+                                onAction="#onNewGroup"/>
+                        <Button fx:id="saveGroupButton"
+                                text="Guardar"
+                                style="-fx-background-color: #2a9d8f; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"
+                                onAction="#onSaveGroup"/>
+                        <Button fx:id="deleteGroupButton"
+                                text="Eliminar"
+                                style="-fx-background-color: #e76f51; -fx-text-fill: white; -fx-cursor: hand;"
+                                onAction="#onDeleteGroup"/>
                     </HBox>
                 </VBox>
 
@@ -60,8 +69,14 @@
                         </columns>
                     </TableView>
                     <HBox spacing="10">
-                        <Button fx:id="addScheduleButton" text="+ Agregar Horario" style="-fx-background-color: #415a77; -fx-text-fill: white; -fx-cursor: hand;"/>
-                        <Button fx:id="removeScheduleButton" text="Eliminar Horario" style="-fx-background-color: transparent; -fx-border-color: #415a77; -fx-text-fill: #94a1b2; -fx-cursor: hand;"/>
+                        <Button fx:id="addScheduleButton"
+                                text="+ Agregar Horario"
+                                style="-fx-background-color: #415a77; -fx-text-fill: white; -fx-cursor: hand;"
+                                onAction="#onAddSchedule"/>
+                        <Button fx:id="removeScheduleButton"
+                                text="Eliminar Horario"
+                                style="-fx-background-color: transparent; -fx-border-color: #415a77; -fx-text-fill: #94a1b2; -fx-cursor: hand;"
+                                onAction="#onRemoveSchedule"/>
                     </HBox>
                 </VBox>
             </HBox>
